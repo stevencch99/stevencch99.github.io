@@ -5,6 +5,7 @@ crawlertitle: "About Ruby and Function compostition"
 date:   2019-05-14 16:56:46 +0800
 categories: ruby
 tags: ['Ruby']
+comments: true
 ---
 *Is that a question?*
 

@@ -1,7 +1,7 @@
 {% if page.bg %}
   <aside class="sidebar" role="note" style="background-image: url({{ site.images | relative_url }}/{{ page.bg }})">
 {% else %}
-  <aside class="sidebar" role="note" style="background-image: url({{ site.images | relative_url }}/nasa-63032-unsplash.jpg)">
+  <aside class="sidebar" role="note" style="background-image: url({{ site.images | relative_url }}/nasa-63032-unsplash--compressed.jpg)">
 {% endif %}
 
   <div class="cover">
@@ -25,12 +25,13 @@
       <p class="aside__page-summary">
         {% if page.summary %}
           {{ page.summary }}
+        {% else %}
+          <p class="aside__text">
+            <span></span>
+          </p>
         {% endif %}
       </p>
-      <div class="aside__text">
-        <p>"Life's like a movie, write your own ending." </p>
-        <p>-  Jim Henson</p>
-      </div>
+
     </div>
 
   </div>

@@ -15,7 +15,7 @@ lang: "en"
 url: "http://localhost:4000" # the base hostname & protocol for your site
 twitter_username: 
 github_username:  stevencch99
-disqus_username:
+disqus_username:  
 
 # Build settings
 markdown: kramdown
@@ -40,3 +40,17 @@ sass:
 
 
 images: '/assets/images'
+
+comments:
+  provider: disqus
+  disqus:
+    short_name: from-zen-to-code
+  livefyre:
+    site_id: 123
+  intensedebate: 123
+    account: 123abc
+  facebook: 
+    appid: 123
+    num_posts: 5
+    width: 580
+    colorscheme: light

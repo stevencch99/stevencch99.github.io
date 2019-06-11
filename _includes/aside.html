@@ -1,14 +1,17 @@
 {% if page.bg %}
   <aside class="sidebar" role="note" style="background-image: url({{ site.images | relative_url }}/{{ page.bg }})">
 {% else %}
-  <aside class="sidebar" role="note" style="background-image: url({{ site.images | relative_url }}/bg.svg)">
+  <aside class="sidebar" role="note" style="background-image: url({{ site.images | relative_url }}/nasa-63032-unsplash.jpg)">
 {% endif %}
 
   <div class="cover">
 
-    <div class="cover-text">
+    <!-- <div class="cover__title">
+      <p>Steven C.</p>
+    </div> -->
+    
+    <div class="cover__text">
       <div class="heading">
-
         {% if page.tags %}
           {% for tag in page.tags %}
             <a href="{{ site.baseurl }}/posts/#{{ tag | downcase }}">{{ tag | downcase }}</a>
@@ -19,14 +22,15 @@
 
       </div>
 
-      <p>
+      <p class="aside__page-summary">
         {% if page.summary %}
           {{ page.summary }}
         {% endif %}
       </p>
-
-      <p>"Life's like a movie, write your own ending." </p>
-      <p>-  Jim Henson</p>
+      <div class="aside__text">
+        <p>"Life's like a movie, write your own ending." </p>
+        <p>-  Jim Henson</p>
+      </div>
     </div>
 
   </div>

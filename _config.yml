@@ -41,16 +41,21 @@ sass:
 
 images: '/assets/images'
 
-comments:
-  provider: disqus
-  disqus:
-    short_name: from-zen-to-code
-  livefyre:
-    site_id: 123
-  intensedebate: 123
-    account: 123abc
-  facebook: 
-    appid: 123
-    num_posts: 5
-    width: 580
-    colorscheme: light
+# comments:
+#   provider: disqus
+#   disqus:
+#     short_name: from-zen-to-code
+#   livefyre:
+#     site_id: 123
+#   intensedebate: 123
+#     account: 123abc
+#   facebook: 
+#     appid: 123
+#     num_posts: 5
+#     width: 580
+#     colorscheme: light
+
+disqus:
+  # Leave shortname blank to disable comments site-wide.
+  # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+  shortname: 'from-zen-to-code'

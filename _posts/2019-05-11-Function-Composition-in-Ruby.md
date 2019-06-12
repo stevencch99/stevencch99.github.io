@@ -3,7 +3,7 @@ layout: post
 title:  "Ruby 中的複合函數：To Proc, or not to Proc"
 crawlertitle: "About Ruby and Function compostition"
 date:   2019-05-14 16:56:46 +0800
-categories: ruby
+categories: Ruby
 tags: ['Ruby']
 comments: true
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "在 Rails 專案安裝 PostgreSQL"
+description: "在 Rails 專案安裝 PostgreSQL"
 crawlertitle: "Install PostgreSQL in Rails Project"
 date:   2019-06-27 10:56:46 +0800
 categories: Rails

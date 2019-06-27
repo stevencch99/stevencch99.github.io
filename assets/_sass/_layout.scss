@@ -8,7 +8,14 @@ a {
   &:active { text-decoration: none; }
 }
 
-
+/*
+* custom icons
+* ========================================================================== */
+.fab:hover,
+.fab:focus,
+.fab:active {
+  color: #766257
+}
 
 /*
 * Toggle Button
@@ -179,7 +186,7 @@ a {
       text-decoration: none;
       &:hover { text-decoration: underline; }
       &:not(:last-child):after {
-        content: " , ";
+        content: "  ";
         position: absolute;
         bottom: 0;
       }

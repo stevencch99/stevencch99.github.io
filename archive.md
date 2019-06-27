@@ -1,5 +1,5 @@
 ---
-bg: "tag.jpg"
+bg: "john-wang-yyxyxA-oCLI-unsplash.jpg"
 layout: page
 permalink: /posts/
 title: "Archive"

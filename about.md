@@ -1,7 +1,7 @@
 ---
 bg: "IMG_0358.jpg"
 layout: page
-title: "Steven C."
+title: "Steven Chang"
 crawlertitle: "Why and how this blog was created"
 permalink: /about/
 summary: "\"Life's like a movie, write your own ending.\" <br />
@@ -11,7 +11,7 @@ active: about
 
 I am currently working on Rails development. 
 
-Used to have more than 7 years of experience in HVAC related field,  
+Used to have about 8 years of experience in HVAC related field,  
 with all the passion for work and life,  
 I want to be better, and not just fine,  
 ready to prove my value at any time.  
@@ -24,6 +24,8 @@ and the great sense of responsibility,
 I've trying to achieve something even greater,  
 and as a result, that made me a good team player!
 
-You can find me at GitHub:
-[{{site.github_username}}](https://github.com/stevencch99)
+**Welcome to contact me Here:**
+[<i class="fab fa-github-alt fa-spin"></i>](https://github.com/stevencch99)
+[<i class="fab fa-linkedin"></i>](https://www.linkedin.com/in/stevenchchang/)
+<!-- [{{site.github_username}}](https://github.com/stevencch99) -->
 

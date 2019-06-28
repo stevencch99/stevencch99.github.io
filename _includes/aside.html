@@ -14,7 +14,8 @@
       <div class="heading">
         {% if page.tags %}
           {% for tag in page.tags %}
-            <a href="{{ site.baseurl }}/posts/#{{ tag | downcase }}">{{ tag | downcase }}</a>
+            <!-- <a href="{{ site.baseurl }}/posts/#{{ tag | downcase }}">{{ tag | downcase }}</a> -->
+            <a href="{{ site.baseurl }}/posts/#{{ tag | upcase }}">{{ tag | upcase }}</a>
           {% endfor %}
         {% elsif page.title %}
           {{ page.title }}

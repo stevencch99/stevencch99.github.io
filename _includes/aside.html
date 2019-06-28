@@ -20,12 +20,10 @@
           {{ page.title }}
         {% else %}
         <a href="{ site.baseurl }" class="aside__landing">From Zen to Code</a>
-        <!-- <p>Steven Chang</p> -->
-        <br/>
-          <a href="https://github.com/stevencch99"><i class="fab fa-github-alt fa-spin"></i></a>
-          <a href="https://www.linkedin.com/in/stevenchchang/"><i class="fab fa-linkedin"></i></a>
+        <!-- <br/> -->
+          <!-- <a href="https://github.com/stevencch99"><i class="fab fa-github-alt fa-spin"></i></a>
+          <a href="https://www.linkedin.com/in/stevenchchang/"><i class="fab fa-linkedin"></i></a> -->
         {% endif %}
-
       </div>
 
       <p class="aside__page-summary">
@@ -33,13 +31,13 @@
           {{ page.summary }}
         {% else %}
           <p class="aside__text">
-            <span></span>
+            <a href="/about/" class="aside__text--title">Steven Chang</a><br />
+            <a href="https://github.com/stevencch99"><i class="aside__text--icon fab fa-github-alt fa-spin"></i></a>
+            <a href="https://www.linkedin.com/in/stevenchchang/"><i class="aside__text--icon fab fa-linkedin"></i></a>
           </p>
         {% endif %}
       </p>
-
     </div>
-
   </div>
 
   <div id="switcher"></div>

@@ -5,8 +5,9 @@ title: "About Me"
 crawlertitle: "About Steven Chang and this blog"
 description: "About Steven Chang and this blog"
 permalink: /about/
-summary: "\"Life's like a movie, write your own ending.\" <br />
--  Jim Henson"
+summary: >
+ &quot;Life's like a movie, write your own ending.&quot;&#xa;
+  -  Jim Henson
 active: about
 ---
 # 張誠華 Steven Chang  
@@ -29,6 +30,6 @@ and the great sense of responsibility,
 I've trying to achieve something even greater,  
 and as a result, that made me a good team player!
 
-[<i class="fab fa-github-alt fa-spin"></i>](https://github.com/stevencch99) [<i class="fab fa-linkedin"></i>](https://www.linkedin.com/in/stevenchchang/)
-<!-- [{{site.github_username}}](https://github.com/stevencch99) -->
-
+[<i class="fab fa-github-alt fa-spin"></i>](https://github.com/stevencch99/) 
+[<i class="fab fa-medium"></i>](https://medium.com/space-cat/)
+[<i class="fab fa-linkedin"></i>](https://www.linkedin.com/in/stevenchchang/)

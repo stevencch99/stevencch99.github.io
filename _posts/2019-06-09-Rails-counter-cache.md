@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "透過計數快取 Counter Cache 提升效能"
-crawlertitle: "To optimize website performance by counter cache."
-description: "透過計數快取 Counter Cache 提升效能"
+title:  "[Rails] 透過計數快取 Counter Cache 提升效能"
+crawlertitle: "To optimize website performance by counter cache in rails."
+description: "Rails model and performance 透過計數快取 Counter Cache 提升效能"
 date:   2019-06-09 16:56:46 +0800
 categories: Rails
 tags: ['Rails']

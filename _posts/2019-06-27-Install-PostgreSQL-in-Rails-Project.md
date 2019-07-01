@@ -69,7 +69,7 @@ end
 ### Step 2. 設定資料庫 adapter
 接著要設定 Rails 專案的 config/database.yml
 
-```ruby
+```bash
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -114,4 +114,4 @@ production:
 
 出現版本相依性衝突，表示以前曾經安裝過 PostgreSQL， 重安裝新版即可解決：
 
-`brew uninstall postgresql && brew install postgresql`
+`$ brew uninstall postgresql && brew install postgresql`

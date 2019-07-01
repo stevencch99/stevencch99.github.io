@@ -6,7 +6,7 @@ crawlertitle: "About Steven Chang and this blog"
 description: "About Steven Chang and this blog"
 permalink: /about/
 summary: >
- &quot;Life's like a movie, write your own ending.&quot;&#xa;
+ &quot;Life's like a movie, write your own ending.&quot;&#13;
   -  Jim Henson
 active: about
 ---

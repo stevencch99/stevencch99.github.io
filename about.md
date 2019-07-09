@@ -15,8 +15,11 @@ active: about
 I used to be a site director of HVAC*(Heating Ventilation and Air Conditioning)* construction sites,
 have about 8 years of experience in HVAC related field.
 
-Currently working on a Rails demo project: **[Order Brother](https://github.com/order-brother/Order-Brother)**.  
+- Rails demo project: **[Order Brother](https://github.com/order-brother/Order-Brother)**.  
 It is a pre-order platform that helps people easily search foods, make orders or open stores.
+  - Have frontstage and backstage of store page through Devise and Pundit Gem, and RESTful API design in advance.
+  - Use AASM Gem to make transactions act as finite state machine.
+  - Upload images to AWS S3 through Carrierwave Gem.
 
 With all the passion for work and life,  
 I want to be better, and not just fine,  

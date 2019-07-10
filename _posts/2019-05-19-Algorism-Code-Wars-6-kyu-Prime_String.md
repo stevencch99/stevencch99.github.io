@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Algorism][CodeWars] 找出規律的藝術：6 kyu - Simple Fun 116: Prime String"
+title: "[Algorism] 找出規律的藝術：Codewars 6 kyu - Simple Fun 116: Prime String"
 crawlertitle: "[Algorism][CodeWars]：6 kyu - Simple Fun 116: Prime String"
 description: "[Algorism][CodeWars]：6 kyu - Simple Fun 116: Prime String 找出規律的藝術"
 date: 2019-05-19 16:56:46 +0800

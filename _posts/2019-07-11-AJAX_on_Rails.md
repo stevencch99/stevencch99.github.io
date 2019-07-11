@@ -64,7 +64,7 @@ end
 ### Step 4. 編輯對應的 js.erb 
 編輯 `app/views/admin/transactions/state_change.js.erb`
 - 選取畫面上對應的 html 元素，將內容替換為 `orders__card--body.html.erb` 的內容
-- `orders__card--body.html.erb` 接受一個參數 `transaction`，於這時將 @transaction 傳進去
+- `orders__card--body.html.erb` 接受一個參數 `transaction`，於這時將 `@transaction` 傳進去
 
 ```js
 $('#order_<%= @transaction.id %>').html('<%= j render "orders__card--body", transaction: @transaction %>')

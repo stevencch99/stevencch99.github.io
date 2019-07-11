@@ -15,12 +15,22 @@ comments: true
 
 AJAX 這個詞誕生於 2005 年 2 月，係由 [Jesse James Garrett](https://zh.wikipedia.org/wiki/%E5%82%91%E8%A5%BF%C2%B7%E8%A9%B9%E5%A7%86%E5%A3%AB%C2%B7%E8%B3%88%E7%91%9E%E7%89%B9) 發明的術語，描述一種使用數個技術的方法而非一種技術。
 
-這些技術包含 
-- HTML/XHTML：呈現網頁主要的內容
-- DOM(Document Object Model), JavaScript：動態地修改已經載入的網頁、撰寫 AJAX 引擎
-- CSS：定義網頁外觀樣式
-- XML(Extensible Markup Language)：資料交換的格式(實務上也有採用 JavaScript 陣列而不一定要用 XML 格式)
-- XMLHttpRequest：主要的溝通中介，非同步地與伺服器交換資料
+這些技術包含有： 
+- **HTML/XHTML**：  
+  呈現網頁主要的內容
+
+- **DOM**(Document Object Model), JavaScript：  
+  動態地修改已經載入的網頁、撰寫 AJAX 引擎
+
+- **CSS**：  
+  定義網頁外觀樣式
+
+- **XML**(Extensible Markup Language)：  
+  資料交換的格式(實務上也有採用 JavaScript 陣列而不一定要用 XML 格式)
+
+- **XMLHttpRequest**：  
+  主要的溝通中介，非同步地與伺服器交換資料
+
 - 網頁後端的處理程式(Rails, JAVA, PHP, etc.)
 
 ## 傳統的網頁動作

@@ -23,7 +23,7 @@ It is a pre-order platform that helps people easily search foods, make orders or
   - Use AASM Gem to make transactions act as finite state machine.
   - Upload images to AWS S3 through Carrierwave Gem.
   - GitHub repository and docs: [https://github.com/order-brother/Order-Brother](https://github.com/order-brother/Order-Brother)
-  - Depolyed on Heroku: [https://order-brother.herokuapp.com](https://order-brother.herokuapp.com)
+  - Deployed on Heroku: [https://order-brother.herokuapp.com](https://order-brother.herokuapp.com)
 
 > Order brother, help you out like your older brother.
 

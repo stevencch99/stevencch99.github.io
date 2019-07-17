@@ -8,10 +8,10 @@ categories: Rails
 tags: ['Rails']
 comments: true
 ---
-本篇摘要：
-- 透過 CarrierWave 套件上傳圖片到 Aamzon S3(Simple Storage Service)
-- 用 Figaro 管理金鑰等機敏資訊
-- 利用 MiniMagick 指定圖片尺寸
+## 本篇摘要：
+- 透過 [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) 套件上傳圖片到 [Aamzon S3](https://aws.amazon.com/tw/s3/)(Simple Storage Service)
+- 用 [Figaro](https://github.com/laserlemon/figaro) 管理金鑰等機敏資訊
+- 利用 [MiniMagick](https://github.com/minimagick/minimagick) 指定圖片尺寸
 
 以上傳使用者頭像為例：
 
@@ -31,9 +31,8 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'      # 機密資訊傳遞套件
 ## 建立 uploader
 輸入以下指令：
 
-```s
-$ rails g uploader Avatar
-```
+`$ rails g uploader Avatar`
+
 將會產生此檔案 `app/uploaders/avatar_uploader.rb`，預設有許多註解說明各種功能選項，把相對應的註解拿掉就可啟用，接著依照我們的需求修改其內容：
 
 ```ruby
@@ -138,14 +137,15 @@ end
 
 ### 設定 Figaro 和金鑰
 
-在我的專案中用到 [figaro](https://github.com/laserlemon/figaro) 套件來管理機敏資訊，
-透過 `ENV['變數名稱']` 存取金鑰，這邊將會需要你準備好填入自己的資料：
+因為上傳過程涉及到 Access key 等機密資訊，我們不會希望它直接以明碼方式跟著專案上傳出去，故需要用到套件來管理。
+
+Figaro 透過 `ENV['變數名稱']` 存取金鑰，這邊將會需要你準備好填入自己的資料：
 
 1. AWS_ACCESS_KEY_ID(存取金鑰 ID)
 2. AWS_SECRET_ACCESS_KEY(私密存取金鑰)
 3. S3_BUCKET_NAME(儲存貯體名稱)
 
-- 照著前面的步驟已經安裝了 `figaro` gem，這時執行 `$ figaro install` 會幫你建立 `config/application.yml` 檔案，同時也加入到 `.gitignore` 忽略名單內。 
+- 照著前面的步驟已經安裝了 Figaro ，這時執行 `$ figaro install` 會幫你建立 `config/application.yml` 檔案，同時也加入到 `.gitignore` 忽略名單內。 
 
 編輯 `application.yml`：
 
@@ -159,7 +159,12 @@ production:
 完成後進入 production 環境 `$ rails c -e production`，
 輸入 `$ ENV` 列出目前的環境參數，沒意外的話輸入 `$ ENV['S3_BUCKET_NAME']` 即可取用剛才設定的變數內容。
 
-## 對應的表單設定
+### 如果需要將參數部署到 Heroku：
+
+設定參數： `$ figaro heroku:set -e production`  
+透過 [Heroku cli](https://devcenter.heroku.com/articles/heroku-cli) 查詢設定： `$ heroku config`
+
+## 對應的表單
 
 ```html
 <%= form_for(@user, html: {id: 'user_form'}) do |form| %>

@@ -124,16 +124,16 @@ textarea {
 * Code Style
 * ========================================================================== */
 pre {
-  line-height: 1.5;
-  border: 1px solid #ddd;
+  // line-height: 1.5;
+  // border: 1px solid #ddd;
   padding: 1em;
-  background: #eee;
+  // background: #eee;
   margin: 2em 0;
 
-  code {
-    background-color: #eee;
-    overflow: auto;
-  }
+  // code {
+  //   background-color: #eee;
+  //   overflow: auto;
+  // }
 }
 
 code,
@@ -141,11 +141,11 @@ pre {
   // background-color: rgb(122, 180, 202);
   background-color: #eee;
   border: 1px solid #eee;
-  border-radius: .4em;
-  padding: .1em .2em;
+  border-radius: 4px;
+  // padding: .1em .2em;
   font-family: "Menlo", 'Andale Mono', 'Consolas', monospace;
   font-size: .9em;
-  line-height: 1.3;
+  line-height: 1.5;
   -webkit-font-smoothing: auto;
 }
 

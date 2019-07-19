@@ -1,20 +1,24 @@
 ---
 layout: post
-title: "2 步驟高速建構模糊搜尋 Search with whatever I LIKE in Rails"
-description: "2 步驟高速建構模糊搜尋 Rails search with PostgreSQL ILIKE syntax"
-crawlertitle: "兩步驟高速建構模糊搜尋 Rails search with PostgreSQL ILIKE syntax"
+title: |
+  2 步驟完成模糊搜尋  
+  Search for whatever I LIKE in Rails
+description: "2 步驟完成模糊搜尋 Rails search for PostgreSQL ILIKE syntax"
+crawlertitle: "2 步驟完成模糊搜尋 Rails search for PostgreSQL ILIKE syntax"
 date: 2019-07-19 18:22:46 +0800
 categories: Rails
-tags: ["Rails, Database"]
+tags: ["Rails", "Database"]
 comments: true
 ---
 ## 本篇摘要
 在對資料庫做查詢時，為了達成模式比對（關鍵字查詢），我們會用到語法中的 `LIKE` 和 `ILIKE` 運算子，
-`LIKE` 是標準的 SQL 語法，`ILIKE` 則是 PostgreSQL 額外提供的實用功能，能夠做到忽略英文大小寫。
+`LIKE` 是標準的 SQL 語法，`ILIKE` 則是 PostgreSQL 額外提供的實用功能，能夠忽略英文大小寫。
 
-再搭配萬用字元(wildcard)組成模糊相似條件查詢比較相同的內容，如此便完成模糊搜尋功能：
-  - `%` （百分比符號）：代表零個或一個以上任意字元。
-  - `_` （底線符號）    ：代表單一個數的任意字元。
+再搭配萬用字元(wildcard)組成模糊相似條件查詢比較相同的內容，如此便完成模糊搜尋功能。
+
+**萬用字元：**
+  - `%` （百分比符號）代表零個或一個以上任意字元。
+  - `_` （底線符號）代表單一個數的任意字元。
 
 ---
 
@@ -50,6 +54,7 @@ comments: true
     Store.where('name ILIKE ?', "%#{params[:search]}%")
   end
 ```
+Done!
 
 ## 補充
 ### 反向查詢
@@ -75,6 +80,8 @@ Store.where('name NOT ILIKE ?', "%#{params[:search]}%")
   ```sql
   $ SELECT * FROM stores WHERE name ~~ `\%`;
   ```
+
+好不好用就見仁見智囉。
 
   | 縮寫 | 取代 |
   | :-: | :- |

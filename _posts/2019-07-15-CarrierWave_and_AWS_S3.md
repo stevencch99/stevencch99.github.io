@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "實作圖片上傳功能 via CarrierWave, Amazon S3 and Figaro"
-description: "實作圖片上傳功能 by CarrierWave, Amazon S3 and Figaro"
-crawlertitle: "實作圖片上傳功能 by CarrierWave, Amazon S3 and Figaro"
+title:  "Rails 上傳圖片超簡單 To upload images via CarrierWave, Amazon S3 and Figaro"
+description: "Rails 上傳圖片超簡單 To upload images via CarrierWave, Amazon S3 and Figaro"
+crawlertitle: "Rails 上傳圖片超簡單 To upload images via CarrierWave, Amazon S3 and Figaro"
 date:   2019-07-16 14:50:46 +0800
 categories: Rails
 tags: ['Rails']

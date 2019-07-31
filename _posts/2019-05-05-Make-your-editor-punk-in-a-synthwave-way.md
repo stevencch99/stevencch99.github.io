@@ -20,7 +20,7 @@ comments: true
 
 與此同時，在[**鄙視鏈**](https://vinta.ws/blog/695)中謀求一個安穩而適切的定位，也是我日以繼夜努力的目標。初出社會第一天就深刻的體認到，尊重是自己掙來的，同情是弱者摔來的。
 
-> *Respect? None of us deserve it for free!*
+*__Respect? None of us deserve it for free!__*
 
 從這十年淺薄的社會歷練中，我歸納出簡單幾個防鄙視步驟和大家分享：
 
@@ -69,7 +69,7 @@ comments: true
 
 3. 編輯 settings.json 設定檔
 
-    VS Code 的所有相關設定都在這，各個套件也都共用此設定檔，我們可以從 Code > Preferences > settings(`⌘ + ,`)，透過 Extension 頁籤快速找到 `*Edit in settings.json*` 超連結：
+    VS Code 的所有相關設定都在這，各個套件也都共用此設定檔，我們可以從 Code > Preferences > settings(`⌘ + ,`)，透過 Extension 頁籤快速找到 *`Edit in settings.json`* 超連結：
 
     ![Code > Preferences > settings](https://cdn-images-1.medium.com/max/2000/1*FKU4KGmuqv3W64HMVshZHA.jpeg)*Code > Preferences > settings*
 

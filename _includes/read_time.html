@@ -1,0 +1,10 @@
+
+<span class="reading-time" title="Estimated read time">
+  <!-- {% assign words = content | number_of_words %} -->
+  {% assign words = content | strip_html | strip_newlines | size %}
+  {% if words < 360 %}
+    ｜ 閱讀時間： 1 min
+  {% else %}
+    ｜ 閱讀時間： {{ words | divided_by:500 }} mins
+  {% endif %}
+</span>

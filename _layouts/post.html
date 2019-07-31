@@ -12,11 +12,12 @@ layout: default
       &nbsp;/&nbsp;
       <span>{{ page.author }}</span>
     {% endif %}
+    {% include read_time.html %}
   </p>
 
   <div class="post-content">
-
-    {{ content }}
+  
+  {{ content }}
 
     <div class="post-links">
       {% if page.next.url %}

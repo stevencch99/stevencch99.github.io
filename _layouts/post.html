@@ -14,7 +14,8 @@ layout: default
     {% endif %}
     {% include read_time.html %}
 
-  {% if site.leancloud.enable %}
+  <!-- FIXME cant write data into leancloud -->
+  {% if false %}
     <!-- <span id="{{ page.url | relative_url }}" class="add_leancloud_visitors" data-flag-title="{{ page.title }}"> -->
     <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
     <span class="fas fa-eye"></span>

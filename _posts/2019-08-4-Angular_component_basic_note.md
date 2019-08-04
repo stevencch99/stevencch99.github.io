@@ -3,20 +3,21 @@ layout: post
 title: "Angular Component 簡介筆記"
 description: "Angular Component 簡介筆記"
 crawlertitle: "Angular Component 簡介筆記"
-date: 2019-08-04 23:50:46 +0800
+date: 2019-08-04 18:45:46 +0800
 categories: Angular
 tags: ["Angular"]
 comments: true
 ---
+
+## 目錄
+> 本文程式碼範例及圖片皆來自 [Angular.io](http://angular.io)
 
 - toc
 {:toc}
 
 ## 顯示畫面
 元件(Component)定義了畫面, 是一組 Angular 可以根據屬性(propertie)、方法(method)和資料內容去操作的畫面中的元素。或也可說是畫面範圍的區塊，小從一個按鈕元件、大到整個畫面都能劃分到一個元件之中。
-
 根據在元件類(export class)之中定義的邏輯、屬性和 API 來支援顯示端 View 的作動，在使用上可以根據複用性 reuseable 作考量，當我們發現一個按鈕、表單或者功能可以抽象提取出來提供其他地方使用，即是劃分元件的時機。
-
 在應用程式中切換穿行時，Angular 就會建立、更新、銷毀一些元件，我們的應用程式可以透過 Lifecycle hooks 選擇在這些操作生命週期裡面特定的時機觸發動作。
 
 - Components 使用各種 *services*, services 提供特定的功能性，其可以作為關聯性被注入 injected 到元件中，讓程式碼模組化、可複用並且更有效率。

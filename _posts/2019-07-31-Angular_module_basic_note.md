@@ -11,7 +11,7 @@ comments: true
 
 ## Modules
 
-Angular 的 Module 是透過 `@NgModule` 這個裝飾器 decorator 宣告的類別，`NgModule` 是 Angular 應用程式最基本的組成元素，有點類似類別，把相互關聯的其他元件、服務封裝打包起來，成為一內聚的功能塊，指定宣告哪些編譯過的內容提供給外部使用。
+Angular 的 Module 是透過 `@NgModule` 這個裝飾器 decorator 宣告的類別，`NgModule` 是 Angular 應用程式最基本的組成元素，有點像是類別(class)，把相互關聯的其他[元件(Components)]({{ site.baseurl }}{% link _posts/2019-08-4-Angular_component_basic_note.md %})、服務(Services)封裝、打包起來，成為一內聚的功能塊，指定宣告哪些編譯過的內容提供給外部使用。
 每個 Angular app 最少都有一個根模組 root module 用來啟動此應用程式，按照慣例命名為 `AppModule`，除此之外通常還會包含有其他不同功能的模組。
 
 透過 [Angular CLI](https://angular.tw/cli) 新建專案後，產生的檔案裡面就包含有最基本的模組 `app.module.ts`：

@@ -19,7 +19,7 @@ comments: true
 
 在應用程式中切換穿行時，Angular 就會建立、更新、銷毀一些元件，我們的應用程式可以透過 Lifecycle hooks 選擇在這些操作生命週期裡面特定的時機觸發動作。
 
-- Components use *services*, services 提供特定的功能性，其可以作為關聯性被注入 injected 到 components 中，讓程式碼模組化、可複用並且更有效率。
+- Components 使用各種 *services*, services 提供特定的功能性，其可以作為關聯性被注入 injected 到元件中，讓程式碼模組化、可複用並且更有效率。
 
 ## Component 元件的組成結構
 
@@ -77,7 +77,7 @@ Component 和 Service 都是單純的 class，只是配合不同的裝飾器(dec
 @Components 裝飾器會指出接在後面的 class 是個 component class，順便為其指定 metadata，把它和 template 關聯起來。
 也就是有了這個裝飾器，其 class 才從普通的 javascript class 變成了 Angular component。
 
-一個 Component 的 metadata 常見組成：
+一個 Component 的 metadata 常見組成：  
 In `src/app/hero-list.component.ts (metadata)`
 ```javascript
 @Component({
@@ -121,7 +121,7 @@ export class HeroAppComponent {
     - app-prouct-alerts
 
 ## 範本與檢視
-帶層次結構的檢視可以包含同一模組（NgModule）中元件的檢視，也可以（而且經常會）包含其它模組中定義的元件的檢視。
+帶層次結構的檢視可以包含同一[模組（NgModule）]({{ sit.baseurl }}{% link _posts/2019-07-31-Angular_module_basic_note.md %})中元件的檢視，也可以（而且經常會）包含其它模組中定義的元件的檢視。
 ![A view hierarchy](https://i.imgur.com/DgscIRd.png)
 
 ### 範本語法 Template syntax
@@ -134,7 +134,7 @@ export class HeroAppComponent {
 <p><i>Pick a hero from the list</i></p>
 <ul>
   <li *ngFor="let hero of heroes" (click)="selectHero(hero)">
-    {{"{{hero.name"}}}}
+    {{ "{{ hero.name "}}}}
   </li>
 </ul>
 
@@ -142,7 +142,7 @@ export class HeroAppComponent {
 ```
 - `*ngFor` 指令告訴 Angular 在一個列表上進行迭代。
 
-- &#123;&#123;hero.name&#125;&#125;、`(click)` 和 `[hero]` 把程式資料和 DOM binding 起來，以響應使用者的輸入。
+- `{{"{{ hero.name "}}}} `、`(click)` 和 `[hero]` 把程式資料和 DOM binding 起來，以響應使用者的輸入。
 
 範本中的 `<app-hero-detail>` 標籤代表渲染元件 HeroDetailComponent 的顯示元素。
 
@@ -157,22 +157,22 @@ Angular 支援雙向資料繫結(two-way data binding)，是一種對範本中�
 下圖來自官網，顯示了資料繫結標籤連結應用程式資料和 DOM 的四種形式和資料傳遞的方向：
 ![data binding from angular.io](https://i.imgur.com/3ZCPVjR.png)
 
-  - **事件繫結 Event binding**: 在目標環境中更新應用程式資料以回應使用者的輸入
-  - **屬性繫結 Property binding**: 將計算結果插入 HTML
+  - **事件繫結 Event binding**: 在目標環境中更新應用程式資料以回應使用者的輸入。
+  - **屬性繫結 Property binding**: 將計算結果插入 HTML 之中。
 
 In `src/app/hero-list.component.html (binding)`
-```javascript
-<li>{{hero.name}}</li>
+```html
+<li>{{"{{ hero.name "}}}}</li>
 <app-hero-detail [hero]="selectedHero"></app-hero-detail>
 <li (click)="selectHero(hero)"></li>
 ```
 - `{{"{{hero.name"}}}}`插值表示式(interpolation )在 `<li>` 標籤中顯示元件的 `hero.name` 屬性的值。
-- \[hero] 屬性繫結(property binding)把父元件 HeroListComponent 的 selectedHero 的值傳到子元件 HeroDetailComponent 的 hero 屬性中。
+- `[hero]` 屬性繫結(property binding)把父元件 HeroListComponent 的 selectedHero 的值傳到子元件 HeroDetailComponent 的 hero 屬性中。
 - 當用戶點選某個英雄的名字時，(click) 事件繫結(event binding)會呼叫元件的 selectHero 方法。
 
 至於前面提到的雙向資料繫結主要用於範本驅動表單(template-driven forms)中，它會把屬性繫結和事件繫結組合成一種單獨的寫法。下面這個來自 HeroDetailComponent 範本中的例子透過 ngModel 指令使用了雙向資料繫結：
 In `src/app/hero-detail.component.html (ngModel)`
-```javascript
+```html
 <input [(ngModel)]="hero.name">
 ```
 在雙向繫結中，資料屬性值透過屬性繫結從元件流到輸入框。使用者的修改透過事件繫結流回元件，把屬性值設定為最新的值。
@@ -193,15 +193,15 @@ Angular 的管道可以讓你在範本中宣告顯示值的轉換邏輯。帶有
 
 <!-- Default format: output 'Jun 15, 2015'-->
 
-<p>Today is {{"{{today | date"}}}}</p>
+<p>Today is {{"{{ today | date "}}}}</p>
 
 <!-- fullDate format: output 'Monday, June 15, 2015'-->
 
-<p>The date is {{"{{today | date:'fullDate'"}}}}</p>
+<p>The date is {{"{{ today | date:'fullDate' "}}}}</p>
 
  <!-- shortTime format: output '9:43 AM'-->
 
- <p>The time is {{"{{today | date:'shortTime'"}}}}</p>
+ <p>The time is {{"{{ today | date:'shortTime' "}}}}</p>
 ```
 
 ## 參考

@@ -91,7 +91,7 @@ export class HeroListComponent implements OnInit {
 }
 ```
 
-- selector：是一個 CSS 選擇器，它會告訴 Angular，一旦在範本 HTML 中找到了這個選擇器對應的標籤，就建立並插入該元件的一個 instance。 如果 HTML 中包含 `<app-hero-list></app-hero-list>`，Angular 就會在這些標籤中插入一個 HeroListComponent instance 的檢視，也就是 `./hero-list.component.html` 的內容。
+- selector：是一個 CSS 選擇器，它會告訴 Angular，一旦在範本(Template) HTML 中找到了這個選擇器對應的標籤，就建立並插入該元件的一個 instance。 如果 HTML 中包含 `<app-hero-list></app-hero-list>`，Angular 就會在這些標籤中插入一個 HeroListComponent instance 的檢視，也就是 `./hero-list.component.html` 的內容。
 
 - templateUrl：此元件的 HTML 範本檔案相對於這個元件檔案的位置。在這邊也可以直接寫 inline HTML 作為 template 的值。
 範例：
@@ -184,24 +184,24 @@ Angular 在每個 JavaScript 事件迴圈中處理所有的資料繫結，它會
 資料繫結在範本及其元件之間的通訊中扮演了非常重要的角色，它對於父元件和子元件之間的通訊也同樣重要。
 
 ## 管道 Pipes
-Angular 的管道可以讓你在範本中宣告顯示值的轉換邏輯。帶有 @Pipe 裝飾器的 class 中會定義一個轉換函式，用來把輸入值轉換成供檢視顯示用的輸出值。Angular 有很多[**內建的管道**](https://angular.io/api?type=pipe)，也可以自訂新增管道。範例：
+Angular 的管道運算子(|)可以讓你在範本中宣告顯示值的轉換邏輯。帶有 @Pipe 裝飾器的 class 中會定義一個轉換函式，用來把輸入值轉換成供檢視顯示用的輸出值。例如，把數字轉換為金額、或者加入千分位符號等等檢視層級的操作。
+
+Angular 有很多[**內建的管道**](https://angular.io/api?type=pipe)，也可以自訂新增管道，參見以下使用範例：
 
 ```html
+<!-- 在範本輸入以下語法 -->
 <p>{{"{{ 'From zen to code' | titlecase "}}}}</p>
 
-<!-- 結果會在網頁呈現 -->
+<!-- 結果會在網頁呈現： -->
 <p>From Zen To Code</p>
 
-<!-- Default format: output 'Jun 15, 2015'-->
-
+<!-- 設定 Default format: output 'Jun 15, 2015'-->
 <p>Today is {{"{{ today | date "}}}}</p>
 
-<!-- fullDate format: output 'Monday, June 15, 2015'-->
-
+<!-- 設定 fullDate format: output 'Monday, June 15, 2015'-->
 <p>The date is {{"{{ today | date:'fullDate' "}}}}</p>
 
- <!-- shortTime format: output '9:43 AM'-->
-
+ <!-- 簡寫時間格式 shortTime format: output '9:43 AM'-->
  <p>The time is {{"{{ today | date:'shortTime' "}}}}</p>
 ```
 

@@ -21,6 +21,10 @@ a {
   color: #766257
 }
 
+.about-icon {
+  margin-right: .5rem
+}
+
 /*
 * Toggle Button
 * ========================================================================== */
@@ -209,13 +213,13 @@ a {
 .aside__text--title {
   display: inline-block;
   color: #fff;
-  font-size: 24px;
+  font-size: 32px;
   text-decoration: none;
   margin-bottom: 4px;
 }
 .aside__text--icon {
   display: inline-block;
-  margin-right: 6px;
+  margin: 0 .5rem;
   font-size: 24px;
   color: #fff;
 }

@@ -2,7 +2,6 @@
 <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
 <script>AV.initialize("{{ site.leancloud.app_id }}", "{{site.leancloud.app_key}}");</script>
 <script>
-    //顯示訪問數
     function showHitCount(Counter) {
         var query = new AV.Query(Counter);
         var entries = [];
@@ -39,7 +38,6 @@
                     console.log("Error: " + error.code + " " + error.message);
                 });
     }
-    //增加訪問數
     function addCount(Counter) {
         var $visitors = $(".add_leancloud_visitors");
         var url = $visitors.attr('id').trim();
@@ -89,10 +87,8 @@
     $(function() {
         var Counter = AV.Object.extend("Counter");
         if ($('.add_leancloud_visitors').length >= 1) {
-            // add 1 for counter
             addCount(Counter);
         } else if ($('.show_leancloud_visitors').length >= 1){
-            // show counter
             showHitCount(Counter);
         }
     });

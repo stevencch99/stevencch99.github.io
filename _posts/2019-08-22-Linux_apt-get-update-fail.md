@@ -8,7 +8,7 @@ categories: Linux
 tags: ["Linux"]
 comments: true
 ---
-I've been using Ubuntu 16.04 on Oracle VM VirtualBox these days, this mornig when I run `$ sudo apt-get update` to update softwares, it breaks and I got this error instead:
+I've been using Ubuntu 16.04 on Oracle VM VirtualBox these days, this morning when I run `$ sudo apt-get update` to update softwares, it breaks and I got this error instead:
 
 ![](https://i.imgur.com/ERImZ5i.png)
 

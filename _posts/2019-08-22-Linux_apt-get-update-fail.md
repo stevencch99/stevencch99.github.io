@@ -36,10 +36,10 @@ I deside to temporarily disable the PPA by comment out the source list for the q
 
 ![](https://i.imgur.com/YvmNnWd.png)
 
-  In my case, `moka-ubuntu-stable-xenial.list` cause the problem
+  In my case, `moka-ubuntu-stable-xenial.list` cause the problem.
 
 ### Commout the PPA source
-  Comment out the content or delete `moka-ubuntu-stable-xenial.list` and `moka-ubuntu-stable-xenial.list.save`
+  Comment out the content or delete `moka-ubuntu-stable-xenial.list` and `moka-ubuntu-stable-xenial.list.save`.
 
   In `/etc/apt/sources.list.d/moka-ubuntu-stable-xenial.list`:
 

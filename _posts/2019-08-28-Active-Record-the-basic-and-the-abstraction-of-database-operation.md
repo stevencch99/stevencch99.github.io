@@ -123,7 +123,7 @@ Active Record 在從資料庫讀取屬性值的時候會將之轉為適當的 Ru
 user = User.find_by_name("Steven")
 
 if user.superuser?
-	grant_privileges
+  grant_privileges
 end
 ```
 

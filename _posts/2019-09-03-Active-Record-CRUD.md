@@ -3,7 +3,7 @@ layout: post
 title: "ActiveRecord - CRUD: Creat, Read, Update, Delete"
 description: "ActiveRecord - CRUD: Creat, Read, Update, Delete"
 crawlertitle: "ActiveRecord - CRUD: Creat, Read, Update, Delete"
-date: 2019-09-03 01:10:46 +0800
+date: 2019-09-09 01:10:46 +0800
 categories: Rails
 tags: ["Rails", "ActiveRecord"]
 comments: true
@@ -95,7 +95,7 @@ total = Product.find(product_list).sum(&:price)
 ```
 
 ### Finder method(deprecated)
-Finder method 是比較舊的做法，但因為公司早期的專案(Rails 4.2.5)中有用到，所以也還是在這裡記錄使用方法，下一段落介紹取而代之的 `where` 方法（ㄒ參見 Alternatives for [find](https://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find)）。
+Finder method 是比較舊的做法，但因為公司早期的專案(Rails 4.2.5)中有用到，所以也還是在這裡記錄使用方法，下一段落介紹取而代之的 `where` 方法（參見 Alternatives for [find](https://api.rubyonrails.org/classes/ActiveRecord/FinderMethods.html#method-i-find)）。
 
 帶有第一個參數 `:first` 或者 `:all` 的 `find` 方法稱為「查詢方法 finder method」，如果沒有其他額外參數，
 查詢方法會執行 `select from...` 敘述語句，`:all` 回傳符合條件的所有資料，`:first` 則是回傳一筆資料(不保證是第一筆)。
@@ -155,9 +155,9 @@ pos      = Order.find(
 ```ruby
 pos = Order.find(:all,
                  conditions: [
-                    "name = :name and pay_type = :pay_type",
-                    params[:order]
-                  ]
+                   "name = :name and pay_type = :pay_type",
+                   params[:order]
+                 ]
                 )
 ```
 
@@ -166,13 +166,13 @@ pos = Order.find(:all,
 
 ```ruby
 pos = Order.find(:all, conditions: params[:order])
-pos.class # Array
+pos.class #=> Array
 ```
 
 因為 params 本來也是一個 hash，所以可以直接傳到查詢條件中，將前面的查詢更進一步地改寫：
 ```ruby
 pos2 = Order.where(params[:order])
-pos2.class # Order::ActiveRecord_Relation
+pos2.class #=> Order::ActiveRecord_Relation
 ```
 
 ### `where` 方法
@@ -190,16 +190,17 @@ other_orders = Order.find(:all, conditions: ["name = ?", name])
 other_orders = Order.where(name: name)
 
 # 搜尋名字等於 :name 且付款方式等於 :pay_type 的訂單
-more_orders = Order.find(
-  :all,
-  conditions: [
-    "name = :name and pay_type = :pay_type",
-    params[:order]
-  ]
-)
+more_orders = Order.find(:all,
+                          conditions: [
+                            "name = :name and pay_type = :pay_type",
+                            params[:order]
+                          ]
+                        )
 
 # 搜尋姓名包含 foo 且職稱包含 bar 的使用者
-more_users = User.where("name like ? and title like ?", '%foo%', '%bar%')
+more_users = User.where("name like ? and title like ?",
+                        '%foo%',
+                        '%bar%')
 ```
 
 ### Order 順序
@@ -208,11 +209,9 @@ more_users = User.where("name like ? and title like ?", '%foo%', '%bar%')
 
 ```ruby
 # 先依照支付類型，再按出貨日期降冪排列(DESC)
-orders = Order.find(
-  :all,
-  conditions: "name = 'Steven'",
-  order: "pay_type, shipped_ad DESC"
-)
+orders = Order.find(:all,
+                     conditions: "name = 'Steven'",
+                     order: "pay_type, shipped_ad DESC")
 ```
 
 ### Limit 與 Offset
@@ -220,15 +219,13 @@ orders = Order.find(
 有時我們想要限制一次取出的回傳資料數量：
 
 ```ruby
-orders = Order.find(
-  :all,
-  conditions: "name = 'Steven'",
-  order: "pay_type, shipped_ad DESC",
-  # 取出 5 筆資料
-  limit: 5,
-  # 從第 11 筆開始
-  offset: 10
-)
+orders = Order.find(:all,
+                    conditions: "name = 'Steven'",
+                    order: "pay_type, shipped_ad DESC",
+                    # 取出 5 筆資料
+                    limit: 5,
+                    # 從第 11 筆開始
+                    offset: 10)
 ```
 
 ### Select
@@ -266,7 +263,8 @@ number  = Order.count
 ```ruby
 order = Order.update(12, name: 'Steve', email: 'steve@email.com')
 
-update_result = Product.update_all("price = 1.1 * price", "title like '%java%'")
+update_result = Product.update_all("price = 1.1 * price",
+                                   "title like '%java%'")
 ```
 
 `update_attributes` 是控制器 action 中最常用的方法，它會把表單中的資料合併到現有資料庫紀錄中。

@@ -14,7 +14,7 @@ comments: true
 在對資料庫做查詢時，為了達成模式比對（關鍵字查詢），我們會用到語法中的 `LIKE` 和 `ILIKE` 運算子，
 `LIKE` 是標準的 SQL 語法，`ILIKE` 則是 PostgreSQL 額外提供的實用功能，能夠忽略英文大小寫。
 
-再搭配萬用字元(wildcard)組成模糊相似條件查詢比較相同的內容，如此便完成模糊搜尋功能。
+接著再搭配萬用字元(wildcard)組成相似條件查詢語句，如此便完成模糊搜尋功能。
 
 **萬用字元：**
   - `%` （百分比符號）代表零個或一個以上任意字元。
@@ -54,7 +54,7 @@ comments: true
     Store.where('name ILIKE ?', "%#{params[:search]}%")
   end
 ```
-Done!
+That's it!
 
 ## 補充
 ### 反向查詢

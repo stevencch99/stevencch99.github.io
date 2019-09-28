@@ -154,34 +154,33 @@ reading.user    = session[:user]
 reading.save
 ```
 
-更進一步，`has_many` 可以接收參數，透過 `source:` 選項指派 user 為 reader，我們還能建立關聯來找出快樂讀者們都有誰。
-
-改寫 Article model：
-
-<!-- TODO 檢查這段 code -->
+更進一步，`has_many` 可以接收參數，透過 `source:` 選項指派 user 為 reader，我們還能建立關聯來找出快樂讀者們都有誰。  
+我們接著來改寫 Article model：
 
 ```ruby
 class Article < ActiveRecord::Base
   has_many :readings
-  has_many :resders, through: :readings, source: :user
+  has_many :readers, through: :readings, source: :user
   has_many :happy_readers,
+           # 增加了關聯查詢的條件
+           -> { where('readings.rating >= ?', 4) },
            through: :readings,
            source: :user,
-           conditions: "readings.rating >= 4"
 end
 ```
 
 ## 消除重複
 
-可是如果一位讀者重複閱讀了三遍文章，那麼 `has_many through:` 回傳的結果將會包含三個同樣的讀者模型副本，為了消除重複，有以下做法。
+可是如果一位讀者重複閱讀了三遍文章，那麼 `has_many through:` 回傳的結果將會包含三個同樣的讀者模型副本，
+這應該不會是我們希望見到的結果，為了消除重複，有以下做法。
 
 - 從 Active Record 層面處理
-可以在 model 中添加 `unique: true` 參數，由 Active Record 撈到資料後幫我們篩選過濾。
+可以在 model 中添加 `scope` lambda 參數 `-> { distince }`，由 Active Record 撈到資料後幫我們篩選過濾。
 
   ```ruby
   class Article < ActiveRecord::Base
     has_many :readings
-    has_many :users, through: :readings, unique: true
+    has_many :readers, -> { distinct }, through: :readings, source: :user
   end
   ```
 
@@ -191,7 +190,7 @@ end
 ```ruby
   class Article < ActiveRecord::Base
     has_many :readings
-    has_many :users, through: :readings, select: "distince users.*"
+    has_many :readers, through: :readings, source: :user, select: "distinct users.*"
   end
 ```
 
@@ -227,8 +226,6 @@ good_articles = user.articles.rated_at_or_above(4)
 > 所有的關聯宣告都適用這個方法
 
 ### 擴充共用搜尋條件模組
-
-<!-- TODO: Confirm this code -->
 
 ```ruby
 # rating_finder.rb

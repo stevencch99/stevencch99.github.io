@@ -14,16 +14,6 @@ layout: default
     {% endif %}
     {% include read_time.html %}
 
-  <!-- FIXME cant write data into leancloud -->
-  {% if leancloud.enable %}
-    <!-- <span id="{{ page.url | relative_url }}" class="add_leancloud_visitors" data-flag-title="{{ page.title }}"> -->
-    <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
-    <span class="fas fa-eye"></span>
-      <!-- <span class="old-visitors-count" style="display: none;"></span> -->
-      <span class="leancloud-visitors-count"></span>
-      <span class="post-meta-item-text">次瀏覽</span>
-    </span>
-  {% endif %}
   </p>
 
   <div class="post-content">

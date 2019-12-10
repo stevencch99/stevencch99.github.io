@@ -1,14 +1,13 @@
 ---
 layout: post
-title: "ActiveRecord 資料庫操作抽象化和資料表的基礎"
-description: "ActiveRecord 資料庫操作抽象化和資料表的基礎"
-crawlertitle: "ActiveRecord 資料庫操作抽象化和資料表的基礎"
+title: "ActiveRecord - 資料庫操作抽象化和資料表的基礎"
+description: "ActiveRecord - 資料庫操作抽象化和資料表的基礎"
+crawlertitle: "ActiveRecord - 資料庫操作抽象化和資料表的基礎"
 date: 2019-08-28 01:10:46 +0800
 categories: Rails
-tags: ['Rails', 'ActiveRecord']
+tags: Rails ActiveRecord
 comments: true
 ---
-
 
 ## 目錄
 

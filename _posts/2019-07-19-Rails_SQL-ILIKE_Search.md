@@ -7,9 +7,10 @@ description: "2 步驟完成模糊搜尋 Rails search for PostgreSQL ILIKE synta
 crawlertitle: "2 步驟完成模糊搜尋 Rails search for PostgreSQL ILIKE syntax"
 date: 2019-07-19 18:22:46 +0800
 categories: Rails
-tags: ["Rails", "Database"]
+tags: Rails Database
 comments: true
 ---
+
 ## 本篇摘要
 在對資料庫做查詢時，為了達成模式比對（關鍵字查詢），我們會用到語法中的 `LIKE` 和 `ILIKE` 運算子，
 `LIKE` 是標準的 SQL 語法，`ILIKE` 則是 PostgreSQL 額外提供的實用功能，能夠忽略英文大小寫。

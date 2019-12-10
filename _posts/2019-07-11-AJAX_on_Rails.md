@@ -5,7 +5,7 @@ description: "AJAX on Rails 透過 remote: true 實作 AJAX 按鈕"
 crawlertitle: "AJAX on Rails 透過 remote: true 實作 AJAX 按鈕"
 date:   2019-07-11 11:50:46 +0800
 categories: Rails
-tags: ['Rails']
+tags: Rails
 comments: true
 ---
 

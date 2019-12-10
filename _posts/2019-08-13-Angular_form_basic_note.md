@@ -5,7 +5,7 @@ description: "Angular Form 表單資料流筆記"
 crawlertitle: "Angular Form 表單資料流筆記"
 date: 2019-08-13 01:15:46 +0800
 categories: Angular
-tags: ["Angular"]
+tags: Angular
 comments: true
 ---
 

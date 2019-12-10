@@ -5,7 +5,7 @@ description: "Angular Component 簡介筆記"
 crawlertitle: "Angular Component 簡介筆記"
 date: 2019-08-04 18:45:46 +0800
 categories: Angular
-tags: ["Angular"]
+tags: Angular
 comments: true
 ---
 

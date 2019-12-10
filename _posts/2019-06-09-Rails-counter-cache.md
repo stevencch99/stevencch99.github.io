@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "[Rails] 透過計數快取 Counter Cache 提升效能"
+title: "Rails - 透過計數快取 Counter Cache 提升效能"
 crawlertitle: "To optimize website performance by counter cache in rails."
 description: "Rails model and performance 透過計數快取 Counter Cache 提升效能"
-date:   2019-06-09 16:56:46 +0800
+date: 2019-06-09 16:56:46 +0800
 categories: Rails
-tags: ['Rails']
+tags: Rails
 comments: true
 ---
 在許多場合需要統計 has_many 一對多關聯的資料數量，若使用單純的 Rails 關聯查詢，則每次讀取頁面都會重新再統計一次，影響網站效能。

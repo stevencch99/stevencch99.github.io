@@ -5,7 +5,7 @@ description: "一種網頁的互動方式，在用戶無需重新載入整個網
 crawlertitle: "什麼是 AJAX？"
 date:   2019-07-10 12:56:46 +0800
 categories: JavaScript
-tags: ['JavaScript']
+tags: JavaScript
 comments: true
 ---
 

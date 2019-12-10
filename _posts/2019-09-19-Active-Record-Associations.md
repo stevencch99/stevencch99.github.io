@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Active Record Associations 資料表間的關聯"
-description: "Active Record Associations 資料表間的關聯"
-crawlertitle: "Active Record Associations 資料表間的關聯"
+title: ActiveRecord - Associations 資料表間的關聯
+description: ActiveRecord - Associations 資料表間的關聯
+crawlertitle: ActiveRecord - Associations 資料表間的關聯
 date: 2019-09-19 23:50:46 +0800
 categories: Rails
-tags: ["Rails", "ActiveRecord"]
+tags: Rails ActiveRecord
 comments: true
 ---
 

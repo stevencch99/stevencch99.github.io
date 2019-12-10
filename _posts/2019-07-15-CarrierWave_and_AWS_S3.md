@@ -1,13 +1,14 @@
 ---
 layout: post
-title:  "Rails 上傳圖片超簡單 To upload images via CarrierWave, Amazon S3 and Figaro"
+title: "Rails 上傳圖片超簡單 To upload images via CarrierWave, Amazon S3 and Figaro"
 description: "Rails 上傳圖片超簡單 To upload images via CarrierWave, Amazon S3 and Figaro"
 crawlertitle: "Rails 上傳圖片超簡單 To upload images via CarrierWave, Amazon S3 and Figaro"
-date:   2019-07-16 14:50:46 +0800
+date: 2019-07-16 14:50:46 +0800
 categories: Rails
-tags: ['Rails']
+tags: Rails
 comments: true
 ---
+
 ## 本篇摘要：
 - 透過 [CarrierWave](https://github.com/carrierwaveuploader/carrierwave) 套件上傳圖片到 [Aamzon S3](https://aws.amazon.com/tw/s3/)(Simple Storage Service)
 - 用 [Figaro](https://github.com/laserlemon/figaro) 管理金鑰等機敏資訊

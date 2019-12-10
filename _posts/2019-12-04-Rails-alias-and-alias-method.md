@@ -37,11 +37,11 @@ end
 簡單介紹我們的程式架構是由一個共用的 common 程式為基礎，根據不同的專案需求另外擴充 module instance。
 
 在這個例子中，為了因應不同國家的條件計算附加費用，  
-於是透過 `alias_method`，在 instance project 的 `foo` 方法中，先呼叫位於 common 的 `foo`(這邊化名為 `foo_common()`)之後，  
-再接著執行 `calculate_tax_price()` 計算附加費用並回傳結果。
+於是透過 `alias_method`，在 instance project 的 `:foo` 方法中，先呼叫位於 common 的 `:foo`(_這邊化名為 `:foo_common`_)之後，  
+再接著執行 `:calculate_tax_price` 計算附加費用並回傳結果。
 
-也就是說，只有在 instance project 中呼叫 `foo()` 將會另外再加計附加費用，
-如此便可以在不改動原本 common 程式碼的情況下得到我們期望的最終金額。
+也就是說，只有在 instance project 中呼叫 `:foo` 將會另外再加計附加費用，
+如此便可以在不改動原本 common 程式碼的情況下得到我們所期望的最終金額。
 
 ![image alt](https://i.imgur.com/FhEdPBT.png "alias_method_common_instance_graph")  
 > 結構示意圖
@@ -111,7 +111,7 @@ end
 Developer.new.name #=> 碼農
 ```
 
-可以看到，在 `Developer` 類別呼叫 `full_name` 的別名 `name`，會取得 `Developer` 中設定的 "碼農"，使用 `alias` 的情況則有些不同：
+可以看到，在 `Developer` 類別呼叫 `:full_name` 的別名 `:name`，會取得 `Developer` 中設定的 "碼農"，使用 `alias` 的情況則有些不同：
 
 ```ruby
 class User
@@ -136,7 +136,7 @@ end
 Developer.new.name #=> Steven Chang
 ```
 
-當我們改用 `alias`，`name` 方法會取得它所存在的 `User` 類別中 `full_name` 設定的值，  
+當我們改用 `alias`，`:name` 方法會取得它所存在的 `User` 類別中 `:full_name` 設定的值，  
 這就是 `alias` 作為 keyword 關鍵字的語彙範疇（_lexical scope_）特性，`alias` 所看到的 `self` 指向程式在分析讀取階段當下的 `self`，它只認當下所處的 scope；  
 而 `alias_method` 則作用在動態範疇（dynamic scope），它看到的 `self` 指向程式執行當下(run time)的 `self`。
 

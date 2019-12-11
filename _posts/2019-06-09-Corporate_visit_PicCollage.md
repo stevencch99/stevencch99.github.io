@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "[企業參訪]Astro Camp x PicCollage 拼貼趣"
-description: "[企業參訪]Astro Camp x PicCollage 拼貼趣"
-crawlertitle: "[企業參訪]Astro Camp x PicCollage 拼貼趣"
+title: "企業參訪 - Astro Camp x PicCollage 拼貼趣"
+description: "企業參訪 - Astro Camp x PicCollage 拼貼趣"
+crawlertitle: "企業參訪 - Astro Camp x PicCollage 拼貼趣"
 date: 2019-06-09 18:22:46 +0800
 categories: Misc
-tags: ['Misc']
+tags: Misc
 comments: true
 ---
 

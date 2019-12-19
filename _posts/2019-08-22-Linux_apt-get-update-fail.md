@@ -38,7 +38,7 @@ I deside to temporarily disable the PPA by comment out the source list for the q
 
   In my case, `moka-ubuntu-stable-xenial.list` is the trouble maker.
 
-### Commout the PPA source
+### Comment out the PPA source
   Comment out the content or delete `moka-ubuntu-stable-xenial.list` and `moka-ubuntu-stable-xenial.list.save`.
 
   In `/etc/apt/sources.list.d/moka-ubuntu-stable-xenial.list`:

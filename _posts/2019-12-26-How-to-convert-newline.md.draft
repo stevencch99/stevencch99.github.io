@@ -1,0 +1,28 @@
+---
+layout: post
+title: "Convert newline type between Unix(LF) and Dos/Windows(CRLF)"
+description: "Convert newline type between Unix(LF) and Dos/Windows(CRLF)"
+crawlertitle: "Convert newline type between Unix(LF) and Dos/Windows(CRLF)"
+date: 2019-12-26 23:59:59 +0800
+categories: Linux
+tags: ['Linux']
+comments: true
+---
+
+The term CRLF refers to Carriage Return (ASCII 13, \r) Line Feed(ASCII 10, \n).
+They're used to note the termination of a line,
+however, dealt with differently in today's popular Operation Systems.
+
+For example: in Windows both a CR adn LF are required to note the end of a line,
+whereas in Linux/UNIX a LF is only required.
+
+In the HTTP protocol, the
+
+> [CRLF Injection](https://www.owasp.org/index.php/CRLF_Injection)
+
+
+In light of `unix2dos` and `dos2unix` are not available on every system.
+
+## 參考
+
+- [alias vs alias_method](https://blog.bigbinary.com/2012/01/08/alias-vs-alias-method.html) By [Neeraj Singh](https://blog.bigbinary.com/authors/neerajdotname)

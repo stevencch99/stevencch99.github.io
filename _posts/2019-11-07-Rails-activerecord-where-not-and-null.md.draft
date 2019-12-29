@@ -1,0 +1,71 @@
+---
+layout: post
+title: "ActiveRecord & SQL find where not and null"
+description: "ActiveRecord & SQL find where not and null"
+crawlertitle: "ActiveRecord & SQL find where not and null"
+date: 2019-11-07 23:50:50 +0800
+categories: ActiveRecord
+tags: ["Rails", "ActiveRecord", "SQL"]
+comments: true
+---
+
+## 目錄
+
+- toc
+{:toc}
+
+---
+
+## 查詢的資料中含有空值 NULL
+
+現有一個 credit_cards 資料表，想找出符合下面幾個條件的資料：
+1. payment 沒有值
+2. 或者 check_date 沒有值
+3. 排除 opcode = 'TEST' 的資料
+
+Table: credit_cards
+
+|  id   | status | bankno | payment | check_date | opcode |
+| :---: | :----: | :----: | :-----: | :--------: | :----: |
+|   1   |  'V'   |  123   |  null   |    null    |   EC   |
+|   2   |  'V'   |  123   |  null   |    null    |  null  |
+|   3   |  'V'   |  123   |  null   |    null    |   CS   |
+|   4   |  'V'   |  123   |   'A'   |  20191122  |  TEST  |
+|   5   |  'V'   |  123   |   'A'   |  20191122  |   EC   |
+
+原本想著能夠透過這段查詢能夠做到：
+
+```ruby
+CreditCard.where('payment IS NULL OR check_date IS NULL AND opcode != ?', 'TEST')
+
+# option 2 - Find in ActiveRecord query:
+CreditCard.where(payment: nil)
+          .or(CreditCard.where(payment: nil))
+          .where.not(opcode: 'TEST')
+```
+
+很快地就會發現第二列資料並不會被找出來。
+
+因為資料中有些記錄的 opcode 還沒有值，本以為透過 `opcode != TEST` 這個條件下搜尋也能比對出結果，看來案情不單純。
+
+查了一下結果發現 SQL 對待空值和對待其他值的處理方式不同，所以就不能直接拿來比對字串，在這裡我們必須指名道姓的對資料庫說要點 Null 的檯，修改查詢子句如下：
+
+```ruby
+CreditCard.where('payment IS NULL OR check_date IS NULL AND opcode != ? OR opcode IS NULL', 'TEST')
+
+# option 2 - Find in ActiveRecord query:
+CreditCard.where(payment: nil)
+          .or(CreditCard.where(payment: nil))
+          .where.not(opcode: 'TEST')
+          .or(CreditCard.where(opcode: nil))
+```
+
+```ruby
+ccards_notpaid = CreditCard.where(check_status: 'V', bankno: 123)
+                           .where('payment IS NULL or check_date IS NULL')
+                           .where('opcode != ? OR opcode IS NULL', 'TEST')
+```
+
+## 參考
+
+-

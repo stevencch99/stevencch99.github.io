@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Convert newline type between Unix(LF) and Dos/Windows(CRLF)"
-description: "Convert newline type between Unix(LF) and Dos/Windows(CRLF)"
-crawlertitle: "Convert newline type between Unix(LF) and Dos/Windows(CRLF)"
+title: "Convert newline format between Unix(LF) and DOS/Windows(CRLF)"
+description: "Convert newline format between Unix(LF) and DOS/Windows(CRLF)"
+crawlertitle: "Convert newline format between Unix(LF) and DOS/Windows(CRLF)"
 date: 2019-12-26 23:59:59 +0800
 categories: Linux
 tags: ['Linux']
@@ -13,16 +13,30 @@ The term CRLF refers to Carriage Return (ASCII 13, \r) Line Feed(ASCII 10, \n).
 They're used to note the termination of a line,
 however, dealt with differently in today's popular Operation Systems.
 
-For example: in Windows both a CR adn LF are required to note the end of a line,
-whereas in Linux/UNIX a LF is only required.
+For example: in Windows both a CR adn LF are required to note the end of a line, whereas in Linux/UNIX a LF is only required.
 
-In the HTTP protocol, the
+In the HTTP protocol, the CR-LF sequence is always used to terminate a line.
 
-> [CRLF Injection](https://www.owasp.org/index.php/CRLF_Injection)
+> See [CRLF Injection](https://www.owasp.org/index.php/CRLF_Injection)
 
+## Using `sed`
 
-In light of `unix2dos` and `dos2unix` are not available on every system.
+In light of `unix2dos` and `dos2unix` are not available on every system, using `sed` might be a good idea.
 
-## 參考
+- In Unix environment: convert DOS/Windows newlines(CRLF) to Unix format(LF)
 
-- [alias vs alias_method](https://blog.bigbinary.com/2012/01/08/alias-vs-alias-method.html) By [Neeraj Singh](https://blog.bigbinary.com/authors/neerajdotname)
+```shell
+$ sed 's/^M$//'   # see comment below
+$ sed 's/.$//'    # assumes that all lines end with CRLF
+```
+> Notice that "^M" represents a carriage return character, is not just "^" + character "M", it needs to press Ctrl-V then Ctrl-M in bash to type it.
+
+<!-- WIP modify paragraph -->
+  - Convert LF to CRLF in Unix environment:
+```shell
+$ sed "s/$/`echo -e\\\r`/"
+```
+
+## Reference
+
+- [sed 处理文件中 dos CR/LF](https://blog.51cto.com/aaronzzq/1155098)

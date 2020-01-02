@@ -5,7 +5,7 @@ description: "How to convert newlines between Unix(LF) and DOS/Windows(CRLF)"
 crawlertitle: "How to convert newlines between Unix(LF) and DOS/Windows(CRLF)"
 date: 2019-12-26 23:59:59 +0800
 categories: Linux
-tags: ['Linux']
+tags: Linux
 comments: true
 ---
 

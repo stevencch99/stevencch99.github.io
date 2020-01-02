@@ -5,7 +5,7 @@ description: "Rails - alias & alias_mehtod 的用法和區別"
 crawlertitle: "Rails - alias & alias_mehtod 的用法和區別"
 date: 2019-12-04 23:50:46 +0800
 categories: Rails
-tags: ['Rails']
+tags: Rails
 comments: true
 ---
 

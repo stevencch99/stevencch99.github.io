@@ -21,7 +21,7 @@ Err:20 http://ppa.launchpad.net/moka/stable/ubuntu xenial/main amd64 Packages
 
 We can also run `$ sudo apt-get update | grep "Failed"` to list failing repositories.
 
-This error might lead other installation processes to fail, for example like installation of RVM, since `$ sudo apt-get update` doesn't work well.
+This error might lead other installation processes to fail, for example, installation of RVM(*Ruby Version Manager*), since `$ sudo apt-get update` doesn't work well.
 
 ## Solution
 

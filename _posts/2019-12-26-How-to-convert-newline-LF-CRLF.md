@@ -51,7 +51,6 @@ If you know how to enter the carriage return character in bash(`Ctrl-V` then `Ct
 ```shell
 $ sed 's/^M$//g' # CRLF to LF
 $ sed 's/$/^M/g' # LF to CRLF
-
 ```
 > Notice that "^M" represents a carriage return character, is not just "^" + character "M".
 

@@ -13,10 +13,15 @@ active: about
 # 張誠華 Steven Chang  
 ---
 
-I have about 8 years of experience in HVAC related field, used to be a site director of HVAC*(Heating Ventilation and Air Conditioning)* construction sites, manage hundreds of workers and project budgets over two hundred million NT dollars.
+I was a site director of HVAC(*Heating Ventilation and Air Conditioning*) construction sites, had about 8 years of experience in HVAC related field,
+response for managing hundreds of workers 
+and handle project budgets over 200,000,000 NT dollars.
 
-Now I found my real passion in living -- coding, wish I could build something nice, something meaningful to contribute to the world.
+Now I found my real passion in living—coding,  
+wish I could build something nice, something meaningful,  
+even make some contribution to this world.
 
+<!-- 
 - Rails demo project: **[Order Brother](https://github.com/order-brother/Order-Brother)**.  
 It is a pre-order platform that helps people easily search foods, make orders or open stores.
   - Have frontstage and backstage of store page through Devise and Pundit Gem, with RESTful API design in advance.
@@ -25,21 +30,12 @@ It is a pre-order platform that helps people easily search foods, make orders or
   - GitHub repository and docs: [https://github.com/order-brother/Order-Brother](https://github.com/order-brother/Order-Brother)
   - Deployed on Heroku: [https://order-brother.herokuapp.com](https://order-brother.herokuapp.com)
 
-> Order brother, help you out like your older brother.
+> Order brother, help you out like your older brother. -->
 
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 
-With all the passion for work and life,  
-I want to be better, and not just fine,  
-ready to prove my value at any time.  
-
-I treat myself as my own executive,  
-spare no effort to enhance work effectiveness,  
-with my honesty, empathy, and integrity,  
-the self-motivated, self-actualized,  
-and the great sense of responsibility,  
-I've trying to achieve something even greater,  
-and as a result, that made me a good team player!
+With the passion of work and life,  
+I want to be better, and not just fine.
 
 [<i class="about-icon fab fa-github-alt fa-spin"></i>](https://github.com/stevencch99/) 
 [<i class="about-icon fab fa-medium"></i>](https://medium.com/space-cat/)

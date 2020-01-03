@@ -8,7 +8,7 @@ categories: Linux
 tags: Linux
 comments: true
 ---
-I've been using Ubuntu 16.04 on Oracle VM VirtualBox these days, this morning when I run `$ sudo apt-get update` to update softwares, it breaks and I got this error instead:
+I've been using Ubuntu 16.04 on Oracle VM VirtualBox these days, this morning when I run `$ sudo apt-get update` to update software, it breaks and I got this error instead:
 
 ![](https://i.imgur.com/ERImZ5i.png)
 
@@ -21,11 +21,11 @@ Err:20 http://ppa.launchpad.net/moka/stable/ubuntu xenial/main amd64 Packages
 
 We can also run `$ sudo apt-get update | grep "Failed"` to list failing repositories.
 
-This error might lead other installation process to fail, for example like RVM installation, since `$ sudo apt-get update` doesn't work well.
+This error might lead other installation processes to fail, for example, installation of RVM(*Ruby Version Manager*), since `$ sudo apt-get update` doesn't work well.
 
 ## Solution
 
-I deside to temporarily disable the PPA by comment out the source list for the quick fix.
+I decide to temporarily disable the PPA by comment out the source list for the quick fix.
 
 ### Check installed packages
 

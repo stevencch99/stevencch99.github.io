@@ -12,6 +12,7 @@ comments: true
 ## DOS/Windows newline(CRLF) and Unix format(LF)
 
 The term CRLF refers to Carriage Return (ASCII 13, \r) Line Feed(ASCII 10, \n).
+
 They're used to note the termination of a line,
 however, dealt with differently in today's popular Operation Systems.
 

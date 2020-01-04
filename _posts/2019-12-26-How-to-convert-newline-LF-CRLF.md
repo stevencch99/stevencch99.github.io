@@ -16,7 +16,7 @@ The term CRLF refers to Carriage Return (ASCII 13, \r) Line Feed(ASCII 10, \n).
 They're used to note the termination of a line,
 however, dealt with differently in today's popular Operation Systems.
 
-For example: in Windows both a CR adn LF are required to note the end of a line, whereas in Linux/UNIX a LF is only required.
+For example: in Windows, both a CR and LF are required to note the end of a line, whereas in Linux/UNIX a LF is only required.
 
 In the HTTP protocol, the CR-LF sequence is always used to terminate a line.
 

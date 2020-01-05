@@ -13,7 +13,7 @@ active: archive
   {% endfor %}
 {% endcapture%}
 
-{% assign sort_tags = tags | split:' ' | sort %}
+{% assign sort_tags = tags | split: ' ' | sort %}
 
 {% for tag in sort_tags %}
   <h2 class="category-key" id="{{ tag | downcase }}">{{ tag }}</h2>

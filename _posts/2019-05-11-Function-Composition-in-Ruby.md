@@ -5,23 +5,23 @@ crawlertitle: "About Ruby and Function compostition"
 description: "Ruby 中的複合函數 proc lambda "
 date:   2019-05-14 16:56:46 +0800
 categories: Ruby
-tags: ['Ruby']
+tags: Ruby
 comments: true
 ---
 *Is that a question?*
 
 > 本文同步刊錄在 [Medium](https://medium.com/@stevencch/to-proc-or-not-to-proc-2578c5e5c54c)
 
-## What is function composition?
+## 什麼是複合／合成函數(function composition)？
 
-根據維基百科：
+來看看維基百科的定義：
 [Wikipedia describes function composition as follows:](https://en.wikipedia.org/wiki/Function_composition_(computer_science))
 
 > In computer science, funciton composition is an act or mechanism to combine simple functions to build more complicated ones. Like the usual composition of functions in mathematics, the result of each function is passed as the argument of the next, and the result of the last one is the result of the whole.
 
-像在數學中合成函數是把兩個函數鏈接在一起的過程，內函數的輸出就是外函數的輸入。
+在數學中，合成函數是把兩個函數鏈接在一起的過程，**內層函數的輸出**就是**外層函數的輸入**。
 
-一個方法(Method, 或稱函式 Function)的回傳值作為另一個方法的參數(parameter)傳入，直到最後一個方法的輸出即是整個 Function composition 的輸出結果。
+在程式語言中，一個方法(Method, 或稱函式 Function)的回傳值作為另一個方法的參數(parameter)傳入，如此串接直到最後一個方法的輸出即是整個 Function composition 的輸出結果。
 
 - Example function:
 
@@ -31,18 +31,18 @@ def double(x)
   x * 2
 end
 
-double(2) = 4
-double(3) = 6
-double(4) = 8
+double(2) # => 4
+double(3) # => 6
+double(4) # => 8
 
 # squares the number
 def square(x)
   x * x
 end
 
-square(2) = 4
-square(3) = 9
-square(4) = 16
+square(2) # => 4
+square(3) # => 9
+square(4) # => 16
 ```
 
 同時因為這些方法只單純的計算傳入的引數(argument)，沒有其他副作用，故如果想要將一個數字先乘以二再平方，我們可以直接組合這兩個方法：
@@ -52,31 +52,32 @@ square(4) = 16
 為了方便呼叫，將上述操作指定給一個新的方法：
 
 ```ruby
-double-then-square(x) = square(double(x))
-double-then-square(2) # => 16
-double-then-square(3) # => 36
+double_then_square(x) = square(double(x))
+double_then_square(2) # => 16
+double_then_square(3) # => 36
 ```
 
-在某些程式語言中有所謂『一級公民』 "first-class" 的概念，讓我們不必先宣告一個全新的方法才能來組合他們。
+某些程式語言中有所謂『一級公民』 "first-class" 的概念，讓我們不必先宣告一個全新的方法才能來組合他們。
 
 在 Functional programming 中大量用到一種系列的方法來處理問題，有了這個 first-class function composition 的概念，可以讓其更容易的將某些肥厚的方法抽象化分離成更小的元件。
 
 ## Functions in Ruby
 
-**如上所述，我們也需要一種方法**，可以當作引數傳給其他方法、可以儲存變數或資料結構，甚至需要它作為回傳值從其他方法中 return。
+如上所述，我們 Rubyist 亦需要一種方法，可以將程式碼片段當作引數傳給其他方法、儲存變數或資料結構，甚至需要它作為回傳值從其他方法中 return。
 
-換言之，我們需要 "first-class functions" 來做到這件事。
+換言之，我們需要 "first-class functions" 來做到這件事。  
 其中一個明確的例子就是 Proc。
 
 ### Proc
 
-根據 Ruby documentation 的描述：
+根據 [Ruby documentation](http://ruby-doc.org/core-2.6.3/Proc.html) 的描述：Proc 物件是一段封裝過的程式碼區塊，可以被拿來做各種快樂的事。
 
 > A Proc object is an encapsulation of a block of code, which can be stored in a local variable, passed to a method or another Proc, and can be called. Proc is an essential concept in Ruby and a core of its functional programming features.
 
-Ruby 作為一個物件化相當徹底的語言，所見的幾乎所有東西都是物件，包含數字等等，除了其中一個例外："block"。
+Ruby 作為一個物件化相當徹底的語言，所見的幾乎所有東西都是物件，包含數字等等，除了其中一個例外：**Block**。
 
 Block 是一小段程式碼區塊，既沒有自己的名字亦無法單獨存在，很可憐。
+
 平常像寄生蟲一樣必須得依附在一個宿主身上，由宿主的行為決定要不要執行它，如果沒人操作它便會沈入記憶體之海。
 
 這時可透過創造一個 Proc 物件把這段程式碼區塊承接下來（物件化），等待適合的時機呼叫它。
@@ -97,10 +98,10 @@ double = make_proc { |number| number * 2 }
 ```
 
 - 或者透過 `Proc.new` 去承接傳入的 block
-[Passing Blocks in Ruby Without &block](https://mudge.name/2011/01/26/passing-blocks-in-ruby-without-block.html)
+> See [Passing Blocks in Ruby Without &block](https://mudge.name/2011/01/26/passing-blocks-in-ruby-without-block.html)  
+> Use Proc.new to capture a block passed to a method without an ecplicit block argument.
 
 ```ruby
-# Use Proc.new to capture a block passed to a method without an ecplicit block argument
 def make_proc
   Proc.new
 end
@@ -159,7 +160,7 @@ double[2] # => 4
 double[2, 3] # => ArgumentError (wrong number of arguments (given 2, expected 1))
 ```
 
-- Proc 的表現如同`block`，對傳入的引數並不介意，在裡面呼叫 return 會爆炸
+- Proc 的表現如同`block`，對傳入的引數並不介意，在裡面呼叫 `return` 會爆炸
 
 ```ruby
 double_p = proc { |number| return number * 2}
@@ -168,7 +169,7 @@ double_p[2] # => LocalJumpError (unexpected return)
 
 ### Method
 
-在 Ruby 我們能用上的另一個特色就是透過 Method 將方法包成物件(http://ruby-doc.org/core-2.6.3/Method.html)。
+在 Ruby 我們能用上的另一個特色就是透過 [Method](http://ruby-doc.org/core-2.6.3/Method.html) 將方法包成物件。
 
 ```ruby
 class Greeter
@@ -184,7 +185,7 @@ class Greeter
 end
 
 greeter = Greeter.new("Hello")
-greet = greeter.method(:greet)
+greet   = greeter.method(:greet)
 ```
 
 也一樣可以透過呼叫 Proc 的方法使用它：
@@ -214,9 +215,9 @@ my_even?[3] # => false
 # 列出 1 到 10 的偶數陣列
 list = 1.upto(10).select(&:even?)
 # 此式等價於：
-# list = 1.upto(10).select(&:even.to_proc)
+# list = 1.upto(10).select(&:even?.to_proc)
 
-list # [2, 4, 6, 8, 10]
+list # => [2, 4, 6, 8, 10]
 ```
 
 Ruby 提供了 `>>`(forward composition) 和 `<<`(backward composition) 方法將各種 Proc 組合起來，可以很直覺的看作是執行的順序，熟悉了之後就可以這樣用：
@@ -228,12 +229,13 @@ double_then_square[2] # => 16
 square_then_double = square >> double
 square_then_double[2] # => 8
 (square >> double)[2] # => 8
-
 ``` 
 
+又或者：
+
 ```ruby
-to_camel = :capitalize.to_proc
-add_header = ->val {"Title: " + val}
+to_camel    = :capitalize.to_proc
+add_header  = ->val {"Title: " + val}
 strip_space = :strip.to_proc
 
 format_as_title = add_header << to_camel << strip_space
@@ -241,6 +243,11 @@ format_as_title = add_header << to_camel << strip_space
 format_as_title["  \thello world\n"]
 # "Title: Hello world"
 ```
+
+![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+
+> 維持簡潔的同時，可讀性提高了不少，  
+> 希望 Ruby 的美也能讓更多人欣賞到。
 
 ## 參考資料：
 

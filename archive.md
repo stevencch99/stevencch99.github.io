@@ -12,18 +12,19 @@ active: archive
   {% assign t = tag | first %}
   {% assign posts = tag | last %}
 
-  <h2 class="category-key" id="{{ t | downcase }}">{{ t | capitalize }}</h2>
+  <h2 class="category-key" id="{{ t | downcase }}">{{ t }}</h2>
 
   <ul class="year">
     {% for post in posts %}
       {% if post.tags contains t %}
         <li>
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
           {% if post.lastmod %}
             <a href="{{ post.url | relative_url}}">{{ post.title }}</a>
-            <span class="date">{{ post.lastmod | date: "%d-%m-%Y"  }}</span>
+            <span class="date">{{ post.lastmod | date: date_format }}</span>
           {% else %}
             <a href="{{ post.url | relative_url}}">{{ post.title }}</a>
-            <span class="date">{{ post.date | date: "%d-%m-%Y"  }}</span>
+            <span class="date">{{ post.date | date: date_format }}</span>
           {% endif %}
         </li>
       {% endif %}

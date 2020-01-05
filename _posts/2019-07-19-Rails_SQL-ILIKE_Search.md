@@ -1,8 +1,7 @@
 ---
 layout: post
 title: |
-  2 步驟完成模糊搜尋  
-  Search for whatever I LIKE in Rails
+  2 步驟完成模糊搜尋 Search for whatever I LIKE in Rails
 description: "2 步驟完成模糊搜尋 Rails search for PostgreSQL ILIKE syntax"
 crawlertitle: "2 步驟完成模糊搜尋 Rails search for PostgreSQL ILIKE syntax"
 date: 2019-07-19 18:22:46 +0800

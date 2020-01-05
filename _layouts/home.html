@@ -8,6 +8,10 @@ layout: default
   {% else %}
     <h1 class="page-heading">Pull Request to the World</h1>
     <p></p>
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="search...">
+      <ul id="results-container"></ul>
+    </div>
   {%- endif -%}
 
   {{ content }}
@@ -31,5 +35,14 @@ layout: default
       {%- endfor -%}
     </ul>
   {%- endif -%}
-
+  <!-- Script pointing to search-script.js -->
+  <script src="/../js/search-script.js" type="text/javascript"></script>
+  <!-- Configuration -->
+  <script>
+    SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/search.json'
+    })
+  </script>
 </div>

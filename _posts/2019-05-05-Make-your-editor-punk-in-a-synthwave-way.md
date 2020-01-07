@@ -92,7 +92,7 @@ comments: true
     如果命運的齒輪沒有差錯的話⋯⋯
     > ## *Voila!*
 
-  ![example of the theme](https://cdn-images-1.medium.com/max/2672/1*M9yYMWrEkWkkx-st6YuUwg.jpeg)
+    ![example of the theme](https://cdn-images-1.medium.com/max/2672/1*M9yYMWrEkWkkx-st6YuUwg.jpeg)
 
 5. CSS 細節調整
 

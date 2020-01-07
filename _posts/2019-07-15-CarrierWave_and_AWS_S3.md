@@ -22,7 +22,7 @@ comments: true
 
 ```ruby
 gem 'carrierwave', '~> 1.3', '>= 1.3.1' # 本篇主角
-gem 'mini_magick', '~> 4.5', '>= 4.5.1' # 將上傳的圖檔設定為指定尺寸
+gem 'mini_magick', '~> 4.5', '>= 4.5.1' # 將上傳的圖檔設定為指定尺寸
 gem 'fog-aws', '~> 3.5', '>= 3.5.1'     # 支援上傳檔案到 AWS S3
 gem 'figaro', '~> 1.1', '>= 1.1.1'      # 機密資訊傳遞套件
 ```
@@ -48,7 +48,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-  # 設定儲存的檔案路徑 e.g.：/public/uploads/user/avatar/1／foo.jpg
+  # 設定儲存的檔案路徑 e.g.：/public/uploads/user/avatar/1/foo.jpg
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
@@ -62,9 +62,11 @@ end
 > 因為測試環境的圖片不是我們的重點，亦沒必要進入 commit，這裏建議順便將 public/uploaders 資料夾加到 .gitignore
 
 ## 設定圖片儲存欄位
+
 我們希望給 user 增加名為 avatar 的欄位，在終端機輸入指令並設定資料型態為 `string`
 > 上傳的圖片在資料庫中會以檔名的形式存在，儲存路徑則是按照上一步驟在 uploader 中做的設定來決定
-```s
+
+```bash
 $ rails g migration add_avatar_to_users avatar:string
 $ rails db:migrate
 ```
@@ -79,7 +81,7 @@ end
 
 
 ## 安裝 ImageMagick
-在許多場合我們希望裁剪使用者上傳圖片的大小，這邊按照 CarrierWave 官方建議透過 MiniMagick 套件啟用 ImageMagick 的功能，首先必須透過 Homebrew 安裝 ImageMagick。
+在某些應用場景下，我們可能還會希望裁剪使用者上傳圖片的大小，這邊按照 CarrierWave 官方建議透過 [MiniMagick](https://github.com/minimagick/minimagick) 套件啟用 [ImageMagick](http://imagemagick.org/) 的功能，首先必須透過 Homebrew(macOS) 安裝 ImageMagick。
 `$ brew install imagemagick`
 
 確認版本：
@@ -110,7 +112,7 @@ end
 > 如果需要更小的圖片尺寸，可以透過 from_version 選項，從指定的版本(thumb)製作縮圖，執行效能會比從原圖製作來得更好。
 
 ## 設定上傳位置到 Amazon S3
-> 關於如何使用 Amazon S3，官網教程有清楚的說明：[Amazon Simple Storage Service 入門](https://docs.aws.amazon.com/zh_tw/AmazonS3/latest/gsg/GetStartedWithS3.html)
+> 關於如何使用 Amazon S3，建議參考官網教程清楚的說明：[Amazon Simple Storage Service 入門](https://docs.aws.amazon.com/zh_tw/AmazonS3/latest/gsg/GetStartedWithS3.html)
 
 於專案目錄下的 `initializers` 資料夾內新增檔案：  
 `config/initializers/carrierwave.rb`
@@ -146,7 +148,7 @@ Figaro 透過 `ENV['變數名稱']` 存取金鑰，這邊將會需要你準備�
 2. AWS_SECRET_ACCESS_KEY(私密存取金鑰)
 3. S3_BUCKET_NAME(儲存貯體名稱)
 
-- 照著前面的步驟已經安裝了 Figaro ，這時執行 `$ figaro install` 會幫你建立 `config/application.yml` 檔案，同時也加入到 `.gitignore` 忽略名單內。 
+- 照著前面的步驟已經安裝了 Figaro ，這時執行 `$ figaro install` 會幫你建立 `config/application.yml` 檔案，同時也加入到 `.gitignore` 忽略清單內。 
 
 編輯 `application.yml`：
 
@@ -162,8 +164,8 @@ production:
 
 ### 如果需要將參數部署到 Heroku：
 
-設定參數： `$ figaro heroku:set -e production`  
-透過 [Heroku cli](https://devcenter.heroku.com/articles/heroku-cli) 查詢設定： `$ heroku config`
+- 設定參數： `$ figaro heroku:set -e production`
+- 透過 [Heroku cli](https://devcenter.heroku.com/articles/heroku-cli) 查詢設定： `$ heroku config`
 
 ## 對應的表單
 
@@ -198,4 +200,4 @@ User.first.avatar.thumb.url       # =>"/uploads/user/avatar/1/thumb_xxx.jpg"
 User.first.avatar.small_thumb.url # =>"/uploads/user/avatar/1/small_thumb_xxx.jpg"
 ```
 
-另外在 S3 的儲存貯體記得設定權限開放上傳及讀取，如此便大功告成！
+另外，記得在 S3 的儲存貯體設定權限開放上傳及讀取，如此便大功告成！

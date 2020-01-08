@@ -15,13 +15,19 @@ active: archive
 
 {% assign sort_tags = tags | split: ' ' | sort %}
 
+<div class="tag-wrapper">
+{% for tag in sort_tags %}
+  <a class="post-tags" href="{{ site.baseurl }}/posts/#{{ tag | downcase }}">{{ tag }}</a>
+{% endfor %}
+</div>
+
 {% for tag in sort_tags %}
   <h2 class="category-key" id="{{ tag | downcase }}">{{ tag }}</h2>
 
   <ul class="year">
     {% for post in site.tags[tag] %}
       <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {%- assign date_format = site.setting.date_format | default: "%b %-d, %Y" -%}
         {% if post.lastmod %}
           <a href="{{ post.url | relative_url}}">{{ post.title }}</a>
           <span class="date">{{ post.lastmod | date: date_format }}</span>

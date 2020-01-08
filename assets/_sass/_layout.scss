@@ -298,16 +298,17 @@ article {
   &__title {
     margin-bottom: -0.3em;
   }
-
-  &__tag {
-    padding: 1px 4px;
-    font-size: 60%;
-    border: 1px solid #333;
-    border-radius: 3px;
-    text-decoration: none;
-    font-weight: 800;
-  }
 }
+
+.post-tags {
+  padding: 1px 4px;
+  font-size: 60%;
+  border: 1px solid #333;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 800;
+}
+
 .post-meta {
   padding-bottom: .5em;
   text-transform: uppercase;

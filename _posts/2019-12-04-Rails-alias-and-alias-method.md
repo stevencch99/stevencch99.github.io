@@ -9,8 +9,6 @@ tags: Rails
 comments: true
 ---
 
-## 目錄
-
 - toc
 {:toc}
 
@@ -42,7 +40,7 @@ end
 也就是說，只有在 Instance module 中呼叫 `:foo` 將會另外再加計附加費用，
 如此便可以在不改動原本 Common 程式碼的情況下得到我們所期望的最終金額。
 
-![image alt](https://i.imgur.com/FhEdPBT.png "alias_method_common_instance_graph")  
+![picture of alias method and Common/Instance program infrastructure](https://i.imgur.com/FhEdPBT.png "alias_method_common_instance_graph")  
 > 結構示意圖
 
 ## 我該用 alias 或 alias_method ？

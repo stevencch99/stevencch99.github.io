@@ -294,6 +294,7 @@ article {
     background-color: #fff;
   }
 }
+
 .post-list {
   &__title {
     margin-bottom: -0.3em;
@@ -329,6 +330,9 @@ article {
   }
 }
 
+code.language-plaintext {
+  padding: 0.1em 0.2em;
+}
 
 /*
 * Archive

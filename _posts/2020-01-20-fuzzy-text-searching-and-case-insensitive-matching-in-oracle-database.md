@@ -1,17 +1,17 @@
 ---
 layout: post
-title: 'Case insensitive search in Oracle database'
-description: 'Case insensitive search in Oracle database'
-crawlertitle: 'Case insensitive search in Oracle database'
+title: 'Fuzzy text searching and case insensitive matching in Oracle database'
+description: 'Fuzzy text searching and case insensitive matching in Oracle database'
+crawlertitle: 'Fuzzy text searching and case insensitive matching in Oracle database'
 date: 2020-01-20 23:59:59 +0800
 categories: Database
-tags: Database SQL Note
+tags: Database SQL
 comments: true
 ---
 
 ## Scenario
 
-When we want to do some fuzzy text searching with unknow letter cases.
+When we want to do some fuzzy text searching with case-insensitive matching.
 
 The default behavior of `LIKE` and the other comparison operators such as `=` are case-sensitive,  
 unlike PostgresSQL has a nice `ILIKE` keyword (typically a bit slower),

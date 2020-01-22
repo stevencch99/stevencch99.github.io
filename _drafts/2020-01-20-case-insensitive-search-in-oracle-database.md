@@ -11,10 +11,11 @@ comments: true
 
 ## Scenario
 
-In an Oracle database, when we want to search table which name includes "foo",
-but not sure the letter cases of table name.
+When we want to do some fuzzy text searching with unknow letter cases.
 
-The default behavior of `LIKE` and the other comparison operators is case-sensitive,
+The default behavior of `LIKE` and the other comparison operators such as `=` are case-sensitive,  
+unlike PostgresSQL has a nice `ILIKE` keyword (typically a bit slower),
+work with Oracle database requires a little bit of effort to get this job done.
 
 ## Solution
 
@@ -23,11 +24,13 @@ The default behavior of `LIKE` and the other comparison operators is case-sensit
 ```sql
 SELECT table_name
 FROM user_tables
-WHERE upper(table_name) LIKE '%FOO%'
+WHERE LOWER(table_name) LIKE '%foo%'
 ```
 
+The `LOWER` function here takes a character expression as a parameter, converts all alpha character to lower case and return.
+
 The `LIKE` condition allows you to use wildcards to specify a test involving pattern matching.
-Whereas the equality operator "`=`" exactly matches one character value to another.
+Whereas the equality operator (`=`) exactly matches one character value to another.
 
   - **Wildcard character**  
     The wildcard character is used to substitute one or more characters in a string:

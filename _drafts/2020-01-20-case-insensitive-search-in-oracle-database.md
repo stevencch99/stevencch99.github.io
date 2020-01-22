@@ -18,7 +18,7 @@ The default behavior of `LIKE` and the other comparison operators is case-sensit
 
 ## Solution
 
-- Option 1: `LIKE` condition
+### Option 1: `LIKE` condition
 
 ```sql
 SELECT table_name
@@ -29,12 +29,12 @@ WHERE upper(table_name) LIKE '%FOO%'
 The `LIKE` condition allows you to use wildcards to specify a test involving pattern matching.
 Whereas the equality operator "`=`" exactly matches one character value to another.
 
-  - Wildcard character
+  - **Wildcard character**  
     The wildcard character is used to substitute one or more characters in a string:
-    - "`%`" percent sign can match 0 or more characters, except `null`.
-    - "`_`" underscore sign in the pattern matches exactly 1 character.
+    - "`%`" the percent sign can match 0 or more characters, except `null`.
+    - "`_`" the underscore sign in the pattern matches exactly 1 character.
 
-- Option 2: [REGEXP_LIKE Condition](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Pattern-matching-Conditions.html#GUID-D2124F3A-C6E4-4CCA-A40E-2FFCABFD8E19)
+### Option 2: [REGEXP_LIKE Condition](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Pattern-matching-Conditions.html#GUID-D2124F3A-C6E4-4CCA-A40E-2FFCABFD8E19)
 
 ```sql
 SELECT table_name
@@ -44,8 +44,8 @@ WHERE regexp_like(table_name, 'foo', 'i')
 
 The `REGEXP_LIKE` is similar to the `LIKE` condition, except `RREGEXP_LIKE` performs regular expression matching instead of the simple pattern matching performed by `LIKE`.
 
-This condition complies with the POSIX regular expression standard and the Unicode Regular Expression Guidelines.
-For more information, refer to [Oracle Regular Expression Support](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Oracle-Regular-Expression-Support.html#GUID-969230D6-FC1A-4C75-BF2A-6B1BE909DED6).
+This condition complies with the POSIX regular expression standard and the Unicode Regular Expression Guidelines,
+for more information, refer to [Oracle Regular Expression Support](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Oracle-Regular-Expression-Support.html#GUID-969230D6-FC1A-4C75-BF2A-6B1BE909DED6).
 
 ## References
 

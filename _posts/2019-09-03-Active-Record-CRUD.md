@@ -115,35 +115,35 @@ Finder method 是比較舊的做法，但因為公司早期的專案(Rails 4.2.5
 
 - **別這麼做！ DON'T DO THIS!!**
 
-```ruby
-# Get the limit amount from the from name = params[:name]
-pos = Order.find(:all, conditions: "name = '#{name}' and pay_type = 'po'")
-```
+  ```ruby
+  # Get the limit amount from the from name = params[:name]
+  pos = Order.find(:all, conditions: "name = '#{name}' and pay_type = 'po'")
+  ```
 
 動態產生 SQL 的安全作法是讓 Active Record 代為處理這件事，凡是能夠傳入 SQL 字串的地方，也都能傳入 hash 或 array，讓 Active Record 建立轉譯過的 SQL 語句，防範注入攻擊。
 
 - 更好的做法：**預留位置**
   在 SQL 語句中插入(多個)問號作為查詢參數的預留位置，第一個問號會被 array 第二個元素取代，以此類推，將前面的查詢改寫成以下：
 
-```ruby
-name = params[:name]
+  ```ruby
+  name = params[:name]
 
-pos = Order.find(:all, conditions: "name = ? and pay_type = 'po'", name)
-```
+  pos = Order.find(:all, conditions: "name = ? and pay_type = 'po'", name)
+  ```
 
 - 附帶命名的預留
 
-```ruby
-name     = params[:name]
-pay_type = params[:pay_type]
-pos      = Order.find(
-                      :all,
-                      conditions: [
-                        "name = :name and pay_type = :pay_type",
-                        {pay_type: pay_type, name: name}
-                      ]
-                    )
-```
+  ```ruby
+  name     = params[:name]
+  pay_type = params[:pay_type]
+  pos      = Order.find(
+                        :all,
+                        conditions: [
+                          "name = :name and pay_type = :pay_type",
+                          {pay_type: pay_type, name: name}
+                        ]
+                      )
+  ```
 
 - `conditions` 參數可以指定傳遞到 `find` 方法所用的 SQL where 子句的條件。
 
@@ -152,36 +152,37 @@ pos      = Order.find(
     - 包含 SQL 和替換值的陣列
     - 直接傳入 hash
 
-```ruby
-pos = Order.find(:all,
-                 conditions: [
-                   "name = :name and pay_type = :pay_type",
-                   params[:order]
-                 ]
-                )
-```
+  ```ruby
+  pos = Order.find(:all,
+                  conditions: [
+                    "name = :name and pay_type = :pay_type",
+                    params[:order]
+                  ]
+                  )
+  ```
 
 - 更加簡潔的查詢：
   若只是將 hash 作為條件傳遞，Rails 會產生一個 `where` 子句，其中 hash 的 key 會用來對應欄位的名稱，value 對應匹配的值，所以這個查詢還可以縮寫：
 
-```ruby
-pos = Order.find(:all, conditions: params[:order])
-pos.class #=> Array
-```
+  ```ruby
+  pos = Order.find(:all, conditions: params[:order])
+  pos.class #=> Array
+  ```
 
 因為 params 本來也是一個 hash，所以可以直接傳到查詢條件中，將前面的查詢更進一步地改寫：
-```ruby
-pos2 = Order.where(params[:order])
-pos2.class #=> Order::ActiveRecord_Relation
-```
+  ```ruby
+  pos2 = Order.where(params[:order])
+  pos2.class #=> Order::ActiveRecord_Relation
+  ```
 
 ### `where` 方法
+
 `where` 是 Rails 3.0.0 以後新增的方法(參見[ActiveRecord](https://apidock.com/rails/ActiveRecord)::[QueryMethods](https://apidock.com/rails/ActiveRecord/QueryMethods))，它會回傳一個 [ActiveRecord](https://apidock.com/rails/ActiveRecord)::[Relation](https://apidock.com/rails/ActiveRecord/Relation) 物件，能夠像陣列一樣操作，也能繼續串接 `where` 等查詢方法，強大的非常。
 
 ```ruby
 stevens_order = Order.find(:all, conditions: "name = 'Steven'")
 
-stevens_order = Order.where("name = 'Steven'")
+stevens_order = Order.where(name: 'Steven')
 
 # 取得從前端傳來的參數中的姓名變數 :name
 
@@ -192,13 +193,13 @@ other_orders = Order.where(name: name)
 # 搜尋名字等於 :name 且付款方式等於 :pay_type 的訂單
 more_orders = Order.find(:all,
                           conditions: [
-                            "name = :name and pay_type = :pay_type",
+                            'name = :name and pay_type = :pay_type',
                             params[:order]
                           ]
                         )
 
 # 搜尋姓名包含 foo 且職稱包含 bar 的使用者
-more_users = User.where("name like ? and title like ?",
+more_users = User.where('name like ? and title like ?',
                         '%foo%',
                         '%bar%')
 ```
@@ -211,7 +212,8 @@ more_users = User.where("name like ? and title like ?",
 # 先依照支付類型，再按出貨日期降冪排列(DESC)
 orders = Order.find(:all,
                      conditions: "name = 'Steven'",
-                     order: "pay_type, shipped_ad DESC")
+                     order: "pay_type, shipped_at DESC")
+orders = Order.where(name: 'Steven').order(:pay_type, shipped_at: :desc)
 ```
 
 ### Limit 與 Offset
@@ -221,11 +223,15 @@ orders = Order.find(:all,
 ```ruby
 orders = Order.find(:all,
                     conditions: "name = 'Steven'",
-                    order: "pay_type, shipped_ad DESC",
+                    order: "pay_type, shipped_at DESC",
                     # 取出 5 筆資料
                     limit: 5,
                     # 從第 11 筆開始
                     offset: 10)
+orders = Order.where(name: 'Steven')
+              .order(:pay_type, shipped_at: :desc)
+              .limit(5)
+              .offset(10)
 ```
 
 ### Select
@@ -234,6 +240,7 @@ orders = Order.find(:all,
 
 ```ruby
 list = Talks.find(:all, select: "title, speaker, recorded_on")
+list = Talks.select(:title, :speaker, :recorded_on)
 ```
 
 ## 透過聚合(aggregate)函數統計資訊
@@ -317,14 +324,14 @@ end
 
   `delete` 方法會繞過 Active Record 的各種驗證和 call back methods，回傳被刪除的紀錄數，如果刪除之前紀錄已經不存在了，就不會拋出異常。
 
-```ruby
-Order.delete(123)
-User.delete([2, 3, 4])
-Product.delete_all(['price > ?', expensive_price])
-```
+  ```ruby
+  Order.delete(123)
+  User.delete([2, 3, 4])
+  Product.delete_all(['price > ?', expensive_price])
+  ```
 
 - Active Record 類別等級的刪除也有兩種方法：`destroy`, `destroy_all`。
-  這兩個方法會呼叫所有的 call back methods 和驗證，沒有回傳值。雖然速度上比 `delete` 慢，但如果為了確保在專案中定義的一些邏輯驗證和商業規則運作如常，最好使用 `destroy` 方法。
+  這兩個方法會呼叫所有的 callback methods 和驗證，沒有回傳值。雖然速度上比 `delete` 慢，但如果為了確保在專案中定義的一些邏輯驗證和商業規則運作如常，最好使用 `destroy` 方法。
 
 ## 參考
 

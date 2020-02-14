@@ -199,9 +199,7 @@ more_orders = Order.find(:all,
                         )
 
 # 搜尋姓名包含 foo 且職稱包含 bar 的使用者
-more_users = User.where('name like ? and title like ?',
-                        '%foo%',
-                        '%bar%')
+more_users = User.where('name like ? and title like ?', '%foo%', '%bar%')
 ```
 
 ### Order 順序

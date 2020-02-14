@@ -74,7 +74,7 @@ order.save
 當然為了某些原因，例如配合舊專案不同的命名慣例，也可以自訂資料表名稱：
 
 ```ruby
-class Cat < ActiveRecord:Base
+class Cat < ActiveRecord::Base
   self.table_name = 'kitty'
 end
 ```

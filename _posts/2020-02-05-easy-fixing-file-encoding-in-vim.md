@@ -9,7 +9,7 @@ tags: Editor Vim Linux
 comments: true
 ---
 
-I have received some files from Japanese clients and have troble with read it through Vim, it looks like a mess:
+I have received some files from Japanese clients and have trouble with reading it through Vim, it looks like a mess:
 ![The Shift-JIS encoded file looks like a mess in my Vim](https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/blog/encoding_vim_sjis.png)
 
 Check the file by `$ file -bi` command, and it returns:
@@ -21,7 +21,7 @@ text/plain; charset=unknown-8bit
 
 Fortunately, I've been informed that the file is encoded by Shift JIS, saved a hell lot of my time to figure out the encoding.
 
-**Shift JIS** (*Shift Japanese Industrial Standards, also SJIS, Shift_JIS*) is a character encoding for the Japanese language, it has been replaced by CP932 in some case for better compatibility.
+**Shift JIS** (*Shift Japanese Industrial Standards, also SJIS, Shift_JIS*) is a character encoding for the Japanese language, it has been replaced by CP932 for better compatibility in certain cases.
 
 According to [Vim Tips Wiki](https://vim.fandom.com/wiki/Reloading_a_file_using_a_different_encoding), one can reload a file using a different encoding if Vim was not able to detect the correct encoding.
 

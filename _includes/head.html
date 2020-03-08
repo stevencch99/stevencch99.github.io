@@ -3,28 +3,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% include google-analytics.html %}
-  
-  <!-- replaced by jekyll seo tag right above </head> tag -->
-  <!-- <title>
-    {% if page.crawlertitle %}
-      {{ page.crawlertitle | escape }}
-    {% elsif page.title %}
-      {{ page.title | escape }}
-    {% else %}
-      {{ site.title | escape }}
-    {% endif %}
-  </title> -->
 
   <meta name="description" content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}{{ site.description | truncate: 160}}{% endif %}">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-  <!-- <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}"> -->
-  
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
   <link rel="shortcut icon" href="{{ 'assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
+
+  <!-- My fontawesome kit -->
+  <script src="https://kit.fontawesome.com/407285a06c.js" crossorigin="anonymous"></script>
 
   <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|Roboto+Condensed:700&subset=latin' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/all.css' | relative_url }}">
 
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:type" content="website">

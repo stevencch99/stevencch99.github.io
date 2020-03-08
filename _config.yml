@@ -71,3 +71,5 @@ leancloud:
 
 setting:
   date_format: "%b %-d, %Y"
+
+exclude: [vendor]

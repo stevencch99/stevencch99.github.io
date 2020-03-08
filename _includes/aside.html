@@ -1,0 +1,42 @@
+{% if page.bg %}
+  <aside class="sidebar" role="note" style="background-image: url({{ site.images | relative_url }}/{{ page.bg }})">
+{% else %}
+  <aside class="sidebar" role="note"
+    style="background-image: url({{ site.images | relative_url }}/nasa-63032-unsplash--compressed.jpg)">
+{% endif %}
+
+    <div class="cover">
+      <div class="cover__text">
+        <div class="heading">
+          {% if page.tags %}
+            {% for tag in page.tags %}
+              <!-- <a href="{{ site.baseurl }}/posts/#{{ tag | downcase }}">{{ tag | downcase }}</a> -->
+              <a href="{{ site.baseurl }}/posts/#{{ tag | capitalize }}">{{ tag | upcase }}</a>
+            {% endfor %}
+          {% elsif page.title %}
+            {{ page.title }}
+          {% else %}
+            <a href="{{ site.baseurl }}" class="aside__landing">From Zen to Code</a>
+            <!-- <br/> -->
+            <!-- <a href="https://github.com/stevencch99"><i class="fab fa-github-alt fa-spin"></i></a>
+            <a href="https://www.linkedin.com/in/stevenchchang/"><i class="fab fa-linkedin"></i></a> -->
+          {% endif %}
+        </div>
+
+        <div class="aside__page-summary">
+          {% if page.summary %}
+            {{ page.summary }}
+          {% else %}
+            <p class="aside__text">
+              <a href="/about/" class="aside__text--title">Steven Chang</a><br />
+              <a href="https://github.com/stevencch99"><i class="aside__text--icon fab fa-github-alt fa-spin"></i></a>
+              <a href="https://medium.com/space-cat"><i class="aside__text--icon fab fa-medium"></i></a>
+              <a href="https://www.linkedin.com/in/stevenchchang/"><i class="aside__text--icon fab fa-linkedin"></i></a>
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div id="switcher"></div>
+  </aside>

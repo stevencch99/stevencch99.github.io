@@ -1,0 +1,75 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: From Zen to Code
+author: Steven Chang
+email: stevencch99@gmail.com
+description: "Technology blog about web-development and ruby on rails."
+baseurl: "" # the subpath of your site, e.g. /blog
+lang: "en"
+# url: "https://stevencch99.github.io/" # the base hostname & protocol for your site
+url: "https://www.stevenchang.tw/" # the base hostname & protocol for your site
+# twitter_username: 
+github_username: stevencch99
+disqus_username: stevencch99
+
+# Build settings
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
+
+# Posts settings
+future: true
+safe: false
+lsi: false
+excerpt_separator: "\n\n"
+
+# Theme settings
+compress_html:
+  comments: ["<!-- ", " -->"]
+  clippings: all
+  endings: all
+
+
+sass:
+  sass_dir: assets/_sass
+  style: compressed
+
+
+images: '/assets/images'
+
+# comments:
+#   provider: disqus
+#   disqus:
+#     short_name: from-zen-to-code
+#   livefyre:
+#     site_id: 123
+#   intensedebate: 123
+#     account: 123abc
+#   facebook: 
+#     appid: 123
+#     num_posts: 5
+#     width: 580
+#     colorscheme: light
+
+disqus:
+  # Leave shortname blank to disable comments site-wide.
+  # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+  shortname: 'from-zen-to-code'
+
+plugins:
+  - jekyll-seo-tag
+
+leancloud:
+  enable: false
+  app_id: cBvKNy2xMfuYj59WhjtxL7Pb-MdYXbMMI
+  app_key: 8R8pzlSIqnHQz26pgL45Gg7H
+
+setting:
+  date_format: "%b %-d, %Y"
+
+exclude: [vendor]

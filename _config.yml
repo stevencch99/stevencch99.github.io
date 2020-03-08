@@ -69,5 +69,5 @@ leancloud:
   app_id: cBvKNy2xMfuYj59WhjtxL7Pb-MdYXbMMI
   app_key: 8R8pzlSIqnHQz26pgL45Gg7H
 
-minima:
+setting:
   date_format: "%b %-d, %Y"

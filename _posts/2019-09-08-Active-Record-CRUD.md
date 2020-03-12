@@ -3,7 +3,7 @@ layout: post
 title: "ActiveRecord - CRUD: Creat, Read, Update, Delete"
 description: "ActiveRecord - CRUD: Creat, Read, Update, Delete"
 crawlertitle: "ActiveRecord - CRUD: Creat, Read, Update, Delete"
-date: 2019-09-09 01:10:46 +0800
+date: 2019-09-08 01:10:46 +0800
 categories: Rails
 tags: Rails ActiveRecord
 comments: true

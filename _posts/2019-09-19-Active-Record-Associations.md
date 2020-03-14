@@ -19,7 +19,7 @@ comments: true
 
 例如訂單與發票的關係：
 
-- 每份訂單(orders)最多對應一張發票(invoices)。
+- 每份訂單(orders) 最多對應一張發票 (invoices)。
 透過對模型添加 `has_one` 和 `belongs_to` 宣告，在 Rails 中宣告此關聯性。
 
 ```ruby
@@ -40,7 +40,7 @@ end
 
 ## 一對多關聯
 
-例如一份訂單可以包含任意數量的訂單項目(line items)，在資料庫中這些訂單項目紀錄中，都會包含一樣的外部鍵指向同一張訂單。
+例如一份訂單可以包含任意數量的訂單項目 (line items)，在資料庫中這些訂單項目紀錄中，都會包含一樣的外部鍵指向同一張訂單。
 
 ```ruby
 # LineItem model
@@ -58,11 +58,11 @@ end
 
 ## 多對多關聯
 
-多對多也是一種常見的關聯，對於這種情況，SQL 的慣例是在這兩者間建立第三個資料表，這個資料表被稱為連接表(join table)。
+多對多也是一種常見的關聯，對於這種情況，SQL 的慣例是在這兩者間建立第三個資料表，這個資料表被稱為連接表 (join table)。
 
 在這張表中儲存了相關聯紀錄的外鍵，按照慣例，Active Record 會認為這表的命名，應該是兩張目標表的名子**按照字母順序**連接起來的結果。
 
-如下例子的 migration 檔：一篇文章(article)可以有很多標籤(tags)，也可以透過一個標籤找到多篇相關的文章。  
+如下例子的 migration 檔：一篇文章 (article) 可以有很多標籤 (tags)，也可以透過一個標籤找到多篇相關的文章。
 
 ```ruby
 def self.up
@@ -81,14 +81,13 @@ def self.up
     t.column :tag_id,     :integer
   end
 
-  # 加入索引(index)提升查詢效能，應對將來越來越大的資料量
+  # 加入索引 (index) 提升查詢效能，應對將來越來越大的資料量
   add_index :aritcles_tags, [:article_id, :tag_id], unique: true
   add_index :aritcles_tags, :article_id
 end
 ```
 
-因為文章和標籤 id 的組合已經是唯一不重複的了，所以在這邊設定，此連結表上不需要有主鍵欄位(`id: false`)。
-
+因為文章和標籤 id 的組合已經是唯一不重複的了，所以在此設定連結表上不需要有主鍵欄位 (`id: false`)。  
 接著在表內增加了兩個索引。其中，複合索引會建立一個可以同時透過兩個外鍵欄位執行資料庫搜尋的索引。  
 以下兩組 SQL 敘述是等價的：
 
@@ -112,14 +111,14 @@ class Tag < ActiveRecord::Base
   # ...
 end
 ```
-你可能會想建一個程式碼片段(code snippet)來呵護可憐的手指⋯⋯  
+你可能會想建一個程式碼片段 (code snippet) 來呵護可憐的手指⋯⋯
 推薦 [高見龍](https://kaochenlong.com/) 龍哥的教學影片：[(YouTube)自己動手做 Code Snippet](https://youtu.be/nw9PP94hwuM)
 
 ## 將模型當成連接表
 
 純粹的連接表應該只包含一對外鍵欄位，當實際情況需要加入更多資料的時候，才特別建立模型物件來進行操作。
 
-舉個例子，我們想要紀錄使用者讀完文章後給的評價(rating)或者閱讀時間，那麼有這一個中間表來作紀錄，想來會比較合適。
+舉個例子，我們想要紀錄使用者讀完文章後給的評價 (rating) 或者閱讀時間，那麼有這一個中間表來作紀錄，想來會比較合適。
 
 就叫它 **Reading** 吧：
 
@@ -187,23 +186,23 @@ end
 - 從資料庫層面處理
 使用 `select:` 參數來替換掉原本 Active Record 預設轉譯 SQL 的 `SELECT` 子句。
 
-```ruby
-  class Article < ActiveRecord::Base
-    has_many :readings
-    has_many :readers, through: :readings, source: :user, select: "distinct users.*"
-  end
-```
+  ```ruby
+    class Article < ActiveRecord::Base
+      has_many :readings
+      has_many :readers, through: :readings, source: :user, select: "distinct users.*"
+    end
+  ```
 
-## 擴充關聯(association)
+## 擴充關聯 (association)
 
-前面提到的關聯宣告(`has_one`, `belongs_to`)會建立模型物件之間的關聯敘述，面對實務上更多各式不同的商業邏輯和關聯需求，前面的範例已經示範如何透過 Reading Model 擴充關聯，列出該文章的快樂讀者們，另一種方法則是在引用這些物件的時候把它加入查詢條件中：
+前面提到的關聯宣告 (`has_one`, `belongs_to`) 會建立模型物件之間的關聯敘述，面對實務上各式不同的商業邏輯和關聯需求，前面的範例已經示範如何透過 Reading Model 擴充關聯，列出該文章的快樂讀者們，另一種方法則是在引用這些物件的時候把它加入查詢條件中：
 
 ```ruby
 user = User.find(123)
 user.articles.where('rating >= ?', 3)
 ```
 
-這方法的缺點就是會打亂模型物件的封裝，這時我們可以在 `has_many` 宣告加上程式碼區塊(block)，達成同樣的查詢。
+這方法的缺點就是會打亂模型物件的封裝，這時我們可以在 `has_many` 宣告加上程式碼區塊 (block)，達成同樣的查詢。
 
 ```ruby
 class User < ActiveRecord::Base

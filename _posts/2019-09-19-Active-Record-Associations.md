@@ -19,7 +19,7 @@ comments: true
 
 例如訂單與發票的關係：
 
-- 每份訂單(orders) 最多對應一張發票 (invoices)。
+- 每份訂單 (orders) 最多對應一張發票 (invoices)。
 透過對模型添加 `has_one` 和 `belongs_to` 宣告，在 Rails 中宣告此關聯性。
 
 ```ruby

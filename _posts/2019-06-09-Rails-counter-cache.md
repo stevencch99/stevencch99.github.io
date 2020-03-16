@@ -12,30 +12,32 @@ comments: true
 
 ## 情境
 
-專案`Project` model has many 任務`Task`.
+現有 `Project` model，has many `Task` model.
 
-`Project` model
 ```ruby
+# project.rb
 class Project < ApplicationRecord
   has_many :tasks
 end
-```
-`projects_controller.rb`
-```ruby
+# ...
+
+# projects_controller.rb
 def index
   @projects = Project.all
 end
 ```
 
+對應的 view 長這樣：  
 `views/projects/index.html.erb`
 ```ruby
-  <% @projects.each do |project| %>
-    <tr>
-      <td><%= project.name %>(<%= project.tasks.size %>)</td>
-    </tr>
-  <% end %>
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= project.name %>(<%= project.tasks.size %>)</td>
+  </tr>
+<% end %>
 ```
-讀取頁面時就會出現 N+1 Query 問題，1 個專案若有 3 個任務便會做 3 + 1 次查詢：`SELECT “tasks”.* FROM “tasks” WHERE “tasks”.”project_id” = ?`
+
+讀取頁面時就會出現 N+1 Query 問題，1 個專案若有 3 個任務便會做 3 + 1 次查詢：`SELECT “tasks”.* FROM “tasks” WHERE “tasks”.”project_id” = ? ...`
 
 ![N + 1 Query](https://cdn-images-1.medium.com/max/2788/1*g0xa5I3DTjz0qCuKYo3sFw.jpeg)
 
@@ -63,22 +65,7 @@ end
 
 執行 `$ rails db:migrate`
 
-### 編輯 Task model
-
-開啟 counter cache:
-
-```ruby
-class Task < ApplicationRecord
-  belongs_to :project, counter_cache: true
-end
-```
-
-如果想指定其他欄位儲存 counter cache 請改寫為
-`counter_cache: 'COLUMN_NAME'`
-
-![指定 vote 欄位作為紀錄用](https://cdn-images-1.medium.com/max/2000/1*mofqtYMzoIQMsLZFC_10tg.jpeg)
-
-確認資料表內容
+確認資料表內容：
 
 `schema.rb`
 
@@ -99,12 +86,30 @@ create_table "tasks", force: :cascade do |t|
 end
 ```
 
+### 編輯 Task model
+
+開啟 counter cache 功能:
+
+```ruby
+class Task < ApplicationRecord
+  belongs_to :project, counter_cache: true
+end
+```
+
+- 如果想指定其他欄位儲存 counter cache，需要將這裡的 `true` 改寫為 `counter_cache: 'COLUMN_NAME'`，例如這邊想要指定 `candidate` 資料表的 `vote` 欄位用來記錄得票數:
+
+  ```ruby
+  class Vote < ApplicationRecord
+    belongs_to :candidate, counter_cache: 'vote'
+  end
+  ```
+
 ### 建立 rake task 更新 counter cache
 
 更新既有 projects 的 tasks count 
 `lib/tasks/update_tasks_count.rb`
 
-> 這邊使用我在[五倍紅寶石](https://5xruby.tw/)學到的技巧，將這段 rake task 整理在 namespace db 之下。
+> 這邊使用我在[五倍紅寶石](https://5xruby.tw/)學到的技巧，將這段 rake task 整理在 namespace: db 底下。
 
 ```ruby
 namespace :db do
@@ -120,22 +125,21 @@ namespace :db do
 end
 ```
 
-查看指令確認一下沒有寫錯：`$ rails -T`
+在終端機輸入`$ rails -T` 確認一下沒有寫錯，成功建立 rake task 的話應該可以看到剛才寫的描述：
 
 ![$ rails -T](https://cdn-images-1.medium.com/max/2000/1*FWZtEUGwVe3jbrVIirNryQ.jpeg)
 
-執行 `rails db:updste_tasks`
+接著輸入 `$ rails db:updste_tasks`
 
 ![$ rails db:updste_tasks](https://cdn-images-1.medium.com/max/2000/1*rPr9CH7A9xenQActw0cPIw.jpeg)
 
 ### 重啟伺服器
 
-再次讀取頁面查看 SQL queries 只剩一行： `SELECT “projects”.* FROM “projects”`
+再次讀取頁面查看 SQL queries 只剩一行：`SELECT “projects”.* FROM “projects”`，改善前在這個畫面讀取時出現的那些 `SELECT COUNT(*) ...` 查詢都不見蹤影了。
 
-![禮成，奏樂！](https://cdn-images-1.medium.com/max/2000/1*Dt9fSABZs7SSRgBYf-6PJQ.jpeg)
-*禮成，奏樂！*
+![成功改善 n + 1 query 問題](https://cdn-images-1.medium.com/max/2000/1*Dt9fSABZs7SSRgBYf-6PJQ.jpeg)
 
-> ## 大功告成！
+> *禮成，奏樂！*
 
 ## 參考資料：
 

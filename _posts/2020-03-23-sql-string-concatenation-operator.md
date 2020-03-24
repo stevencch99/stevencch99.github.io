@@ -13,7 +13,7 @@ comments: true
 在這之前從沒想過可以這樣用，趕緊紀錄下來！
 
 ## 有禮貌運動 —— 和資料說你好
-以下以 query & result 以 PostgresSQL 的 psql 示範，  
+以下以 query & result 以 PostgresSQL 的 `psql` 終端介面示範，  
 如果心血來潮突然想和資料表 `users` 裡面所有的 user 打招呼，該怎麼做？
 
 首先看一下資料表裡面都有誰
@@ -41,10 +41,9 @@ SELECT title, name FROM users;
 
 ```sql
 SELECT 'Hello, ' || title || name || '!' FROM users;
-```
 
-> 你好我好大家好！
-```sql
+-- result: 你好我好大家好！
+
         ?column?
 -------------------------
 
@@ -71,7 +70,7 @@ SELECT 'The city' || ' is ' || NULL FROM dual;
 -- Result: The city is
 ```
 
-那回到 PostgresSQL 的這個情況下，可用的解法為 `COALESCE` 函式，裡面第一個參數如果等於 NULL，就回傳第二個參數作為替代，非常好懂。
+那回到 PostgresSQL 的這個情況下，可用的解法為 `COALESCE()` 函式，裡面第一個參數如果等於 NULL，就回傳第二個參數作為替代，非常好懂。
 這裡給空字串作為替代值：
 
 ```sql
@@ -97,9 +96,9 @@ SELECT 'Hello, ' || COALESCE(title, '') || COALESCE(name, '') || '!' FROM users;
 
 ## 應用
 
-現在我們暸解透過字串連接的方法，可將 `SELECT` 查詢的結果隨意組裝成字串輸出，那在實務上就有了很多能夠發揮的空間，  
-例如以下例子能夠生成 `INSERT INTO...` 語句，將 1 號店家 (store_id = 1) 的 items，包含名稱和價格也都新增一份到 2 號店家，  
-接著只要複製貼上產出來的語句，用這種方式能簡單快速地在資料庫中建立相關的記錄，在建立測試資料的時候特別好用！
+現在我們暸解透過字串連接的方法，可將 `SELECT` 查詢的結果隨意組裝成字串輸出，那在實務上就有了很多能夠發揮的空間。
+
+例如以下例子能夠生成 `INSERT INTO...` 語句，將 1 號店家 (store_id = 1) 所擁有的 items，包含名稱和價格也都新增一份到 2 號店家，接著只要複製貼上產出來的語句，用這種方式能簡單快速地在資料庫中建立相關的記錄，在建立測試資料的時候特別好用！
 
 ```sql
 SELECT 'INSERT INTO items (name, price, store_id, created_at, updated_at) VALUES ('''||name||''', '||price||', 2, to_date(''20200323'', ''yyyymmdd''), to_date(''20200323'', ''yyyymmdd''));'
@@ -112,11 +111,13 @@ SELECT 'INSERT INTO items (name, price, store_id, created_at, updated_at) VALUES
  INSERT INTO items (name, price, store_id, created_at, updated_at) VALUES ('test_item1', 399.0, 2, to_date('20200323', 'yyyymmdd'), to_date('20200323', 'yyyymmdd'));
  INSERT INTO items (name, price, store_id, created_at, updated_at) VALUES ('test_item2', 499.0, 2, to_date('20200323', 'yyyymmdd'), to_date('20200323', 'yyyymmdd'));
  INSERT INTO items (name, price, store_id, created_at, updated_at) VALUES ('test_item3', 199.0, 2, to_date('20200323', 'yyyymmdd'), to_date('20200323', 'yyyymmdd'));
+-- ...omitted
 ```
+
 > 使用兩個相鄰的單引號 `''` 以跳脫字串中的單引號。
 
 掌握這個技巧之後就能配合各種情況自由發揮囉！
 
 ## References
-- [|| String Concatenation Operator - Oracle to SQL Server Migration](http://www.sqlines.com/oracle-to-sql-server/string_concat)
+- [String Concatenation Operator - Oracle to SQL Server Migration](http://www.sqlines.com/oracle-to-sql-server/string_concat)
 - [PostgreSQL documentation (4.1.2.1. String Constants)](http://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-STRINGS)

@@ -12,8 +12,9 @@ comments: true
 最近看到 SQL 字串連接符 (concatenation operator) `||` 一個相當有趣的用法，把 `SELECT` 的結果組成任何其他我們想要的 SQL 語句，在這之前從沒想過可以這樣用，趕緊紀錄下來！
 
 ## 有禮貌運動 —— 和資料說你好
-本文 query & result 以 PostgresSQL 的 `psql` 終端介面示範，  
-如果心血來潮突然想和資料表 `users` 裡面所有的 user 打招呼，該怎麼做？
+> 本文 query & result 以 PostgresSQL 的 `psql` 終端介面示範。  
+
+心血來潮突然想和資料表 `users` 裡面的所有人打招呼，該怎麼做？
 
 首先看一下資料表裡面都有誰？
 
@@ -21,7 +22,7 @@ comments: true
 SELECT title, name FROM users;
 ```
 
-查詢結果有九人。
+查詢結果有九人：
 ```sql
  title |     name
 -------+--------------
@@ -37,7 +38,7 @@ SELECT title, name FROM users;
 (9 rows)
 ```
 
-使用字串連接符 `||` ，將搜尋結果串成一段句子：
+使用字串連接符 `||` ，將搜尋結果串成一段句子，so easy~
 
 ```sql
 SELECT 'Hello, ' || title || name || '!' FROM users;
@@ -58,7 +59,7 @@ SELECT 'Hello, ' || title || name || '!' FROM users;
 (9 rows)
 ```
 
-注意到有兩個人不見了，是在...  
+這邊注意到有兩個人不見了，是在...  
 Hello？
 
 原來資料庫裡這兩人沒有 title （title 為 NULL），在 PostgreSQL 使用字串連接時有個限制是不能和 NULL 一起接，整串會爆炸。

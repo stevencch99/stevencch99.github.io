@@ -82,7 +82,7 @@ s3.singleton_methods #=> []
 s3.foo               #=> NoMethodError (undefined method `foo' for #<Klass:0x00007fe10710c878>)
 ```
 
-# 淺層複製 (shallow copy)
+## 淺層複製 (shallow copy)
 
 這兩個複製方法同屬淺層複製，複製對象如果含有其他物件的參照，例如陣列中包含著字串物件，結果也只是複製那些字串的參照，結果會指向同一個物件，這點可以從完全相同的 Object Id 看出來：
 
@@ -107,12 +107,35 @@ b #=> ["App", "bee", "cake"]
 a #=> ["App", "bee", "cake"]
 ```
 
-以這個例子來說，如果想變更陣列中字串的內容又不影響到原陣列，還是重新指派值會比較安全：
+以這個例子來說，重新指派值好像沒問題：
 
 ```ruby
 b[0] = 'Deep'
 b #=> ["Deep", "bee", "cake"]
 a #=> ["App", "bee", "cake"]
+```
+
+但是如果更深一層就不行了：
+
+```ruby
+a = [0, [1, 2]]
+b = a.clone
+
+b[0] = 9
+b[1][0] = 8
+
+b #=> [9, [8, 2]]
+a #=> [0, [8, 2]]
+```
+
+這就是淺層複製的問題，如果不希望影響到原陣列的內容，一個快速解決的手段是連同陣列的下一層也複製起來：
+
+```ruby
+c = a.clone.map(&:clone)
+c[0] = 9
+c[1][0] = 8
+c #=> [9, [8, 2]]
+a #=> [0, [1, 2]]
 ```
 
 或者進行深層複製 (deep copy)，這可以透過 Ruby 的標準函式庫 [Marshal](https://ruby-doc.org/core-2.7.1/Marshal.html) 來處理：
@@ -130,6 +153,42 @@ b.each(&:upcase!) #=> ["APP", "BEE", "CAKE"]
 a                 #=> ["app", "bee", "cake"]
 ```
 
+## initialize_copy
+
+另外有一個和 class 的複製相關的特殊方法：`initialize_copy`，會在複製完成後啟動：
+
+```ruby
+class Klass
+  attr_accessor :name
+  attr_reader :timestamp
+
+  def initialize(name)
+    @name = name
+    @timestamp = Time.now
+  end
+end
+
+a = Klass.new('Object1')
+b = a.clone
+
+a.timestamp == b.timestamp #=> true
+```
+
+可以看到兩者是完全一樣的，因為 `initialize` 建構子被跳過了，所以複製的物件和原物件 timestamp 完全相同。如果要在複製的同時押上新的 timestamp，可以透過 `initialize_copy` 方法：
+
+```ruby
+class Klass
+  def initialize_copy(other)
+    @timestamp = Time.now
+  end
+end
+
+c = Klass.new('Object2')
+d = c.clone
+
+c.timestamp == d.timestamp #=> false
+```
+
 ## 小結
 
 使用上要注意到 `clone` 會複製目標對象的內部狀態和 `singleton_methods`，`dup` 只會複製對象本身的內容，且不含 frozen 狀態。此外，這兩個方法都只是淺層複製，如果一不小心直接變更複製的物件中所參照的其他物件，可能會導致意外地影響原始物件的內容，不可不慎。
@@ -137,3 +196,4 @@ a                 #=> ["app", "bee", "cake"]
 ## 參考資料
 - [APIdock](https://apidock.com/ruby/v2_1_10/Object/dup)
 - [RubyGuides](https://www.rubyguides.com/2018/11/dup-vs-clone/)
+- [ruby rails 的复制 dup clone](https://blog.csdn.net/dazhi_100/article/details/17021741)

@@ -4,8 +4,8 @@ title: "[Ruby] Clone, Dup 和 Shallow copy"
 description: "[Ruby] Clone 和 Dup 的差異"
 crawlertitle: "[Ruby] Clone, Dup 和 Shallow copy"
 date: 2020-04-02 23:59:59 +0800
-categories: RUBY
-tags: RUBY
+categories: Ruby
+tags: Ruby
 comments: true
 ---
 在 Ruby 裡面所見幾乎任何東西都是物件 (Object)，為了要複製物件，常常我們會用到 `dup` 或者 `clone`，本篇記錄下這兩者在使用上的不同：

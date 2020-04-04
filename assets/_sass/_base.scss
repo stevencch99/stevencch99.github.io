@@ -1,3 +1,4 @@
+// FIXME - adjust import
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
 /*
 * Base Styles
@@ -12,13 +13,11 @@
 }
 
 body {
-  // font: normal 17px/1.5 'PT Serif', "Helvetica Neue", "Helvetica", Arial,'Noto Sans TC', sans-serif;
-  font: normal 17px/1.5 'Noto Sans TC', sans-serif;
+  font: $font-setting__body;
   width: 100%;
   height: 100%;
   background: #fdfdfd;
   color: #222;
-  font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -32,8 +31,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: bold;
+  font-family: $font-setting;
+  font-weight: 450;
 
   a:link,
   a:hover,
@@ -49,34 +48,34 @@ h6 {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 h2 {
-  font-size: 1.4em;
+  font-size: 1.4rem;
 }
 
 h3 {
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 h4 {
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 h5 {
-  font-size: .8em;
+  font-size: .8rem;
 }
 
 h6 {
-  font-size: .6em;
+  font-size: .6rem;
 }
 
 .heading {
   font-size: 2.3em;
   // text-transform: uppercase;
   font-weight: bold;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: $font-setting;
 
   // margin: .67em 0;
   a:link,

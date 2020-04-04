@@ -29,6 +29,7 @@ a {
   &:focus,
   &:active {
     text-decoration: none;
+    @extend .transit;
   }
 }
 
@@ -39,7 +40,8 @@ a {
 .fab:hover,
 .fab:focus,
 .fab:active {
-  color: #766257
+  color: $link-color;
+  @extend .transit;
 }
 
 .about-icon {
@@ -138,7 +140,8 @@ a {
     &:hover,
     &:focus,
     &:active {
-      color: #766257;
+      color: $link-color;
+      @extend .transit;
     }
   }
 }
@@ -202,8 +205,9 @@ a {
       text-decoration: none;
 
       &:hover {
-        color: #766257;
+        color: $link-color;
         text-decoration: none;
+        @extend .transit;
       }
 
       &:not(:last-child):after {
@@ -357,11 +361,10 @@ code.language-plaintext {
   }
 
   a {
-    text-decoration: none
-  }
-
-  a:hover {
-    text-decoration: underline
+    &:hover {
+      color: $link-color;
+      transition: all .1s;
+    }
   }
 }
 
@@ -400,7 +403,7 @@ code.language-plaintext {
   transition: border-color .5s ease-in 0s;
 
   &:hover {
-    border-color: #0D243B;
+    border-color: $link-color;
   }
 
   &__prev,

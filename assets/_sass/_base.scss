@@ -7,6 +7,14 @@
   margin: 0 auto;
 }
 
+.transit {
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+}
+
 .hidden {
   display: none;
 }
@@ -43,6 +51,7 @@ h6 {
 
   a:hover {
     text-decoration: underline;
+    @extend .transit;
   }
 }
 
@@ -274,6 +283,23 @@ article a.btn {
   top: 0;
   z-index: 400;
   display: none;
+  &:before {
+    content: '';
+    background-color: #fff;
+    position: relative;
+    display: block;
+    width: 0;
+    height: 52px;
+    top: 50%;
+    right: -65%;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    opacity: 0.3;
+    @extend .transit;
+  }
+}
+#switcher:hover:before {
+  opacity: 1;
 }
 
 .transition-divs {

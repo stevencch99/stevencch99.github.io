@@ -10,16 +10,12 @@
         <div class="heading">
           {% if page.tags %}
             {% for tag in page.tags %}
-              <!-- <a href="{{ site.baseurl }}/posts/#{{ tag | downcase }}">{{ tag | downcase }}</a> -->
-              <a href="{{ site.baseurl }}/posts/#{{ tag | capitalize }}" class="aside__landing">{{ tag | upcase }}</a>
+              <a href="{{ site.baseurl }}/posts/#{{ tag | downcase }}" class="aside__landing">{{ tag | upcase }}</a>
             {% endfor %}
           {% elsif page.title %}
             <span class="aside__landing">{{ page.title }}</span> 
           {% else %}
             <a href="{{ site.baseurl }}" class="aside__landing">From Zen to Code</a>
-            <!-- <br/> -->
-            <!-- <a href="https://github.com/stevencch99"><i class="fab fa-github-alt fa-spin"></i></a>
-            <a href="https://www.linkedin.com/in/stevenchchang/"><i class="fab fa-linkedin"></i></a> -->
           {% endif %}
         </div>
 

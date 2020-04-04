@@ -2,6 +2,19 @@
 * Media Queries
 * ========================================================================== */
 
+@media screen and (max-width: $md-break-point) {
+  .nav-main {
+    text-align: center;
+    .blog-logo {
+      font-size: 1.3rem;
+      -webkit-order: 0;
+      -ms-flex-order: 0;
+      order: 0;
+      width: auto;
+    }
+  }
+}
+
 @media screen and (min-width: $md-break-point) {
   body { font-size: 17px; }
   h1 { font-size: 2em; }
@@ -20,19 +33,22 @@
     height: 40px;
   }
 
+  .toggle-button {
+    display: none;
+  }
+
   .nav-main {
     text-align: center;
-  }
-
-  .nav-main .blog-logo {
-    -webkit-order: 0;
-    -ms-flex-order: 0;
-    order: 0;
-    width: auto;
-  }
-
-  .nav-main a:not(.blog-logo) {
-    display: block;
+    .blog-logo {
+      font-size: 1.5rem;
+      -webkit-order: 0;
+      -ms-flex-order: 0;
+      order: 0;
+      width: auto;
+    }
+    a:not(.blog-logo) {
+      display: block;
+    }
   }
 
   .sidebar { display: block; }
@@ -61,7 +77,6 @@
     .element-container {
       width: 33%;
     }
-
   }
 
   .date { display: block;}
@@ -89,15 +104,11 @@
   }
 }
 
-
-
 @media screen and (max-width: $break-point) {
   .nav-main a {
     font-size: 14px;
   }
 }
-
-
 
 @media screen and (min-width: $break-point) {
   table {

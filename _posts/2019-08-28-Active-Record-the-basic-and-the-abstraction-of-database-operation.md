@@ -87,12 +87,12 @@ Active Record 類別對應資料表，類別的實體物件對應資料表中的
 
 呼叫 `Store.find(1)` 會傳回 `Store` 類別的一個實體，這個實體包含了主鍵(Primary Key)為 1 的紀錄中的資料。
 
-![Call Store.find(1) in rails console](https://i.imgur.com/O7vibSN.png)
+![Call Store.find(1) in rails console](https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/blog/Call+Store.find(1)+in+rails+console.png)
 
 每個資料表可以有許多紀錄，每筆紀錄包含了各種欄位。
-![Database table structure](https://i.imgur.com/r37E6rH.png)
+![Database table structure](https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/blog/Database_table_structure.png)
 
-Rails 會自動建構屬性的存取器，簡化取值和設定的過程，假設我們另外有一個 Cat 類別：
+Rails 會自動建構屬性的存取器，簡化取值和設定的過程，假設我們另外有一個 Cat 類別，包含了 name 和 age 屬性在其中，對於 Cat 類別的實例，只需要呼叫透過 `attr_accessor` 獲得的方法就可以存取這些屬性：
 
 ```ruby
 class Cat
@@ -138,7 +138,7 @@ store.created_at_before_type_cast
 #=> '2019-06-12 13:14:24.905577'
 ```
 
-![Output of _before_type_cast method](https://i.imgur.com/XmMaWuC.jpg)
+![Output of _before_type_cast method](https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/blog/Output_of+_before_type_cast+method.jpeg)
 
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 

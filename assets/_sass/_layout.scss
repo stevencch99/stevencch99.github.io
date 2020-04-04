@@ -29,6 +29,7 @@ a {
   &:focus,
   &:active {
     text-decoration: none;
+    @extend .transit;
   }
 }
 
@@ -39,7 +40,8 @@ a {
 .fab:hover,
 .fab:focus,
 .fab:active {
-  color: #766257
+  color: #766257;
+  transition: all .2s;
 }
 
 .about-icon {
@@ -139,6 +141,7 @@ a {
     &:focus,
     &:active {
       color: #766257;
+      @extend .transit;
     }
   }
 }
@@ -204,6 +207,7 @@ a {
       &:hover {
         color: #766257;
         text-decoration: none;
+        @extend .transit;
       }
 
       &:not(:last-child):after {

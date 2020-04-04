@@ -147,7 +147,7 @@ function primeString(s) {
 }
 ```
 
-### In Ruby
+### Ruby
 
 ```ruby
 def prime_string(s)
@@ -182,4 +182,4 @@ function primeString(s, count = 1) {
 
 就這樣，和世界的差距又縮小了，覺得非常開心！
 
-> ## Keep Coding 🙌
+> ### Keep Coding 🙌

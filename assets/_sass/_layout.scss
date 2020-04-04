@@ -220,20 +220,23 @@ a {
     font-weight: 400;
   }
 
-  &__text--title {
-    display: inline-block;
-    color: #fff;
-    font-size: 32px;
-    font-weight: 200;
-    text-decoration: none;
-    margin-bottom: 4px;
-  }
+  &__text {
+    margin: 0;
+    &--title {
+      display: inline-block;
+      color: #fff;
+      font-size: 32px;
+      font-weight: 200;
+      text-decoration: none;
+      margin-bottom: 4px;
+    }
 
-  &__text--icon {
-    display: inline-block;
-    margin: 0 .5rem;
-    font-size: 24px;
-    color: #fff;
+    &--icon {
+      display: inline-block;
+      margin: 0 .5rem;
+      font-size: 24px;
+      color: #fff;
+    }
   }
 }
 

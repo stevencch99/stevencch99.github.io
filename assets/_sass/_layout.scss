@@ -107,8 +107,6 @@ a {
   border-bottom: 1px solid #ddd;
 }
 
-
-
 /*
 * Header Navigation
 * ========================================================================== */
@@ -218,10 +216,15 @@ a {
 }
 
 .aside{
+  &__landing {
+    font-weight: 400;
+  }
+
   &__text--title {
     display: inline-block;
     color: #fff;
     font-size: 32px;
+    font-weight: 200;
     text-decoration: none;
     margin-bottom: 4px;
   }

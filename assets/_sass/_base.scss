@@ -1,4 +1,3 @@
-// FIXME - adjust import
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
 /*
 * Base Styles
@@ -77,7 +76,6 @@ h6 {
   font-weight: bold;
   font-family: $font-setting;
 
-  // margin: .67em 0;
   a:link,
   a:hover,
   a:focus,
@@ -116,37 +114,24 @@ textarea {
   box-sizing: border-box;
 }
 
-
 /*
 * Code Style
 * ========================================================================== */
 pre {
-  // line-height: 1.5;
-  // border: 1px solid #ddd;
   padding: 1em;
-  // background: #eee;
   margin: 2em 0;
-
-  // code {
-  //   background-color: #eee;
-  //   overflow: auto;
-  // }
 }
 
 code,
 pre {
-  // background-color: rgb(122, 180, 202);
   background-color: #eee;
   border: 1px solid #eee;
   border-radius: 4px;
-  // padding: .1em .2em;
   font-family: "Menlo", 'Andale Mono', 'Consolas', monospace;
   font-size: .9em;
   line-height: 1.5;
   -webkit-font-smoothing: auto;
 }
-
-
 
 /*
 * Table
@@ -181,7 +166,6 @@ table caption {
   padding: .3em;
   border: 1px solid #ddd;
 }
-
 
 /*
 * Blockquote
@@ -218,8 +202,6 @@ blockquote {
 blockquote> :last-child {
   margin-bottom: 0;
 }
-
-
 
 /*
 * Buttons
@@ -270,8 +252,6 @@ article a.btn {
     transform: translateY(10px);
   }
 }
-
-
 
 /*
 * JavaScript Classes

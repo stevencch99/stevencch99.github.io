@@ -7,14 +7,6 @@
   margin: 0 auto;
 }
 
-.transit {
-  -webkit-transition: all .2s;
-  -moz-transition: all .2s;
-  -ms-transition: all .2s;
-  -o-transition: all .2s;
-  transition: all .2s;
-}
-
 .hidden {
   display: none;
 }
@@ -40,6 +32,7 @@ h5,
 h6 {
   font-family: $font-setting;
   font-weight: 450;
+  margin-block-start: 0;
 
   a:link,
   a:hover,
@@ -51,7 +44,7 @@ h6 {
 
   a:hover {
     text-decoration: underline;
-    @extend .transit;
+    @extend %transit;
   }
 }
 
@@ -295,7 +288,7 @@ article a.btn {
     border: 2px solid #fff;
     border-radius: 2px;
     opacity: 0.3;
-    @extend .transit;
+    @extend %transit;
   }
 }
 #switcher:hover:before {

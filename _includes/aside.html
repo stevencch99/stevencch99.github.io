@@ -10,7 +10,7 @@
         <div class="heading">
           {% if page.tags %}
             {% for tag in page.tags %}
-              <a href="{{ site.baseurl }}/posts/#{{ tag | downcase }}" class="aside__landing">{{ tag | upcase }}</a>
+              <a href="{{ site.baseurl }}/posts/#{{ tag | downcase }}" class="aside__landing--tags">{{ tag | upcase }}</a>
             {% endfor %}
           {% elsif page.title %}
             <span class="aside__landing">{{ page.title }}</span> 

@@ -1,9 +1,9 @@
 ul {
-  padding-inline-start: 1.5em;
+  padding-inline-start: 1.5rem;
 }
 
 li {
-  margin: 0.7em 0;
+  margin: 0 0 0.7rem 0;
 }
 
 /*
@@ -28,8 +28,8 @@ a {
   &:hover,
   &:focus,
   &:active {
-    text-decoration: none;
-    @extend .transit;
+    @extend %txt-deco-none;
+    @extend %transit;
   }
 }
 
@@ -37,12 +37,16 @@ a {
 * custom icons
 * ========================================================================== */
 
-.fab:hover,
-.fab:focus,
-.fab:active {
-  color: $link-color;
-  @extend .transit;
+.fab {
+  opacity: 0.3;
+  @extend %transit;
+  &:hover,
+  &:focus,
+  &:active {
+    opacity: 1;
+  }
 }
+
 
 .about-icon {
   margin-right: .5rem
@@ -135,13 +139,13 @@ a {
     line-height: 50px;
     margin: auto;
     color: #333;
-    text-decoration: none;
+    @extend %txt-deco-none;
 
     &:hover,
     &:focus,
     &:active {
       color: $link-color;
-      @extend .transit;
+      @extend %transit;
     }
   }
 }
@@ -155,7 +159,7 @@ a {
     line-height: 50px;
     /* font-size: 18px; */
     font-size: 1.5rem;
-    text-decoration: none;
+    @extend %txt-deco-none;
     -webkit-order: 0;
     -ms-flex-order: 0;
     order: 0;
@@ -202,12 +206,12 @@ a {
     .heading a {
       position: relative;
       margin-right: 5px;
-      text-decoration: none;
+      @extend %txt-deco-none;
 
       &:hover {
         color: $link-color;
-        text-decoration: none;
-        @extend .transit;
+        @extend %txt-deco-none;
+        @extend %transit;
       }
 
       &:not(:last-child):after {
@@ -231,7 +235,7 @@ a {
       color: #fff;
       font-size: 32px;
       font-weight: 200;
-      text-decoration: none;
+      @extend %txt-deco-none;
       margin-bottom: 4px;
     }
 
@@ -310,13 +314,23 @@ article {
   }
 }
 
+.tag-wrapper {
+  margin-bottom: 0.7rem;
+}
+
 .post-tags {
   padding: 1px 4px;
-  font-size: 60%;
+  font-size: 0.7rem;
   border: 1px solid #333;
   border-radius: 3px;
-  text-decoration: none;
   font-weight: 800;
+  @extend %txt-deco-none;
+  @extend %transit;
+  &:hover {
+    color: $link-color;
+    border-color: $link-color;
+    // @extend %transit;
+  }
 }
 
 .post-meta {
@@ -361,9 +375,10 @@ code.language-plaintext {
   }
 
   a {
+    @extend %txt-deco-none;
     &:hover {
       color: $link-color;
-      transition: all .1s;
+      @extend %transit;
     }
   }
 }
@@ -396,7 +411,7 @@ code.language-plaintext {
   display: block;
   margin: 10px auto;
   padding: 1em;
-  text-decoration: none;
+  @extend %txt-deco-none;
   outline: none;
   text-align: center;
   border: 1px solid #ddd;

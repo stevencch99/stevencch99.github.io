@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Easy Fixing File Encoding (in Vim)"
-description: "Easy Fixing File Encoding (in Vim)"
-crawlertitle: "Easy Fixing File Encoding (in Vim)"
+title: "[Vim] Easy Fixing File Encoding"
+description: "[Vim] Easy Fixing File Encoding"
+crawlertitle: "[Vim] Easy Fixing File Encoding"
 date: 2020-02-05 23:59:59 +0800
 categories: Editor
 tags: Editor Vim Linux

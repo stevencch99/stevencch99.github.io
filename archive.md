@@ -15,6 +15,7 @@ active: archive
 
 {% assign sort_tags = tags | split: ' ' | sort %}
 
+<!-- WIP move tags-wrapper into include layout -->
 <div class="tag-wrapper">
 {% for tag in sort_tags %}
   <a class="post-tags" href="{{ site.baseurl }}/posts/#{{ tag | downcase }}">{{ tag }}</a>

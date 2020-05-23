@@ -204,6 +204,6 @@ rm -fr %{buildroot}
 %endif # with_python3
 
 %changelog
-* Sun Mar  8 2020 Daniel Veillard <veillard@redhat.com>
+* Sat May 23 2020 Daniel Veillard <veillard@redhat.com>
 - upstream release 2.9.10 see http://xmlsoft.org/news.html
 

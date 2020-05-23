@@ -11,7 +11,7 @@ comments: true
 在 Ruby 裡面所見幾乎任何東西都是物件 (Object)，為了要複製物件，常常我們會用到 `dup` 或者 `clone`，本篇記錄下這兩者在使用上的不同：
 
 ```ruby
-a = *10.downto(1)
+a = *10.downto(1) # * = Splat operator
 #=> [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 b = a.clone

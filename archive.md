@@ -27,6 +27,7 @@ active: archive
 
   <ul class="year">
     {% for post in site.tags[tag] %}
+      {% if post.visible != false %}
       <li>
         {%- assign date_format = site.setting.date_format | default: "%b %-d, %Y" -%}
         {% if post.lastmod %}
@@ -37,6 +38,7 @@ active: archive
           <span class="date">{{ post.date | date: date_format }}</span>
         {% endif %}
       </li>
+      {% endif %}
     {% endfor %}
   </ul>
 {% endfor %}

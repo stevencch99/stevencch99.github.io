@@ -175,5 +175,6 @@ visible: false
 
 > **「種樹最好的時機是二十年前，其次是現在。」**
 >  
-> "The best time to plant a tree is twenty years ago. The second-best time is now."  
+> "The best time to plant a tree is twenty years ago.  
+>  The second-best time is now."  
 > -- African Proverb

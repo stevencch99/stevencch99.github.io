@@ -51,7 +51,7 @@ This confusing code is used to convert the argument object which has `.length` p
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 
 So, if we specify the value of `this` in `slice()` to an array-liked object,  
-we make `slice()` method workable on the object, and if we call `slice()` without passing option arguments, it will return the whole chunk as an new array.
+we make `slice()` method workable on the object, and if we call `slice()` without passing optional arguments, it will return the whole chunk as a new array.
 
 ```js
 let listObj = {
@@ -65,11 +65,11 @@ let arr = [].slice.call(listObj);
 console.log(arr); // [ 'zero', 'one', 'two' ]
 ```
 
-As you can see, we could even convert the `listObj` because of the object has property `length` and numeric indices.
+As you can see, we could even convert the `listObj` because the object has property `length` and numeric indices.
 
-In the end, There are other workarounds to convert an object to an array, here's for your references.
+In the end, there are other workarounds to convert an object to an array, here's for your references.
 
-Let's say we have a NodeList object from a website, and we want to manipulate it like an real Array:
+Let's say we have a NodeList object from a website, and we want to manipulate it like a real Array:
 
 ```js
 let links = document.querySelectorAll('.link');

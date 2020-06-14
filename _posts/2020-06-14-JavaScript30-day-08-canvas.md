@@ -3,7 +3,7 @@ layout: post
 title: "JavaScript30 - Canvas"
 description: "JavaScript30 - Canvas"
 crawlertitle: "JavaScript30 - Canvas"
-date: 2020-05-25 22:33:26 +0800
+date: 2020-06-14 22:33:26 +0800
 categories: JavaScript
 tags: JavaScript
 comments: true
@@ -54,81 +54,80 @@ Cylindrical geometries:
   <canvas id="draw" style="border: 1px solid gray" height="500"></canvas>
 </div>
 <script>
-  const demo = document.querySelector('#demo');
-  const canvas = document.querySelector('#draw');
-  const ctx = canvas.getContext('2d');
-  let canvasWrapper = document.getElementById('canvas-wrapper');
-  canvas.width = canvasWrapper.offsetWidth;
-  canvas.height = canvasWrapper.offsetHeight;
-  ctx.strokeStyle = '#fa0';
-  ctx.lineJoin = 'round';
-  ctx.lineCap = 'round';
-  ctx.lineWidth = 100;
-  ctx.globalCompositeOperation = 'color';
-  ctx.miterLimit = 100;
-
-  function resizeCanvas(){
-    console.log('resizing~');
+    const demo = document.querySelector('#demo');
+    const canvas = document.querySelector('#draw');
+    const ctx = canvas.getContext('2d');
+    let canvasWrapper = document.getElementById('canvas-wrapper');
     canvas.width = canvasWrapper.offsetWidth;
     canvas.height = canvasWrapper.offsetHeight;
-  };
 
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-
-  let isDrawing = false;
-  let lastX = 0;
-  let lastY = 0;
-  let hue = 0;
-  let direction = true;
-
-  function draw(e) {
-    if (!isDrawing) return;
-    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-
-    hue++;
-    if (hue >= 360) {
-      hue = 0;
+    function resizeCanvas(){
+      console.log('resizing~');
+      canvas.width = canvasWrapper.offsetWidth;
+      canvas.height = canvasWrapper.offsetHeight;
+      ctx.strokeStyle = '#fa0';
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+      ctx.lineWidth = 100;
+      ctx.globalCompositeOperation = 'color';
+      ctx.miterLimit = 100;
     };
 
-    if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
-      direction = !direction;
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    let hue = 0;
+    let direction = true;
+
+    function draw(e) {
+      if (!isDrawing) return;
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+
+      hue++;
+      if (hue >= 360) {
+        hue = 0;
+      };
+
+      if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+        direction = !direction;
+      }
+
+      if (direction) {
+        ctx.lineWidth++;
+      } else {
+        ctx.lineWidth--;
+      }
     }
 
-    if (direction) {
-      ctx.lineWidth++;
-    } else {
-      ctx.lineWidth--;
-    }
-  }
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
 
-  canvas.addEventListener('mousedown', (e) => {
-    isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-  });
+    function resizeCanvasToDisplaySize(canvas) {
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
 
-  function resizeCanvasToDisplaySize(canvas) {
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        return true;
+      }
 
-    if (canvas.width !== width || canvas.height !== height) {
-      canvas.width = width;
-      canvas.height = height;
-      return true;
+      return false;
     }
 
-    return false;
-  }
-
-  canvas.addEventListener('mousemove', draw);
-  canvas.addEventListener('mouseup', () => isDrawing = false);
-  canvas.addEventListener('mouseout', () => isDrawing = false);
-
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
 </script>
 ---
 

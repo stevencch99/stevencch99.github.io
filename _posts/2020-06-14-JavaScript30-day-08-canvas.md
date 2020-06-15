@@ -1,13 +1,19 @@
 ---
 layout: post
-title: "JavaScript30 - Canvas"
-description: "JavaScript30 - Canvas"
-crawlertitle: "JavaScript30 - Canvas"
+title: "[JavaScript30] Day 08 - Canvas"
+description: "[JavaScript30] Day 08 - Canvas"
+crawlertitle: "[JavaScript30] Day 08 - Canvas"
 date: 2020-06-14 22:33:26 +0800
 categories: JavaScript
 tags: JavaScript
 comments: true
 ---
+
+> This is my note of [JavaScript30](https://javascript30.com/) (*30 day Vanilla JS coding challenge*) -- a fantastic 30 day course teach you to build cool stuffs by just plain JavaScript.  
+> - [Here](https://github.com/wesbos/JavaScript30) is the original repository includes starter files and completed solutions from the author [Wes Bos](https://github.com/wesbos).
+
+---
+
 - toc
 {:toc}
 
@@ -50,84 +56,95 @@ Cylindrical geometries:
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 
 ## DEMO
-<div id="canvas-wrapper">
+<div id="canvas-wrapper" style="height: 600px;">
+  <div class="demo-btn-wrapper" style="display: flex; justify-content: space-between;">
+    <label for="line-size">Line Size</label>
+    <input id="line-size" type="range" name="line-size" min="5" max="100" value="50">
+    <button id="pointer" type="button">Earser</button>
+    <button id="clear-btn" type="button">Clear</button>
+  </div>
   <canvas id="draw" style="border: 1px solid gray" height="500"></canvas>
 </div>
 <script>
-    const demo = document.querySelector('#demo');
-    const canvas = document.querySelector('#draw');
-    const ctx = canvas.getContext('2d');
-    let canvasWrapper = document.getElementById('canvas-wrapper');
-    canvas.width = canvasWrapper.offsetWidth;
-    canvas.height = canvasWrapper.offsetHeight;
+  const lineSize = document.getElementById('line-size');
+  const pointer = document.getElementById('pointer');
+  const clearBtn = document.getElementById('clear-btn');
+  const demo = document.querySelector('#demo');
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  const canvasWrapper = document.getElementById('canvas-wrapper');
+  canvas.width = canvasWrapper.offsetWidth;
+  canvas.height = canvasWrapper.offsetHeight;
 
-    function resizeCanvas(){
-      console.log('resizing~');
-      canvas.width = canvasWrapper.offsetWidth;
-      canvas.height = canvasWrapper.offsetHeight;
-      ctx.strokeStyle = '#fa0';
-      ctx.lineJoin = 'round';
-      ctx.lineCap = 'round';
-      ctx.lineWidth = 100;
-      ctx.globalCompositeOperation = 'color';
-      ctx.miterLimit = 100;
+  let isEarser = false;
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+  let hue = 0;
+  let size = lineSize.value;
+
+  function draw(e) {
+    if (!isDrawing) return;
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.lineWidth = size;
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    hue++;
+    if (hue >= 360) {
+      hue = 0;
     };
+  }
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    let isDrawing = false;
-    let lastX = 0;
-    let lastY = 0;
-    let hue = 0;
-    let direction = true;
-
-    function draw(e) {
-      if (!isDrawing) return;
-      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-      ctx.beginPath();
-      ctx.moveTo(lastX, lastY);
-      ctx.lineTo(e.offsetX, e.offsetY);
-      ctx.stroke();
-      [lastX, lastY] = [e.offsetX, e.offsetY];
-
-      hue++;
-      if (hue >= 360) {
-        hue = 0;
-      };
-
-      if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
-        direction = !direction;
-      }
-
-      if (direction) {
-        ctx.lineWidth++;
-      } else {
-        ctx.lineWidth--;
-      }
+  function pointerHandler() {
+    if (isEarser) {
+      ctx.globalCompositeOperation = 'color';
+      ctx.lineWidth = 50;
+      pointer.innerHTML = 'Painter';
+      isEarser = false;
+    } else {
+      ctx.globalCompositeOperation = 'destination-out';
+      pointer.innerHTML = 'Earser';
+      isEarser = true;
     }
+  }
 
-    canvas.addEventListener('mousedown', (e) => {
-      isDrawing = true;
-      [lastX, lastY] = [e.offsetX, e.offsetY];
-    });
+  function resizeCanvas(){
+    console.log('resiiiizing~');
+    canvas.width = canvasWrapper.offsetWidth;
+    canvas.height = canvasWrapper.offsetHeight - clearBtn.offsetHeight;
+    ctx.strokeStyle = '#fa0';
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 50;
+    ctx.globalCompositeOperation = 'color';
+    ctx.miterLimit = 100;
+  };
 
-    function resizeCanvasToDisplaySize(canvas) {
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
+  function updateSize(e) {
+    size = e.target.value;
+  };
 
-      if (canvas.width !== width || canvas.height !== height) {
-        canvas.width = width;
-        canvas.height = height;
-        return true;
-      }
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
 
-      return false;
-    }
+  const clearCanvas = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
 
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', () => isDrawing = false);
+  canvas.addEventListener('mouseout', () => isDrawing = false);
+  lineSize.addEventListener('input', updateSize);
+  pointer.addEventListener('click', pointerHandler);
+  clearBtn.addEventListener('click', clearCanvas);
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
 </script>
 ---
 

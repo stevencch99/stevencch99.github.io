@@ -66,6 +66,10 @@ Cylindrical geometries:
   <canvas id="draw" style="border: 1px solid gray" height="500"></canvas>
 </div>
 <script>
+  const hasTouchEvent = 'ontouchstart' in window ? true : false;
+  const downEvent = hasTouchEvent ? 'touchstart' : 'mousedown';
+  const moveEvent = hasTouchEvent ? 'touchmove' : 'mousemove';
+  const upEvent = hasTouchEvent ? 'touchend' : 'mouseup';
   const lineSize = document.getElementById('line-size');
   const pointer = document.getElementById('pointer');
   const clearBtn = document.getElementById('clear-btn');
@@ -83,21 +87,38 @@ Cylindrical geometries:
   let hue = 0;
   let size = lineSize.value;
 
+  const position = (e) => {
+    var x, y;
+
+    if (hasTouchEvent) {
+      x = e.touches[0].pageX - e.target.offsetLeft;
+      y = e.touches[0].pageY - e.target.offsetTop;
+    } else {
+      x = e.offsetX;
+      y = e.offsetY;
+    }
+    return { x: x, y: y };
+  };
+
   function draw(e) {
     if (!isDrawing) return;
+    let movePosition = position(e);
     ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
     ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(e.offsetX, e.offsetY);
     ctx.lineWidth = size;
+    ctx.moveTo(lastX, lastY);
+
+    ctx.lineTo(movePosition.x, movePosition.y);
     ctx.stroke();
-    [lastX, lastY] = [e.offsetX, e.offsetY];
+    [lastX, lastY] = [movePosition.x, movePosition.y];
 
     hue++;
     if (hue >= 360) {
       hue = 0;
     };
-  }
+
+    e.preventDefault();
+  };
 
   function pointerHandler() {
     if (isEarser) {
@@ -109,8 +130,8 @@ Cylindrical geometries:
       ctx.globalCompositeOperation = 'destination-out';
       pointer.innerHTML = 'Earser';
       isEarser = true;
-    }
-  }
+    };
+  };
 
   function resizeCanvas(){
     console.log('resiiiizing~');
@@ -128,18 +149,17 @@ Cylindrical geometries:
     size = e.target.value;
   };
 
-  canvas.addEventListener('mousedown', (e) => {
-    isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-  });
-
   const clearCanvas = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 
-  canvas.addEventListener('mousemove', draw);
-  canvas.addEventListener('mouseup', () => isDrawing = false);
-  canvas.addEventListener('mouseout', () => isDrawing = false);
+  canvas.addEventListener(downEvent, (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
+
+  canvas.addEventListener(moveEvent, draw);
+  canvas.addEventListener(upEvent, () => isDrawing = false);
   lineSize.addEventListener('input', updateSize);
   pointer.addEventListener('click', pointerHandler);
   clearBtn.addEventListener('click', clearCanvas);

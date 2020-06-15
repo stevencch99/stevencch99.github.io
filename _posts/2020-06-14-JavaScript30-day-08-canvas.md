@@ -9,7 +9,7 @@ tags: JavaScript
 comments: true
 ---
 
-> This is my note of [JavaScript30](https://javascript30.com/) (*30 day Vanilla JS coding challenge*) -- a fantastic 30 day course teach you to build cool stuffs by just plain JavaScript.  
+> This is my note of [JavaScript30](https://javascript30.com/) (*30 day Vanilla JS coding challenge*) -- a fantastic 30-day course teach you how to build cool stuff by just plain JavaScript.  
 > - [Here](https://github.com/wesbos/JavaScript30) is the original repository includes starter files and completed solutions from the author [Wes Bos](https://github.com/wesbos).
 
 ---
@@ -49,7 +49,7 @@ Cylindrical geometries:
 ![HSL cylinder from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/HSL_color_solid_cylinder_saturation_gray.png/640px-HSL_color_solid_cylinder_saturation_gray.png)
 > HSL cylinder from [Wikipedia](https://en.wikipedia.org/wiki/HSL_and_HSV)
 
-- hue: The angular dimension starting at the red at 0°, passing through the treen primary at 120° and the blue primary at 240°, and thenwrapping back to red at 360°
+- hue: The angular dimension starting at the red at 0°, passing through the treen primary at 120° and the blue primary at 240°, and then wrapping back to red at 360°
 - saturation: 0 ~ 100%
 - lightness: 0 ~ 100%
 

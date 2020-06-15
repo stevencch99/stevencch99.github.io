@@ -55,7 +55,8 @@ Cylindrical geometries:
 
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 
-## DEMO
+## Demostration
+> **Note:** Resizing browser will clear content.
 <div id="canvas-wrapper" style="height: 600px;">
   <div class="demo-btn-wrapper" style="display: flex; justify-content: space-between;">
     <div>

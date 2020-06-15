@@ -58,10 +58,14 @@ Cylindrical geometries:
 ## DEMO
 <div id="canvas-wrapper" style="height: 600px;">
   <div class="demo-btn-wrapper" style="display: flex; justify-content: space-between;">
-    <label for="line-size">Line Size</label>
-    <input id="line-size" type="range" name="line-size" min="5" max="100" value="50">
-    <button id="pointer" type="button">Earser</button>
-    <button id="clear-btn" type="button">Clear</button>
+    <div>
+      <label for="line-size">Line Size</label>
+      <input id="line-size" type="range" name="line-size" min="5" max="100" value="50">
+    </div>
+    <div>
+      <button id="pointer" type="button">Earser</button>
+      <button id="clear-btn" type="button">Clear</button>
+    </div>
   </div>
   <canvas id="draw" style="border: 1px solid gray" height="500"></canvas>
 </div>

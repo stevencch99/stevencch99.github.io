@@ -1,5 +1,5 @@
 current directory: /home/travis/build/stevencch99/stevencch99.github.io/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
-/home/travis/.rvm/rubies/ruby-2.6.5/bin/ruby -I /home/travis/.rvm/rubies/ruby-2.6.5/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200523-7577-t2ma1s.rb extconf.rb
+/home/travis/.rvm/rubies/ruby-2.6.5/bin/ruby -I /home/travis/.rvm/rubies/ruby-2.6.5/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200716-7586-uefbes.rb extconf.rb
 creating Makefile
 
 current directory: /home/travis/build/stevencch99/stevencch99.github.io/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
@@ -416,4 +416,4 @@ linking shared-object commonmarker/commonmarker.so
 
 current directory: /home/travis/build/stevencch99/stevencch99.github.io/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
 make "DESTDIR=" install
-/usr/bin/install -m 0755 commonmarker.so ./.gem.20200523-7577-1muakor/commonmarker
+/usr/bin/install -m 0755 commonmarker.so ./.gem.20200716-7586-jfcjs6/commonmarker

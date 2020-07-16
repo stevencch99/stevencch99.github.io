@@ -38,10 +38,11 @@ comments: true
     ![](https://i.imgur.com/mx0E3jw.png)
 
   - Display:
+    Maximize the Video Memory to avoid black screen when booting into black screen.
     ![](https://i.imgur.com/PO4je0P.png)
 
   - Storage:
-    - Select Optical Drive > Choose Virtual Optical Disk File
+    - Select Optical Drive > Choose the virtual optical disk file which downloaded at first step.
   ![](https://i.imgur.com/qaSYAKG.png)
 
   - Customize Shared Folder:
@@ -58,7 +59,7 @@ comments: true
 Press ENTER to remove the medium and continue booting.
 ![](https://i.imgur.com/pFSGLeH.png)
 
-- Proxy setting:
+- Set up a proxy server if needed:
   e.g. 169.19.8.10:8080
   ![](https://i.imgur.com/x55grHc.png)
 
@@ -76,7 +77,7 @@ Press ENTER to remove the medium and continue booting.
 Simply unmount the existing CD image, then it would be able to insert again for the autorun.  
 ![](https://i.imgur.com/Iz9uS4N.png)
 
-#### How to setup proxy for `apt`
+#### How to configure `apt` behind proxy server
 - Create/Edit `apt.conf`:  
 `sudo vi /etc/apt/apt.conf`  
 
@@ -93,3 +94,4 @@ Simply unmount the existing CD image, then it would be able to insert again for 
   # http_proxy=http://169.19.8.10:8080
   # no_proxy=localhost,127.0.0.0/8,::1
   ```
+![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)

@@ -37,15 +37,15 @@ comments: true
   - System:
     ![](https://i.imgur.com/mx0E3jw.png)
 
-  - Display:
-    Maximize the Video Memory to avoid black screen when booting into black screen.
+  - Display:  
+    Maximize the Video Memory to prevent booting into black screen.
     ![](https://i.imgur.com/PO4je0P.png)
 
   - Storage:
     - Select Optical Drive > Choose the virtual optical disk file which downloaded at first step.
   ![](https://i.imgur.com/qaSYAKG.png)
 
-  - Customize Shared Folder:
+  - Customize Shared Folder:  
     To share files between your host system and virtual machine.
     ![](https://i.imgur.com/pJjc7ug.png)
 
@@ -59,7 +59,7 @@ comments: true
 Press ENTER to remove the medium and continue booting.
 ![](https://i.imgur.com/pFSGLeH.png)
 
-- Set up a proxy server if needed:
+- Set up a proxy server if needed:  
   e.g. 169.19.8.10:8080
   ![](https://i.imgur.com/x55grHc.png)
 

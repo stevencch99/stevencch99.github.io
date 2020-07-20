@@ -33,7 +33,7 @@ comments: true
 我也想到了那張正在宇宙中航行的「[航海家金唱片](https://zh.wikipedia.org/wiki/%E6%97%85%E8%A1%8C%E8%80%85%E9%87%91%E5%94%B1%E7%89%87)」，頓時一陣雞皮疙瘩。
 
 ![Voyager Golden Records](https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg/480px-The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg)
-> 裡面有收錄 〈Johnny B. Goode〉 !
+> [source:](https://commons.wikimedia.org/wiki/File:The_Sounds_of_Earth_Record_Cover_-_GPN-2000-001978.jpg) 裡面有收錄 〈Johnny B. Goode〉 !
 
 
 Arctic Code Vault 位於斯瓦巴條約非軍事區四百公尺深的永凍層地底，有機會抵擋各種全球性災難，而存放在現代媒介中的資料可能撐不過幾個世代便會盡數消滅。

@@ -29,8 +29,10 @@ I decide to temporarily disable the PPA by comment out the source list for the q
 
 ### Check installed packages
 
-  Use `grep` to get all enabled binary software sources showing together:  
-  `$ grep -r --include '*.list' '^deb ' /etc/apt/sources.list /etc/apt/sources.list.d/`
+Use `grep` to get all enabled binary software sources showing together:  
+```
+$ grep -r --include '*.list' '^deb ' /etc/apt/sources.list /etc/apt/sources.list.d/
+```
 
   The output might look like this:
 

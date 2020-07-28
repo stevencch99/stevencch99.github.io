@@ -11,11 +11,9 @@ comments: true
 
 ## Scenario
 
-When we want to do some fuzzy text searching with case-insensitive matching.
+Fuzzy text searching with case-insensitive matching.
 
-The default behavior of `LIKE` and the other comparison operators such as `=` are case-sensitive,  
-unlike PostgresSQL has a nice `ILIKE` keyword (typically a bit slower),
-work with Oracle database requires a little bit of effort to get this job done.
+The default behavior of `LIKE` and the other comparison operators such as `=` are case-sensitive, unlike PostgresSQL has a nice `ILIKE` keyword (typically a bit slower), work with Oracle database requires a little bit of effort to get this job done.
 
 ## Solution
 
@@ -23,8 +21,8 @@ work with Oracle database requires a little bit of effort to get this job done.
 
 ```sql
 SELECT table_name
-FROM user_tables
-WHERE LOWER(table_name) LIKE '%foo%'
+  FROM user_tables
+ WHERE LOWER(table_name) LIKE '%foo%'
 ```
 
 The `LOWER` function here takes a character expression as a parameter, converts all alpha character to lower case and return.
@@ -41,8 +39,8 @@ Whereas the equality operator (`=`) exactly matches one character value to anoth
 
 ```sql
 SELECT table_name
-FROM user_tables
-WHERE regexp_like(table_name, 'foo', 'i')
+  FROM user_tables
+ WHERE regexp_like(table_name, 'foo', 'i')
 ```
 
 The `REGEXP_LIKE` is similar to the `LIKE` condition, except `RREGEXP_LIKE` performs regular expression matching instead of the simple pattern matching performed by `LIKE`.

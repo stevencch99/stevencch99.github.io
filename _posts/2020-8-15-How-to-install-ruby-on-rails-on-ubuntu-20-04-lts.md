@@ -33,9 +33,9 @@ sudo apt-get install software-properties-common
   sudo apt-get install rvm
   ```
 
-2. Change your terminal window
-Now, in order to always load rvm, change the Gnome Terminal to always perform a login.
-![](https://i.imgur.com/Lu2PkVe.png)
+2. Change your terminal window  
+    In order to always load rvm, enable the opteion of Gnome Terminal to "Run cmmand as a login shell".
+    ![](https://i.imgur.com/Lu2PkVe.png)
 
 3. Install Ruby & Rails
 

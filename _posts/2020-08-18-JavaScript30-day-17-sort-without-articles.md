@@ -9,6 +9,11 @@ tags: JavaScript
 comments: true
 visible: true
 ---
+
+> This is my note of [JavaScript30](https://javascript30.com/) (*30 day Vanilla JS coding challenge*) -- a fantastic 30-day course teach you how to build cool stuff by just plain JavaScript.  
+> - [Here](https://github.com/wesbos/JavaScript30) is the original repository includes starter files and completed solutions from the author [Wes Bos](https://github.com/wesbos).
+
+---
 - toc
 {:toc}
 

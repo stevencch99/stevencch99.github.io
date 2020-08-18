@@ -52,9 +52,9 @@ Combine the shorthands of **arrow function** and **directly return value** to wr
     ```
 
   - Refactoring of Array sorting, Step 3.
-  ```js
-  const sortedBands = bands.sort((a, b) => stript(a) > stript(b) ? 1 : -1);
-  ```
+    ```js
+    const sortedBands = bands.sort((a, b) => stript(a) > stript(b) ? 1 : -1);
+    ```
 
 ### Self-memorizing function
 

@@ -13,9 +13,9 @@ active: about
 # 張誠華 Steven Chang  
 ---
 
-I was a site director of HVAC(*Heating Ventilation and Air Conditioning*) construction sites, had about 8 years of experience in HVAC related field,
+I was a site director of HVAC(*Heating Ventilation and Air Conditioning*) construction sites, had about 8 years of experience in HVAC related fields,
 responsible for managing hundreds of workers 
-and handle project budgets over 200,000,000 NT dollars.
+and handling project budgets over 200,000,000 NT dollars.
 
 Now I found my real passion in living—coding,  
 wish I could build something nice, something meaningful,  

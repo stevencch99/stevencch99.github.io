@@ -106,7 +106,7 @@ def make_proc
   Proc.new
 end
 
-double = make_proc { |number| number * 2}
+double = make_proc { |number| number * 2 }
 ```
 
 呼叫 Proc 物件有以下幾種方法：
@@ -163,7 +163,7 @@ double[2, 3] # => ArgumentError (wrong number of arguments (given 2, expected 1)
 - Proc 的表現如同`block`，對傳入的引數並不介意，在裡面呼叫 `return` 會爆炸
 
 ```ruby
-double_p = proc { |number| return number * 2}
+double_p = proc { |number| return number * 2 }
 double_p[2] # => LocalJumpError (unexpected return)
 ```
 
@@ -235,7 +235,7 @@ square_then_double[2] # => 8
 
 ```ruby
 to_camel    = :capitalize.to_proc
-add_header  = ->val {"Title: " + val}
+add_header  = -> val { "Title: " + val }
 strip_space = :strip.to_proc
 
 format_as_title = add_header << to_camel << strip_space

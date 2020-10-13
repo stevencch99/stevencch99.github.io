@@ -30,6 +30,10 @@ Starting with Redis 4.0, a new [Least Frequently Used eviction mode](http://anti
 
 When using LFU mode, Redis will try to track the frequency of access of items, so that the one used often have a higher chance of remaining in memory.
 
+If you think at LRU, an item that was recently accessed but is actually almost never requested, will not get expired, so the risk is to evict a key that has an higher chance to be requested in the future.
+
+LFU does not have this problem, and in general should adapt better to different access patterns.
+
 ## Memory Management
 
 Redis `maxmemory` directive is used to limit the memory usage, when the memory limit is reached, Redis will try to remove keys according to the eviction policy selected.

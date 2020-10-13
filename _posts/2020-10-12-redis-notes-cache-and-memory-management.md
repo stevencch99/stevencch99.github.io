@@ -34,17 +34,19 @@ When using LFU mode, Redis will try to track the frequency of access of items, s
 
 Redis `maxmemory` directive is used to limit the memory usage, when the memory limit is reached, Redis will try to remove keys according to the eviction policy selected.
 
-By default, Redis uses unlimited memories of the host system (`maxmemory noeviction`), yet it is possible to set the configuration directive through the `redis.conf` file, or later using the [CONFIG SET](https://redis.io/commands/config-set) command at runtime.
+By default, Redis uses unlimited memories of the host system (`maxmemory 0`), yet it is possible to set the configuration directive through the `redis.conf` file, or later using the [CONFIG SET](https://redis.io/commands/config-set) command at runtime.
 
 If Redis can't remove keys according to the policy, or if the policy is set to `noeviction`, Redis will start to reply with errors to commands that would use more memory, like `SET`, `LPUSH`, and so on.
 
-For example, to configure a memory limit of 100 megabytes, the following directive can be used inside the redis.conf file.
+To configure a memory limit of 100 megabytes, for example, the following directive can be used inside the redis.conf file.
 
-`maxmemory 100mb`
+```bash
+maxmemory 100mb
+```
 
 > Setting `maxmemory` to zero results in no memory limits.
 
-### If you have replicas attached
+### Replica will ignore its maxmemory setting
 
 Starting from Redis 5, by default a **replica will ignore its maxmemory setting** unless it is promoted to master after a failover or manually.
 
@@ -54,7 +56,7 @@ This behavior ensures that masters and replicas stay consistent, however, if you
 
 `replica-ignore-maxmemory no`
 
-It is suggested that you set a lower limit for maxmemory so that there is some free RAM on the system for replica output buffers.
+It is suggested that you set a **lower limit for maxmemory** so that there is some free RAM on the system for replica output buffers.
 
 ### Maxmemory policy
 
@@ -86,7 +88,20 @@ By default Redis will check five keys and pick the one that was used less recent
 
 The default of 5 produces good enough results. 10 Approximates very closely true LRU but costs more CPU. 3 is faster but not very accurate.
 
-`maxmemory-samples 5`
+```bash
+maxmemory-samples 5
+```
+
+The following is a graphical comparison of how the LRU approximation used by Redis compares with ture LRU.
+
+![graphical comparison of how the LRU approximation used by Redis](https://i.imgur.com/xOVMZbr.png)
+  > image [source](https://redis.io/topics/lru-cache#approximated-lru-algorithm)
+
+  > The light gray band are objects that were evicted.
+  > The gray band are objects that were not evicted.
+  > The green band are objects that were added.
+
+As you can see, when using a sample size of 10 in Redis 3.0, the approximation is very close to the theoretical performance of ture LRU algorithm.
 
 ## Reclaim expired keys
 
@@ -101,6 +116,8 @@ It is possible to increase the expire "effort" that is normally set to "1", up t
 `active-expire-effort 1`
 
 It's a tradeoff between memory, CPU and latency.
+
+> Ref: Default [redis.conf](https://github.com/redis/redis/blob/unstable/redis.conf)
 
 ### How Redis expires keys
 
@@ -121,6 +138,32 @@ Specifically, this is what Redis does 10 times per second:
 ![flow diagram of the passive way to remove expired keys](https://i.imgur.com/ByTWAZk.png)
 
 > Ref: <https://redis.io/commands/expire#how-redis-expires-keys>
+
+### How the eviction process works
+
+The eviction process works like this:
+
+- A client runs a new command, resulting in more data added.
+- Redis checks the memory usage, and if it is greater than the `maxmemory` limit, it evicts keys according to the policy.
+- A new command is executed, and so forth.
+
+We continuously cross the boundaries of the memory limit, by going over it, and then by evicting keys to return under the limits.
+
+If a command results in a lot of memory being used (like a big set intersection stored into a new key) for some time the memory limit can be surpassed by a noticeable amount.
+
+> See: <https://redis.io/topics/lru-cache#how-the-eviction-process-works>
+
+#### Write Amplification issue occurs during Redis reclaiming memory
+
+When `maxmemory` limit has been set and `maxmemory-policy` is not `noeviction`, Redis memory reclaim process will be triggered every time client runs a new command.
+
+If your Redis server working in a memory overflow state (used_memory > maxmemory) all the time, it will frequently trigger the mechanism and affects the performance of the server.
+
+Note that if you have replicas attached, the related key remove operations will be synchronized to slave nodes, causes the write amplification issue.
+
+Therefore, it is recommended to configure the Redis server to always run in the state that maxmemory > used_memory.
+
+![execute command trigger memory reclaiming](https://i.imgur.com/jmzev3I.png)
 
 ### Lazy Freeing
 

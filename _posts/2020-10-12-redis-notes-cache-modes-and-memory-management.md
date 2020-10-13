@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Redis Notes - Cache and Memory management"
-description: "Redis note - Cache and Memory management"
-crawlertitle: "Redis note - Cache and Memory management"
+title: "Redis Notes - Cache modes and Memory management"
+description: "Redis note - Cache modes and Memory management"
+crawlertitle: "Redis note - Cache modes and Memory management"
 date: 2020-10-12 19:10:52 +0800
 categories: 'Redis'
 tags: 'Redis'
@@ -88,6 +88,8 @@ At the date of writing these commands are:
 
 LRU, LFU and minimal TTL algorithms are not precise algorithms but approximated algorithms (in order to save memory), so you can tune it for speed or accuracy.
 
+### For LRU algorithm
+
 By default Redis will check five keys and pick the one that was used less recently, you can change the sample size using the following configuration directive.
 
 The default of 5 produces good enough results. 10 Approximates very closely true LRU but costs more CPU. 3 is faster but not very accurate.
@@ -99,13 +101,61 @@ maxmemory-samples 5
 The following is a graphical comparison of how the LRU approximation used by Redis compares with ture LRU.
 
 ![graphical comparison of how the LRU approximation used by Redis](https://i.imgur.com/xOVMZbr.png)
-  > image [source](https://redis.io/topics/lru-cache#approximated-lru-algorithm)
+  > image source: <https://redis.io/topics/lru-cache#approximated-lru-algorithm>
 
-  > The light gray band are objects that were evicted.
-  > The gray band are objects that were not evicted.
-  > The green band are objects that were added.
+  - The light gray band are objects that were evicted.
+  - The gray band are objects that were not evicted.
+  - The green band are objects that were added.
 
-As you can see, when using a sample size of 10 in Redis 3.0, the approximation is very close to the theoretical performance of ture LRU algorithm.
+Using a sample size of 10 in Redis 3.0 the approximation is very close to the theoretical performance of ture LRU algorithm.
+
+### For LFU algorithm
+
+LFU cache mode in Redis is approximated algorithm for the same reason of LRU.
+
+It uses a probabilistic counter called a [Morris counter](https://en.wikipedia.org/wiki/Approximate_counting_algorithm) to estimate the object access frequency combined with a decay period so that the counter is reduced over time.
+
+LFU has certain tunable parameters: for instance, how fast should a frequent item lower in rank if it gets no longer accessed?
+It is also possible to tune the Morris counters range in order to better adapt the algorithm to specific use cases.
+
+- By default Redis 4.0 is configured to:
+
+  - Saturate the counter at, around, one million requests.
+  - Decay the counter every one minute.
+
+Instructions about how to tune these parameters can be found inside the example `redis.conf` file in the Redis source code distribution.
+
+```conf
+# default setting:
+lfu-log-factor 10
+lfu-decay-time 1
+```
+
+The decay time is the amount of minutes a counter should be decayed, when sampled and found to be older than that value. A special value of 0 means: alsays decay the counter every time is scanned, and is rarely useful.
+
+The counter *logarithm factor* changes how many hits are needed to saturate the frequency counter, which in range 0-255.
+
+The higher the factor, the more accesses are needed to reach the maximum, in the other hand, the lower factor gives the better resolution of the counter for low accesses scenario.
+
+The default `lfu-log-factor` is 10.
+
+| Factor | 100 hits   | 1000 hits  | 100K hits  | 1M hits    | 10M hits   |
+|:-------|:-----------|:-----------|:-----------|:-----------|:-----------|
+| 0      | 104        | 255        | 255        | 255        | 255        |
+| 1      | 18         | 49         | 255        | 255        | 255        |
+| 10     | 10         | 18         | 142        | 255        | 255        |
+| 100    | 8          | 11         | 49         | 143        | 255        |
+
+- This table was obtained by running the following commands in terminal (set `maxmemory-policy` to `volatile-lfu` or `allkeys-lfu`):
+
+  ```bash
+  redis-benchmark -n 1000000 incr foo
+  redis-cli object freq foo
+  ```
+
+- The counter initial value is 5 in order to give new objects a chance to accumulate hits.
+
+> Ref: <https://redis.io/topics/lru-cache#the-new-lfu-mode>
 
 ## Reclaim expired keys
 

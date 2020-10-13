@@ -28,15 +28,15 @@ This behavior is very well known in the community of developers since it is the 
 
 Starting with Redis 4.0, a new [Least Frequently Used eviction mode](http://antirez.com/news/109) is available.
 
-Using LFU Redis will try to track the frequency of access of items, so that the one used often have a higher chance of remaining in memory.
+When using LFU mode, Redis will try to track the frequency of access of items, so that the one used often have a higher chance of remaining in memory.
 
 ## Memory Management
 
 Redis `maxmemory` directive is used to limit the memory usage, when the memory limit is reached, Redis will try to remove keys according to the eviction policy selected.
 
-If Redis can't remove keys according to the policy, or if the policy is set to 'noeviction', Redis will start to reply with errors to commands that would use more memory, like `SET`, `LPUSH`, and so on.
+By default, Redis uses unlimited memories of the host system (`maxmemory noeviction`), yet it is possible to set the configuration directive through the `redis.conf` file, or later using the [CONFIG SET](https://redis.io/commands/config-set) command at runtime.
 
-By default, Redis uses unlimited memories of the host system (`noevition`), it is possible to set the configuration directive through the `redis.conf` file, or later using the [CONFIG SET](https://redis.io/commands/config-set) command at runtime.
+If Redis can't remove keys according to the policy, or if the policy is set to `noeviction`, Redis will start to reply with errors to commands that would use more memory, like `SET`, `LPUSH`, and so on.
 
 For example, to configure a memory limit of 100 megabytes, the following directive can be used inside the redis.conf file.
 

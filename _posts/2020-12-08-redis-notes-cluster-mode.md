@@ -25,9 +25,95 @@ By running Redis Cluster, we could get:
 - The ability to **automatically split dataset among multiple nodes**.
 - The ability to **continue operations when a subset of the nodes are experiencing failures** or are unable to communicate with the rest of the cluster.
 
+### Redis Cluster TCP ports
+
+Every Redis Cluster node requires 2 TCP connections open. The normal Redis TCP port used to serve clients (6379), plus the port obtained by adding 10000 to the data port, for example 16379 (6379 + 10000).
+
+The second port (16379) is used for the Cluster bus, that is a node-to-node communication channel using a binary protocol for failure detection, configuration update, failover authorization and so forth.
+
+Clients should always communicate with the normal Redis command port (6379). Furthermore, both these two ports must be opened in firewall and be reachable from all the other cluster nodes.
+
+### About Redis Cluster and Docker
+
+Currently Redis Cluster does not support NATted environments and in general environments where IP address or TCP ports are remapped.
+
+Docker uses a technique called _port mapping_: Programs running inside Docker containers may be exposed with a different port against to the one that program believes to be using.
+
+In order to make Docker compatible with Redis Cluster, using the **host networking mode** of Docker is required. For instance, if you run a container which binds to port 6379 and you use host networking, the container’s application is available on port 6379 on the host’s IP address.
+
+Please check the `--net=host` option in the [Docker documentation](https://docs.docker.com/network/) for more information.
+
+### Redis Cluster data sharding
+
+Redis Cluster does not use consistent hashing (for example Memcached), but a different form of sharding where every key is conceptually part of a **hash slot**.
+
+There are 16384 hash slots in Redis cluster, and to compute what is the hash slot of a given key, it take the CRC16 of the key modulo 16384.
+
+Every node in a Redis Cluster is responsible for a subset of the hash slots, so for example you may have a cluster with 3 nodes, where:
+
+- Node A contains hash slots from 0 to 5500.
+- Node B contains hash slots from 5501 to 11000.
+- Node C contains hash slots from 11001 to 16383.
+
+Redis Cluster supports multiple key operations as long as all the keys involved into a single command execution (or whole transaction, or Lua script execution) all belong to the same hash slot.
+
+The user can force multiple keys to be part of the same hash slot by using a concept called _hash tags_.
+
+### Hash tags
+
+While it is possible for many keys to be in the same hash slot, we could check the slot with [CLUSTER KEYSLOT](https://redis.io/commands/cluster-keyslot) command when naming keys.
+
+Hash tags are documented in the Redis Cluster specification, the gist is that only the string between `{}` curly brackets in a key is hashed, e.g. `this{foo}key` and `another{foo}key` are guaranteed to be in the same hash slot, and can be used together in a command with multiple keys as arguments.
+
+Example:
+
+| Key                 | Hashing Pseudocode                   | Hash Slot |
+| ------------------- | ------------------------------------ | --------- |
+| user-profile:1234   | CRC16(‘user-profile:1234’) mod 16384 | 15990     |
+| user-session:1234   | CRC16(‘user-session:1234’) mod 16384 | 2963      |
+| user-profile:5678   | CRC16(‘user-profile:5678’) mod 16384 | 9487      |
+| user-session:5678   | CRC16(‘user-session:5678’) mod 16384 | 4330      |
+| user-profile:{1234} | CRC16(‘1234’) mod 16384              | 6025      |
+| user-session:{1234} | CRC16(‘1234’) mod 16384              | 6025      |
+| user-profile:{5678} | CRC16(‘5678’) mod 16384              | 3312      |
+| user-profile:{5678} | CRC16(‘5678’) mod 16384              | 3312      |
+
+
+### Redis Cluster master-slave model
+
+Redis Cluster uses a master-slave model where every hash slot has from 1 (the master node) to N replicas (N - 1 additional slaves nodes).
+
+In the example cluster with nodes A, B, C, if node B fails, the cluster is not able to continue, since the hash slots in the range 5501-11000 has no way to serve anymore.
+
+However, when the cluster is created, we add slave node to every master, so that the final cluster is composed of A, B, C that are masters nodes, and A1, B1, C1 are slaves nodes, the system is able to continue if node B fails.
+
+Node B1 replicates B, and B fails, the cluster will promote node B1 as the new master and will continue to operate correctly.
+
+> Note: If nodes B and B1 fail at the same time Redis Cluster is not able to continue to operate.
+
+### Redis Cluster consistency guarantees
+
+Redis Cluster is not able to guarantee **strong consistency**.
+
+In practical terms, this means that under certain conditions it is possible that Redis Cluster will lose writes that were already acknowledged client by the system.
+
+The first reason why Redis Cluster can lose writes is because asynchronous replication.
+
+The following happens during writes:
+
+- The client writes to the master B.
+- The master B replies OK to the client.
+- The master B propagates the writes to its slaves B1, B2 and B3.
+
+The master node does not wait for the acknowledgement from slave nodes before replying to the client, since this would be a prohibitive latency penalty for Redis.
+
+So if the client writes something, but crashes before being able to send the write to its slaves, one of the slaves (that did not receive the write) can be promoted to master, losing the write forever.
+
+![Redis Cluster consistency issue](https://i.imgur.com/auG8g3j.png)
+
 ---
 
-### Creating and using a Redis Cluster
+## Creating and using a Redis Cluster
 
 To create a cluster, we need to have a few Redis instances running in **cluster mode**.
 The minimal cluster that works as expected requires to contain **at least 3 master nodes**.
@@ -37,7 +123,7 @@ For the first test, we start a 6 nodes cluster with three masters and slaves.
 - Create the minimal Redis cluster configuration file: `redis.conf`.
 
   ```bash
-    touch redis.conf
+  touch redis.conf
   ```
 
   In the `redis.conf`:
@@ -172,93 +258,7 @@ create-cluster stop
 - Do not us `KEYS`, `FLUSH`
 - Do not use `MGET` on Redis Cluster
 
-
-### Redis Cluster TCP ports
-
-Every Redis Cluster node requires 2 TCP connections open. The normal Redis TCP port used to serve clients (6379), plus the port obtained by adding 10000 to the data port, for example 16379 (6379 + 10000).
-
-The second port (16379) is used for the Cluster bus, that is a node-to-node communication channel using a binary protocol for failure detection, configuration update, failover authorization and so forth.
-
-Clients should always communicate with the normal Redis command port (6379). Furthermore, both these two ports must be opened in firewall and be reachable from all the other cluster nodes.
-
-### About Redis Cluster and Docker
-
-Currently Redis Cluster does not support NATted environments and in general environments where IP address or TCP ports are remapped.
-
-Docker uses a technique called _port mapping_: Programs running inside Docker containers may be exposed with a different port against to the one that program believes to be using.
-
-In order to make Docker compatible with Redis Cluster, using the **host networking mode** of Docker is required. For instance, if you run a container which binds to port 6379 and you use host networking, the container’s application is available on port 6379 on the host’s IP address.
-
-Please check the `--net=host` option in the [Docker documentation](https://docs.docker.com/network/) for more information.
-
-### Redis Cluster data sharding
-
-Redis Cluster does not use consistent hashing (for example Memcached), but a different form of sharding where every key is conceptually part of a **hash slot**.
-
-There are 16384 hash slots in Redis cluster, and to compute what is the hash slot of a given key, it take the CRC16 of the key modulo 16384.
-
-Every node in a Redis Cluster is responsible for a subset of the hash slots, so for example you may have a cluster with 3 nodes, where:
-
-- Node A contains hash slots from 0 to 5500.
-- Node B contains hash slots from 5501 to 11000.
-- Node C contains hash slots from 11001 to 16383.
-
-Redis Cluster supports multiple key operations as long as all the keys involved into a single command execution (or whole transaction, or Lua script execution) all belong to the same hash slot.
-
-The user can force multiple keys to be part of the same hash slot by using a concept called _hash tags_.
-
-### Hash tags
-
-While it is possible for many keys to be in the same hash slot, we could check the slot with [CLUSTER KEYSLOT](https://redis.io/commands/cluster-keyslot) command when naming keys.
-
-Hash tags are documented in the Redis Cluster specification, the gist is that only the string between `{}` curly brackets in a key is hashed, e.g. `this{foo}key` and `another{foo}key` are guaranteed to be in the same hash slot, and can be used together in a command with multiple keys as arguments.
-
-Example:
-
-| Key                 | Hashing Pseudocode                   | Hash Slot |
-| ------------------- | ------------------------------------ | --------- |
-| user-profile:1234   | CRC16(‘user-profile:1234’) mod 16384 | 15990     |
-| user-session:1234   | CRC16(‘user-session:1234’) mod 16384 | 2963      |
-| user-profile:5678   | CRC16(‘user-profile:5678’) mod 16384 | 9487      |
-| user-session:5678   | CRC16(‘user-session:5678’) mod 16384 | 4330      |
-| user-profile:{1234} | CRC16(‘1234’) mod 16384              | 6025      |
-| user-session:{1234} | CRC16(‘1234’) mod 16384              | 6025      |
-| user-profile:{5678} | CRC16(‘5678’) mod 16384              | 3312      |
-| user-profile:{5678} | CRC16(‘5678’) mod 16384              | 3312      |
-
 ---
-
-### Redis Cluster master-slave model
-
-Redis Cluster uses a master-slave model where every hash slot has from 1 (the master node) to N replicas (N - 1 additional slaves nodes).
-
-In the example cluster with nodes A, B, C, if node B fails, the cluster is not able to continue, since the hash slots in the range 5501-11000 has no way to serve anymore.
-
-However, when the cluster is created, we add slave node to every master, so that the final cluster is composed of A, B, C that are masters nodes, and A1, B1, C1 are slaves nodes, the system is able to continue if node B fails.
-
-Node B1 replicates B, and B fails, the cluster will promote node B1 as the new master and will continue to operate correctly.
-
-> Note: If nodes B and B1 fail at the same time Redis Cluster is not able to continue to operate.
-
-### Redis Cluster consistency guarantees
-
-Redis Cluster is not able to guarantee **strong consistency**.
-
-In practical terms, this means that under certain conditions it is possible that Redis Cluster will lose writes that were already acknowledged client by the system.
-
-The first reason why Redis Cluster can lose writes is because asynchronous replication.
-
-The following happens during writes:
-
-- The client writes to the master B.
-- The master B replies OK to the client.
-- The master B propagates the writes to its slaves B1, B2 and B3.
-
-The master node does not wait for the acknowledgement from slave nodes before replying to the client, since this would be a prohibitive latency penalty for Redis.
-
-So if the client writes something, but crashes before being able to send the write to its slaves, one of the slaves (that did not receive the write) can be promoted to master, losing the write forever.
-
-![Redis Cluster consistency issue](https://i.imgur.com/auG8g3j.png)
 
 ## References
 

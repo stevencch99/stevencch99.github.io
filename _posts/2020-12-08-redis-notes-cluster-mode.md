@@ -47,7 +47,7 @@ Please check the `--net=host` option in the [Docker documentation](https://docs.
 
 Redis Cluster does not use consistent hashing (for example Memcached), but a different form of sharding where every key is conceptually part of a **hash slot**.
 
-There are 16384 hash slots in Redis cluster, and to compute what is the hash slot of a given key, it take the CRC16 of the key modulo 16384.
+There are 16384 hash slots in Redis cluster, and to compute what is the hash slot of a given key, it take the [CRC16](https://en.wikipedia.org/wiki/Cyclic_redundancy_check) of the key modulo 16384.
 
 Every node in a Redis Cluster is responsible for a subset of the hash slots, so for example you may have a cluster with 3 nodes, where:
 
@@ -78,6 +78,7 @@ Example:
 | user-profile:{5678} | CRC16(‘5678’) mod 16384              | 3312      |
 | user-profile:{5678} | CRC16(‘5678’) mod 16384              | 3312      |
 
+---
 
 ### Redis Cluster master-slave model
 

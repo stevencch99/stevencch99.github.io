@@ -4,8 +4,8 @@ title: "Redis Notes - Cluster mode"
 description: "Redis Notes - Cluster mode"
 crawlertitle: "Redis Notes - Cluster mode"
 date: 2020-12-08 20:52:26 +0800
-categories: Redis
-tags: Redis
+categories: CachingSystem
+tags: Redis CachingSystem
 comments: true
 ---
 

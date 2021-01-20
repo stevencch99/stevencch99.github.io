@@ -4,8 +4,8 @@ title: "Redis Notes - Sentinel (for High Availability)"
 description: "Redis Notes - Sentinel (for High Availability)"
 crawlertitle: "Redis Notes - Sentinel (for High Availability)"
 date: 2020-12-06 11:03:30 +0800
-categories: Redis
-tags: Redis
+categories: CachingSystem
+tags: Redis CachingSystem
 comments: true
 ---
 

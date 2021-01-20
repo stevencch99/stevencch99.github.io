@@ -4,8 +4,8 @@ title: "Redis Notes - Configuration"
 description: "Redis Notes - Configuration"
 crawlertitle: "Redis Notes - Configuration"
 date: 2020-10-21 22:57:32 +0800
-categories: Redis
-tags: Redis
+categories: CachingSystem
+tags: Redis CachingSystem
 comments: true
 ---
 

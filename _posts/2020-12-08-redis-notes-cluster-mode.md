@@ -55,6 +55,8 @@ Every node in a Redis Cluster is responsible for a subset of the hash slots, so 
 - Node B contains hash slots from 5501 to 11000.
 - Node C contains hash slots from 11001 to 16383.
 
+![Redis Cluster Data Sharding concept image](https://i.imgur.com/B1VX2JB.png)
+
 Redis Cluster supports multiple key operations as long as all the keys involved into a single command execution (or whole transaction, or Lua script execution) all belong to the same hash slot.
 
 The user can force multiple keys to be part of the same hash slot by using a concept called _hash tags_.
@@ -78,6 +80,8 @@ Example:
 | user-profile:{5678} | CRC16(‘5678’) mod 16384              | 3312      |
 | user-profile:{5678} | CRC16(‘5678’) mod 16384              | 3312      |
 
+![Redis Cluster Data Sharding - Hash slots](https://i.imgur.com/PpeZYem.png)
+
 ---
 
 ### Redis Cluster master-slave model
@@ -88,9 +92,9 @@ In the example cluster with nodes A, B, C, if node B fails, the cluster is not a
 
 However, when the cluster is created, we add slave node to every master, so that the final cluster is composed of A, B, C that are masters nodes, and A1, B1, C1 are slaves nodes, the system is able to continue if node B fails.
 
-Node B1 replicates B, and B fails, the cluster will promote node B1 as the new master and will continue to operate correctly.
+Node B1 replicates B, when B fails, the cluster will promote node B1 as the new master and will continue to operate correctly.
 
-> Note: If nodes B and B1 fail at the same time Redis Cluster is not able to continue to operate.
+> Note: If nodes B and B1 fail at the same time, Redis Cluster is not able to continue to operate.
 
 ### Redis Cluster consistency guarantees
 
@@ -104,7 +108,7 @@ The following happens during writes:
 
 - The client writes to the master B.
 - The master B replies OK to the client.
-- The master B propagates the writes to its slaves B1, B2 and B3.
+- The master B propagates the writes to its slaves B1, B2 and so on.
 
 The master node does not wait for the acknowledgement from slave nodes before replying to the client, since this would be a prohibitive latency penalty for Redis.
 

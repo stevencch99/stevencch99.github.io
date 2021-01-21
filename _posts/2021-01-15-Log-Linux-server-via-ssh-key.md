@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "透過 SSH 公開金鑰認證登入 Linux server"
-description: "透過 SSH 公開金鑰認證登入 Linux server"
-crawlertitle: "透過 SSH 公開金鑰認證登入 Linux server"
+title: "免密碼！透過 SSH 公開金鑰認證登入 Linux server"
+description: "免密碼！透過 SSH 公開金鑰認證登入 Linux server"
+crawlertitle: "免密碼！透過 SSH 公開金鑰認證登入 Linux server"
 date: 2021-01-15 18:16:23 +0800
 categories: Linux
 tags: Linux

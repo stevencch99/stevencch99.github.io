@@ -14,6 +14,8 @@ comments: true
 
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 
+Redis and Memcached are popular, open-source, in-memory data stores cache engines, while they provide different advantages in similar use case, this article is meant to make a note of the differences between these engines.
+
 Memcached is designed for simplicity while Redis offers a rich set of features that make it effective for a wide range of use cases.
 
 - The popularity compare with Redis and Memcached:

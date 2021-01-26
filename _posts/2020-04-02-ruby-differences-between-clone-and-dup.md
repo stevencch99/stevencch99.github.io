@@ -12,13 +12,13 @@ comments: true
 
 ```ruby
 a = *10.downto(1) # * = Splat operator
-#=> [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+# => [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 b = a.clone
-#=> [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+# => [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 c = a.dup
-#=> [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+# => [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 ```
 
 從上面的結果看來，使用 `dup` 和 `clone` 似乎沒有區別，  
@@ -34,23 +34,49 @@ c = a.dup
 - singleton methods
 
 **舉個例子：**
+
 ```ruby
 a = Object.new.taint.freeze
 
 b = a.clone
-b.frozen?  #=> true
-b.tainted? #=> true
+b.frozen?  # => true
+b.tainted? # => true
 
 c = a.dup
-c.frozen?  #=> false
-c.tainted? #=> true
+c.frozen?  # => false
+c.tainted? # => true
 
 # Ruby 2.4 以後，可傳入 keyword argument (freeze: false) 選擇不去複製 freeze 狀態。
 d = a.clone(freeze: false)
-d.frozen?  #=> false
+d.frozen?  # => false
 ```
 
 可以看到 `dup` 方法在複製物件的時候無視了原物件 frozen 的狀態，讓新產生的物件可以再次被修改。而另一方面，使用 `clone` 方法的話，在 Ruby 2.4 以上版本要額外加入 keyword argument `freeze: false` 才能從一個被凍結的物件複製出解凍的副本。
+
+```ruby
+class Dog
+  def bark
+    puts "woof"
+  end
+end
+
+archie = Dog.new
+# 給 archie 新增一個 singleton method: #owner
+archie.instance_eval do
+  def owner
+    puts 'Steve'
+  end
+end
+
+bella = archie.clone
+charlie = archie.dup
+
+archie.owner  # => Steve
+bella.owner   # => Steve
+charlie.owner # => NoMethodError
+```
+
+而且只有 `clone` 能夠複製物件的 singleton method。
 
 ## 模組 (module)
 
@@ -70,16 +96,16 @@ end
 
 s1 = Klass.new
 s1.extend(Foo)
-s1.singleton_methods #=> [:foo]
-s1.foo               #=> foo
+s1.singleton_methods # => [:foo]
+s1.foo               # => foo
 
 s2 = s1.clone
-s3.singleton_methods #=> [:foo]
-s2.foo               #=> foo
+s3.singleton_methods # => [:foo]
+s2.foo               # => foo
 
 s3 = s1.dup
-s3.singleton_methods #=> []
-s3.foo               #=> NoMethodError (undefined method `foo' for #<Klass:0x00007fe10710c878>)
+s3.singleton_methods # => []
+s3.foo               # => NoMethodError (undefined method `foo' for #<Klass:0x00007fe10710c878>)
 ```
 
 ## 淺層複製 (shallow copy)
@@ -89,30 +115,30 @@ s3.foo               #=> NoMethodError (undefined method `foo' for #<Klass:0x000
 ```ruby
 a = %w[app bee cake]
 a.map(&:object_id)
-#=> [70260548767440, 70260548767420, 70260548767400]
+# => [70260548767440, 70260548767420, 70260548767400]
 
 b = a.clone
 b.map(&:object_id)
-#=> [70260548767440, 70260548767420, 70260548767400]
+# => [70260548767440, 70260548767420, 70260548767400]
 ```
 
 在這個情況下如果修改了陣列 `b` 當中的字串內容，同時也會影響原始物件 `a` 當中的資料：
 
 ```ruby
-a #=> ["app", "bee", "cake"]
-b #=> ["app", "bee", "cake"]
+a # => ["app", "bee", "cake"]
+b # => ["app", "bee", "cake"]
 
-b[0].capitalize! #=> "App"
-b #=> ["App", "bee", "cake"]
-a #=> ["App", "bee", "cake"]
+b[0].capitalize! # => "App"
+b # => ["App", "bee", "cake"]
+a # => ["App", "bee", "cake"]
 ```
 
 以這個例子來說，重新指派值好像沒問題：
 
 ```ruby
 b[0] = 'Deep'
-b #=> ["Deep", "bee", "cake"]
-a #=> ["App", "bee", "cake"]
+b # => ["Deep", "bee", "cake"]
+a # => ["App", "bee", "cake"]
 ```
 
 但是如果更深一層就不行了：
@@ -124,8 +150,8 @@ b = a.clone
 b[0] = 9
 b[1][0] = 8
 
-b #=> [9, [8, 2]]
-a #=> [0, [8, 2]]
+b # => [9, [8, 2]]
+a # => [0, [8, 2]]
 ```
 
 這就是淺層複製的問題，如果不希望影響到原陣列的內容，一個快速解決的手段是連同陣列的下一層也複製起來：
@@ -134,8 +160,8 @@ a #=> [0, [8, 2]]
 c = a.clone.map(&:clone)
 c[0] = 9
 c[1][0] = 8
-c #=> [9, [8, 2]]
-a #=> [0, [1, 2]]
+c # => [9, [8, 2]]
+a # => [0, [1, 2]]
 ```
 
 或者進行深層複製 (deep copy)，這可以透過 Ruby 的標準函式庫 [Marshal](https://ruby-doc.org/core-2.7.1/Marshal.html) 來處理：
@@ -145,12 +171,12 @@ a = %w[app bee cake]
 b = Marshal.load(Marshal.dump(a))
 
 a.map(&:object_id)
-#=> [70260548496640, 70260548496620, 70260548496460]
+# => [70260548496640, 70260548496620, 70260548496460]
 b.map(&:object_id)
-#=> [70260548515100, 70260548515020, 70260548514900]
+# => [70260548515100, 70260548515020, 70260548514900]
 
-b.each(&:upcase!) #=> ["APP", "BEE", "CAKE"]
-a                 #=> ["app", "bee", "cake"]
+b.each(&:upcase!) # => ["APP", "BEE", "CAKE"]
+a                 # => ["app", "bee", "cake"]
 ```
 
 ## initialize_copy
@@ -171,7 +197,7 @@ end
 a = Klass.new('Object1')
 b = a.clone
 
-a.timestamp == b.timestamp #=> true
+a.timestamp == b.timestamp # => true
 ```
 
 可以看到兩者是完全一樣的，因為 `initialize` 建構子被跳過了，所以複製的物件和原物件 timestamp 完全相同。如果要在複製的同時押上新的 timestamp，可以透過 `initialize_copy` 方法：
@@ -186,7 +212,7 @@ end
 c = Klass.new('Object2')
 d = c.clone
 
-c.timestamp == d.timestamp #=> false
+c.timestamp == d.timestamp # => false
 ```
 
 ## 小結

@@ -93,7 +93,7 @@ docker container ls
 
 ### Start container
 
-- Wake up a exited container:
+- Wake up an exited container:
 
   ```bash
   docker container start <TagName|ImageID>
@@ -104,16 +104,16 @@ docker container ls
 - Attach to a stoped container:
 
   ```bash
-  docker container start -ai CONTIAINER
+  docker container start -ai CONTAINER
   ```
 
   - `-a`, `--attach`: Attach STDOUT/STDERR and forward signals.
   - `-i`, `--interactive`: Attach to container's STDIN.
 
-- Stop a container on background:
+- Stop a container in background:
 
   ```bash
-  dokcer stop CONTIAINER
+  dokcer stop CONTAINER
 
   # Stop All containers
   docker stop $(docker ps -aq)
@@ -171,7 +171,7 @@ docker rm [OPTIONS] CONTAINER [CONTAINER...]
 Options:
 
 - `-f`, `--force`: Force remove a container even it's running.
-- `-v`, `--volumes`: Remove anonymous volums associated with the container.
+- `-v`, `--volumes`: Remove anonymous volumes associated with the container.
 
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 

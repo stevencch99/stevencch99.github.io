@@ -110,19 +110,19 @@ docker container ls
   - `-a`, `--attach`: Attach STDOUT/STDERR and forward signals.
   - `-i`, `--interactive`: Attach to container's STDIN.
 
-- Stop a container in background:
+### Stop containers:
 
-  ```bash
-  dokcer stop CONTAINER
+```bash
+dokcer stop CONTAINER
 
-  # Stop All containers
-  docker stop $(docker ps -aq)
+# Stop All containers
+docker stop $(docker ps -aq)
 
-  # Stop specific container
-  docker stop $(docker ps -aq --filter name="my_container")
-  ```
+# Stop specific container
+docker stop $(docker ps -aq --filter name="my_container")
+```
 
-  - `docker ps -aq` will listing all the containers with container ID.
+- `docker ps -aq` will listing all the containers with container ID.
 
 ### Keep a container busy living
 

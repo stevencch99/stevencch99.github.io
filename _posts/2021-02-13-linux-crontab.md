@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Linux - crontab"
-description: ""
-crawlertitle: ""
+title: "Linux - crontab command"
+description: "Linux - crontab command"
+crawlertitle: "Linux - crontab command"
 date: 2021-02-13 17:35:13 +0800
 categories: Linux
 tags: Linux
@@ -15,13 +15,19 @@ comments: true
 
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 
+The Cron daemon is one of the most useful built-in utility in the Unix-like operating system. It is used to execute desired tasks at a specific time we want, the scheduled tasks also known as `cron jobs`.
+
+Cron reads the `crontab` (cron tables) for predefined commands and scripts.
+
+By using the `crontab` command we can configure some useful cron jobs to run automatically.
+
 ## Basic commands
 
 - `crontab -l`           : To check crontab content.
 - `crontab -u <USER> -l` : To check crontab from specific USER as an administrator.
 - `crontab -r`           : Delete current all crontab.
 
-### Add/Edit crontab for current user
+### Add/Edit crontab for the current user
 
 ```bash
 crontab -e
@@ -33,7 +39,7 @@ crontab -e
 
 > Ref: <https://www.howtogeek.com/410995/how-to-change-the-default-crontab-editor/>
 
-The very first time we execute the `crontab` command with the `-e` (edit) option in terminal, will be asked to pick one of the editor we'd like to use.
+The very first time we execute the `crontab` command with the `-e` (edit) option in a terminal, will be asked to pick one of the editors we'd like to use.
 
 After selecting the editor from the menu, the same editor will be used every time executing the `crontab -e` command. 
 
@@ -81,12 +87,35 @@ export VISUAL='vim'
 
 ## Restrict user from using crontab
 
-Add user in `/etc/cron.deny` so the user will be restrict from using `crontab -e`.
+Add user in `/etc/cron.deny` so the user will be restricted from using `crontab -e`.
+
+## Email notification
+
+`crontab` will send mail to the user who had executed the job, we can change the recipient by change the `MAILTO` variable:
+
+```crontab
+# set the recipient to steve
+MAILTO=steve
+
+# 08:30 every morning
+30 08 * * * /home/steven/script.sh --your --parameter
+```
+
+Or if you want to disable the mail notification:
+
+```crontab
+# do not send mail
+MAILTO=""
+
+# 08:30 every morning
+30 08 * * * /home/steven/script.sh --your --parameter
+```
 
 ---
 
 ## References
 
+- [How to Change the Default crontab Editor](https://www.howtogeek.com/410995/how-to-change-the-default-crontab-editor/)
 - [Linux 設定 crontab 例行性工作排程教學與範例](https://blog.steven.org/linux/linux-crontab-cron-job-tutorial-and-examples/)
 - [鳥哥的 Linux 私房菜](http://linux.vbird.org/linux_basic/0430cron.php)
 

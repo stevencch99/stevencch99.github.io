@@ -8,6 +8,8 @@ categories: Misc
 tags: Misc
 comments: true
 visible: true
+bg: '210217_fukuoka.jpeg'
+
 ---
 - toc
 {:toc}

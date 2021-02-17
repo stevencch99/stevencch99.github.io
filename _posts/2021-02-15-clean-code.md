@@ -7,6 +7,7 @@ date: 2021-02-15 13:42:55 +0800
 categories: Books
 tags: Books
 comments: true
+visible: false
 
 ---
 
@@ -15,7 +16,7 @@ comments: true
 
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 
-系列筆記節錄書摘以及個人讀後心得。如有違反著作權請留言告知或來信 (stevencch99@gmail.com)，我會在第一時間移除。
+系列筆記節錄書摘以及個人讀後心得。如有違反著作權請留言告知或[來信](mailto:stevencch99@gmail.com)，我會在第一時間移除。
 
 ## 前言
 

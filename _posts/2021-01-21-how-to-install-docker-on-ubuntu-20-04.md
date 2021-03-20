@@ -105,11 +105,13 @@ This article is my note of Docker installation and troubleshooting process, foll
   sudo groupadd docker
   ```
 
-- Add the connected user "\$USER" to the docker group. Change the user name to match your preferred user if you do not want to use your current user:
+- Add the currently connected user `$USER` to the docker group. Or change the user name to match your preferred user if you do not want to use your current user:
 
   ```bash
    sudo gpasswd -a $USER docker
   ```
+
+  > [gpasswd](https://man7.org/linux/man-pages/man1/gpasswd.1.html): The gpasswd command is used to administer `/etc/group`, and `/etc/gshadow`.
 
 - To activate the changes to groups:
 
@@ -120,6 +122,9 @@ This article is my note of Docker installation and troubleshooting process, foll
   # or:
   newgrp docker
   ```
+
+  > [sg](https://man7.org/linux/man-pages/man1/sg.1.html): To execute command as different group ID.
+  > [newgrp](https://man7.org/linux/man-pages/man1/newgrp.1.html): To change the current group ID during a login session.
 
   Or log out/in to activate the changes.
 

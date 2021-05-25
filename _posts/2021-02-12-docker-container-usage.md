@@ -193,9 +193,11 @@ docker container inspect [OPTIONS] CONTAINER [CONTAINER...]
 
 - To shows the IP address of the container:
 
+  {% raw %}
   ```bash
   docker container inspect --format '{{ .NetworkSettings.IPAddress }}' CONTAINER
   ```
+  {% endraw %}
 
   - `-f`, `--format`: Format the output using the given Go template.
 

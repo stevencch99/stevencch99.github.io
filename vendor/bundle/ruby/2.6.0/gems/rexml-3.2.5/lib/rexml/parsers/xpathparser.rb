@@ -22,7 +22,13 @@ module REXML
         path.gsub!(/([\(\[])\s+/, '\1') # Strip ignorable spaces
         path.gsub!( /\s+([\]\)])/, '\1')
         parsed = []
-        OrExpr(path, parsed)
+        rest = OrExpr(path, parsed)
+        if rest
+          unless rest.strip.empty?
+            raise ParseException.new("Garbage component exists at the end: " +
+                                     "<#{rest}>: <#{path}>")
+          end
+        end
         parsed
       end
 
@@ -229,24 +235,28 @@ module REXML
               path = path[1..-1]
             end
           else
+            path_before_axis_specifier = path
+            parsed_not_abberviated = []
             if path[0] == ?@
-              parsed << :attribute
+              parsed_not_abberviated << :attribute
               path = path[1..-1]
               # Goto Nodetest
             elsif path =~ AXIS
-              parsed << $1.tr('-','_').intern
+              parsed_not_abberviated << $1.tr('-','_').intern
               path = $'
               # Goto Nodetest
             else
-              parsed << :child
+              parsed_not_abberviated << :child
             end
 
-            n = []
-            path = NodeTest( path, n)
+            path_before_node_test = path
+            path = NodeTest(path, parsed_not_abberviated)
+            if path == path_before_node_test
+              return path_before_axis_specifier
+            end
+            path = Predicate(path, parsed_not_abberviated)
 
-            path = Predicate( path, n )
-
-            parsed.concat(n)
+            parsed.concat(parsed_not_abberviated)
           end
 
           original_path = path
@@ -301,7 +311,9 @@ module REXML
         when PI
           path = $'
           literal = nil
-          if path !~ /^\s*\)/
+          if path =~ /^\s*\)/
+            path = $'
+          else
             path =~ LITERAL
             literal = $1
             path = $'
@@ -545,7 +557,9 @@ module REXML
       #| PrimaryExpr
       def FilterExpr path, parsed
         n = []
-        path = PrimaryExpr( path, n )
+        path_before_primary_expr = path
+        path = PrimaryExpr(path, n)
+        return path_before_primary_expr if path == path_before_primary_expr
         path = Predicate(path, n)
         parsed.concat(n)
         path

@@ -9,7 +9,7 @@
 title: From Zen to Code
 author: Steven Chang
 email: stevencch99@gmail.com
-description: "Technology blog about web-development and ruby on rails."
+description: "Technology blog about web-development."
 baseurl: "" # the subpath of your site, e.g. /blog
 lang: "en"
 # url: "https://stevencch99.github.io/" # the base hostname & protocol for your site

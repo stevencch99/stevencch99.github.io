@@ -1,14 +1,15 @@
 ---
 layout: post
-title:  "盤古之白"
+title: "盤古之白"
 description: "盤古之白"
 crawlertitle: "盤古之白"
-date:   2019-07-20 23:50:46 +0800
+date: 2019-07-20 23:50:46 +0800
 categories: Misc
-tags: ['Misc']
+tags: ["Misc"]
 comments: true
 ---
-身為責任制的『前』受災戶，我一直很看不慣職場上做事隨便、得過且過的廢柴，他們總有世界多的理由詮釋自己的正當性，我就想知道其他認真的人憑什麼跟著被拖累？
+
+身為責任制的「前」受災戶，我一直很看不慣職場上做事隨便、得過且過的廢柴，他們總有世界多的理由詮釋自己的正當性，我就想知道其他認真的人憑什麼跟著被拖累？
 
 我們都是取用群居社會資源的人類的一份子，在這裡呼籲大家正視自己的價值，對自己有點期待，也對珍貴的生活和工作表達敬意。
 
@@ -24,7 +25,7 @@ comments: true
 
 ![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
 
-向各位介紹我默默仰慕的強者 [Vinta](https://vinta.ws/) 推出的 Chrome 插件：『[為什麼你們就是不能加個空格呢？](https://chrome.google.com/webstore/detail/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%91%E5%B0%B1%E6%98%AF%E4%B8%8D%E8%83%BD%E5%8A%A0%E5%80%8B%E7%A9%BA%E6%A0%BC%E5%91%A2%EF%BC%9F/paphcfdffjnbcgkokihcdjliihicmbpd/reviews)』，以下摘錄專案總覽。
+向各位介紹我默默仰慕的強者 [Vinta](https://vinta.ws/) 推出的 Chrome 插件：「[為什麼你們就是不能加個空格呢？](https://chrome.google.com/webstore/detail/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%91%E5%B0%B1%E6%98%AF%E4%B8%8D%E8%83%BD%E5%8A%A0%E5%80%8B%E7%A9%BA%E6%A0%BC%E5%91%A2%EF%BC%9F/paphcfdffjnbcgkokihcdjliihicmbpd/reviews)」，以下摘錄專案總覽。
 
 > **漢學家稱這個空白字元為「盤古之白」，因為它劈開了全形字和半形字之間的混沌。**
 
@@ -34,4 +35,5 @@ comments: true
 **你各位自己好好看著辦吧。**
 
 ## 補充
+
 - [中文文案排版指北](https://github.com/sparanoid/chinese-copywriting-guidelines?fbclid=IwAR3ejExecPTjWOVr_F7GXE2K4He_GMyA9ypxru_G8SWGaIkSKlr0Cn75dcY#%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%88%E6%8E%92%E7%89%88%E6%8C%87%E5%8C%97)

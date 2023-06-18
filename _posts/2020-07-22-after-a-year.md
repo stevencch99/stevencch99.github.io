@@ -14,7 +14,8 @@ bg: '210217_fukuoka.jpeg'
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
+
 2019 年的盛夏，我從全端工程師訓練營 [ASTRO Camp](https://astro.5xruby.tw/) 畢業後，進入了一間外商公司，成為軟體工程師，主要使用 Ruby on Rails 開發一套頗具規模的電商系統，到今天也滿一年了。
 
 先介紹一下我自己的背景，從冷凍空調與能源系畢業後，做過工地主任，參與醫院和電子廠興建、另外做過空調設備產品工程師，在轉職成為軟體工程師之前，任職於一個擔任政府能源政策顧問角色的基金會，算起來在空調和能源領域有八年相關經驗。
@@ -142,7 +143,7 @@ bg: '210217_fukuoka.jpeg'
 
 第一天通勤的路上看著街景流轉，想像和**過去的自己**、家人以及朋友介紹自己的新名片，今後不但能做自己喜歡的事，還能把錢給掙了！想著想著，禁不住踩著雀躍的小跳步。
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## 接下來的課題
 
@@ -196,5 +197,5 @@ bg: '210217_fukuoka.jpeg'
 
   **「種樹最好的時機是二十年前，其次是現在。」**
 
-> "The best time to plant a tree is twenty years ago, the second-best time is now."  
+> "The best time to plant a tree is twenty years ago, the second-best time is now."
 > -- African Proverb

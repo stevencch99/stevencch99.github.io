@@ -20,7 +20,7 @@ comments: true
 
 然而果真是如此嗎？
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 現如今，身處這個時代的台灣，你各位的「血汗與病苦」有沒有得到等價交換了？
 

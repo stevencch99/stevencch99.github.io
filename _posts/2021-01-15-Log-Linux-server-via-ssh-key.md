@@ -12,7 +12,7 @@ comments: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 這篇文章紀錄如何使用 SSH 金鑰認證 ssh 連線，省去輸入密碼的動作。
 

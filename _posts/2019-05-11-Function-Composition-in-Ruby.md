@@ -244,7 +244,7 @@ format_as_title["  \thello world\n"]
 # "Title: Hello world"
 ```
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 > 維持簡潔的同時，可讀性提高了不少，  
 > 希望 Ruby 的美也能讓更多人欣賞到。

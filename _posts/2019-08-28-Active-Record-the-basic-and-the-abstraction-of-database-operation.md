@@ -30,7 +30,7 @@ Active Record 是 Rails 配備的物件－關係映射（Object-relational mappi
 
 順道一提，關聯式資料庫是建立在關聯模型（Relationship Model）基礎上的資料庫，而一般用來設計資料庫、探討抽象資料架構，則常用實體關聯模型（Entity-Relationship Model, ER Model），這可是我們台灣台中人，[陳品山](https://zh.wikipedia.org/wiki/%E9%99%88%E5%93%81%E5%B1%B1)博士發明的好貨，可以幫助初學者更容易理解資料庫設計的基本方法，有助於設計過程的構思和討論溝通。
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## Active Record 模型
 
@@ -140,7 +140,7 @@ store.created_at_before_type_cast
 
 ![Output of _before_type_cast method](https://img.stevenchang.tw/stevenchang/pics/blog/Output_of%20_before_type_cast%20method.jpeg)
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## 參考
 

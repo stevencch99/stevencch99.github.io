@@ -36,7 +36,7 @@ comments: true
 
 > 希望在足夠影響你人生軌跡的**炫技時刻**降臨之際，身上的技術和手邊的工具已經打磨得足夠鋒利。
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 不諱言，像我如此虛華的男子，一個所謂稱手的工具，首先必須得浮誇。
 
@@ -52,7 +52,7 @@ comments: true
 
 ![仔細看看那帶感的示範程式碼 source [SynthWave ’84](https://marketplace.visualstudio.com/items?itemName=RobbOwen.synthwave-vscode&ssr=false#overview) via [Robb Owen](https://marketplace.visualstudio.com/publishers/RobbOwen)](https://cdn-images-1.medium.com/max/4606/1*Jt8F4MGn5puDOstW1udL1w.jpeg)*仔細看看那帶感的示範程式碼...* Credit to: [Robb Owen](https://marketplace.visualstudio.com/publishers/RobbOwen)
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## 安裝方式
 
@@ -126,7 +126,7 @@ comments: true
 
 ![復古擋泥板 style feat. 周慧敏](https://cdn-images-1.medium.com/max/3060/1*2JoFouOjTjs6F32G29Dk2w.jpeg)*復古擋泥板 style feat. 周慧敏*
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 要知道，裝逼的機會俯拾皆是，欲裝其逼、先利其器。
 
@@ -138,7 +138,7 @@ comments: true
 
 > ### 就這樣，我們路上見🙌
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## 補充
 

@@ -13,7 +13,7 @@ comments: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 This article is my note of Docker installation and troubleshooting process, follow by the [Docker official guide](https://docs.docker.com/engine/install/ubuntu/).
 
@@ -162,7 +162,7 @@ Get https://registry-1.docker.io/v2/: net/http: request canceled while waiting f
     sudo service docker restart
     ```
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## References
 

@@ -17,7 +17,7 @@ comments: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## Target
 Having fun with html `<canvas>` element.
@@ -53,7 +53,7 @@ Cylindrical geometries:
 - saturation: 0 ~ 100%
 - lightness: 0 ~ 100%
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## Demostration
 > **Note:** Resizing browser will clear content.

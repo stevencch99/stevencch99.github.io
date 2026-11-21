@@ -12,7 +12,7 @@ comments: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 Redis and Memcached are popular, open-source, in-memory data stores cache engines, while they provide different advantages in similar use case, this article is meant to make a note of the differences between these engines.
 
@@ -98,7 +98,7 @@ There are many similarities between Memcached and Redis.
 
 > Ref: <https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/SelectEngine.html>
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## References
 

@@ -12,7 +12,7 @@ comments: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## Running Memcached on Ubuntu
 
@@ -115,7 +115,7 @@ Stop the container:
 docker container stop memcached
 ```
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## References
 

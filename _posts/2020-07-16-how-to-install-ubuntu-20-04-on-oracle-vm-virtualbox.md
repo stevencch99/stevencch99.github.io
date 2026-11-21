@@ -94,4 +94,4 @@ Simply unmount the existing CD image, then it would be able to insert again for 
   # http_proxy=http://169.19.8.10:8080
   # no_proxy=localhost,127.0.0.0/8,::1
   ```
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)

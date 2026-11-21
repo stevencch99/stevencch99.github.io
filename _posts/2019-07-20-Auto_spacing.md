@@ -23,7 +23,7 @@ comments: true
 
 表達是門藝術，寫作是門藝術，程式語言亦復如是。
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 向各位介紹我默默仰慕的強者 [Vinta](https://vinta.ws/) 推出的 Chrome 插件：「[為什麼你們就是不能加個空格呢？](https://chrome.google.com/webstore/detail/%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%91%E5%B0%B1%E6%98%AF%E4%B8%8D%E8%83%BD%E5%8A%A0%E5%80%8B%E7%A9%BA%E6%A0%BC%E5%91%A2%EF%BC%9F/paphcfdffjnbcgkokihcdjliihicmbpd/reviews)」，以下摘錄專案總覽。
 

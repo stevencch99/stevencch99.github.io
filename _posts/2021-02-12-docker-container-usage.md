@@ -13,7 +13,7 @@ comments: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## Manage containers
 
@@ -173,7 +173,7 @@ Options:
 - `-f`, `--force`: Force remove a container even it's running.
 - `-v`, `--volumes`: Remove anonymous volumes associated with the container.
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## Monitoring a container:
 

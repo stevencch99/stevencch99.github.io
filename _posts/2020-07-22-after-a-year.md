@@ -189,7 +189,7 @@ bg: '210217_fukuoka.jpeg'
 
 據說好的的程式能改變人看待事物的方法，前面提到的問題從不同角度來看可能也充滿爭議，很難得到令人心悅誠服的答案。即使如此，我仍想繼續拓展理性的邊界，探索程式的本質，進入心智的深山去收穫更美的風景，這也是[部落格](https://www.stevenchang.tw/)取名的由來。
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 轉職軟體工程師第一年，僅以此文記錄初心，期許自己能堅守這份新人情懷和自我省思的態度，謙卑的學習，溫柔的質疑。
 

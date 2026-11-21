@@ -13,7 +13,7 @@ comments: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 The Cron daemon is one of the most useful built-in utility in the Unix-like operating system. It is used to execute desired tasks at a specific time we want, the scheduled tasks also known as `cron jobs`.
 

@@ -12,7 +12,7 @@ comments: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 Redis is an open source, in-memory **data structure store**, used as a database, cache and message broker.
 

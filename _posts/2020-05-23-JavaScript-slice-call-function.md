@@ -48,7 +48,7 @@ This confusing code is used to convert the argument object which has `.length` p
   console.log(new Food('cheese', 5).name); // cheese"
   ```
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 So, if we specify the value of `this` in `slice()` to an array-liked object,  
 we make `slice()` method workable on the object, and if we call `slice()` without passing optional arguments, it will return the whole chunk as a new array.

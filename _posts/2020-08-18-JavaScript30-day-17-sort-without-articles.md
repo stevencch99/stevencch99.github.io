@@ -17,7 +17,7 @@ visible: true
 - toc
 {:toc}
 
-![paragraph break](https://order-brother.s3-ap-northeast-1.amazonaws.com/paragraph+break/separator-1.png)
+![paragraph break](/assets/images/paragraph-break.png)
 
 ## Target
 To sort an array of band's names while ignoring the article: 'The', 'An' and 'A' which in front of the band's name.

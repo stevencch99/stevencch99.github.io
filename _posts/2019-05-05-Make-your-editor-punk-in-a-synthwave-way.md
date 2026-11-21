@@ -10,7 +10,7 @@ comments: true
 ---
 “SWAG”, “帥”, “Endao”(“handsome” in Taiwanese), whatever you call it.
 
-![文明的演進終將引領我們邁入極高端科技和極低端生活?](https://stevenchang.s3-ap-northeast-1.amazonaws.com/benjamin-hung-unsplash.jpeg)*文明的演進終將引領我們邁入極高端科技和極低端生活？ Photo by [Benjamin Hung](http://www.benjamin-hung.com) on [Unsplash](https://unsplash.com/s/photos/cyberpunk)*
+![文明的演進終將引領我們邁入極高端科技和極低端生活?](https://img.stevenchang.tw/stevenchang/benjamin-hung-unsplash.jpeg)*文明的演進終將引領我們邁入極高端科技和極低端生活？ Photo by [Benjamin Hung](http://www.benjamin-hung.com) on [Unsplash](https://unsplash.com/s/photos/cyberpunk)*
 
 > 本文同步收錄在 [Medium](https://medium.com/space-cat/%E6%9C%80%E9%BE%90%E5%85%8B%E7%9A%84-vs-code-%E4%B8%BB%E9%A1%8C-make-your-editor-rock-in-a-synthwave-way-cb375c8d40da)
 

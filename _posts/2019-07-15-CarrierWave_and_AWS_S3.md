@@ -86,7 +86,7 @@ end
 
 確認版本：
 `$ convert -version`
-![確認 ImageMagick 的版本](https://stevenchang.s3-ap-northeast-1.amazonaws.com/%E7%A2%BA%E8%AA%8D+ImageMagick+%E7%9A%84%E7%89%88%E6%9C%AC.jpg)
+![確認 ImageMagick 的版本](https://img.stevenchang.tw/stevenchang/%E7%A2%BA%E8%AA%8D%20ImageMagick%20%E7%9A%84%E7%89%88%E6%9C%AC.jpg)
 
 ```ruby
 class AvatarUploader < CarrierWave::Uploader::Base

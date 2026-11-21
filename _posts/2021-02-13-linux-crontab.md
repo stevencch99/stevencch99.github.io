@@ -33,7 +33,7 @@ By using the `crontab` command we can configure some useful cron jobs to run aut
 crontab -e
 ```
 
-![editing crontab for current user](https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/blog/crontab-edit.jpg "editing crontab for current user")
+![editing crontab for current user](https://img.stevenchang.tw/stevenchang/pics/blog/crontab-edit.jpg "editing crontab for current user")
 
 ### To change the default crontab editor
 

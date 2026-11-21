@@ -106,7 +106,7 @@ bg: '210217_fukuoka.jpeg'
 
 這個以前在設計簡報或者做 brainstorming 的時候會用到，從來沒想到居然也可以搭配**[空間記憶](https://zh.wikipedia.org/zh-tw/%E7%A9%BA%E9%97%B4%E8%AE%B0%E5%BF%86)**用來消化學到的東西，這是跟 [Amos](https://csscoke.com/) 老師學到的方法，我自詡記性極差，差到偶爾會想不起自己今年幾歲的程度，靠這個方法整理每天上課所學，一些內容細節就算想不起來也記得在什麼位置，找起來很快，真滴神奇！推薦可以跨平台的 [Xmind](https://www.xmind.net/)。
 
-![https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/after_a_year_xmind.jpg](https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/after_a_year_xmind.jpg)
+![https://img.stevenchang.tw/stevenchang/pics/after_a_year_xmind.jpg](https://img.stevenchang.tw/stevenchang/pics/after_a_year_xmind.jpg)
 
 ### 架設技術部落格
 
@@ -123,7 +123,7 @@ bg: '210217_fukuoka.jpeg'
 
 在時間管理方面，我參考了助教 [Fred](https://www.spreered.com/) 的建議，使用 [Rescuetime](https://www.rescuetime.com/) 拯救自己的時間，這程式能夠分析時間花在哪些地方，把生產力視覺化，督促自己專注。
 
-![https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/after_a_year_rescuetime.jpg](https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/after_a_year_rescuetime.jpg)
+![https://img.stevenchang.tw/stevenchang/pics/after_a_year_rescuetime.jpg](https://img.stevenchang.tw/stevenchang/pics/after_a_year_rescuetime.jpg)
 
 實際上滿享受進入心流專注的時刻，能感受程式與我之間奔騰的電流，就連空氣都隱約嗡嗡作響，一天寫扣十四個小時也不覺得特別疲累。
 
@@ -161,7 +161,7 @@ bg: '210217_fukuoka.jpeg'
 
 關於第一點，最近嘗試使用 [diagrams.net](https://www.diagrams.net/) 把程式主要結構和流程畫出來，這個方法一樣能夠動用到空間記憶，收效不錯。後來知道這是 [UML](https://zh.wikipedia.org/zh-tw/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80)，用來做系統分析挺好的方法。
 
-![https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/after_a_year_uml.png](https://stevenchang.s3-ap-northeast-1.amazonaws.com/pics/after_a_year_uml.png)
+![https://img.stevenchang.tw/stevenchang/pics/after_a_year_uml.png](https://img.stevenchang.tw/stevenchang/pics/after_a_year_uml.png)
 
 第二點就是接下來的課題了，要釐清程式碼的可讀性和生產效率之間的分寸，試著找出一些可依循的道理，期許自己不僅僅是完成工作，還要做得*漂亮*。
 

@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "~> 3.1.1" # to compitiate with GitHub Actions
+ruby "~> 3.3.0" # match GitHub Pages (https://pages.github.com/versions/)
 
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it below, save the
